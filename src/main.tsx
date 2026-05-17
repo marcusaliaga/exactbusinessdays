@@ -66,72 +66,85 @@ const inRange = (d:string, a:string, b:string) => d >= (a < b ? a : b) && d <= (
 function Info({text}:{text:string}){
   const iconRef = useRef<HTMLSpanElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [pos, setPos] = useState({ left: 16, top: 16, width: 240, below: false });
+  const [mode, setMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [pos, setPos] = useState<{left:number; top:number; width:number; below:boolean}>({ left: 16, top: 16, width: 245, below: false });
+
+  const isMobileHelp = () => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(max-width: 760px), (hover: none), (pointer: coarse)').matches;
+  };
 
   const placeTip = () => {
-    const icon = iconRef.current;
-    if (!icon) return;
-
-    const rect = icon.getBoundingClientRect();
-    const viewportWidth = Math.min(window.innerWidth || 0, document.documentElement.clientWidth || window.innerWidth || 0) || 390;
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 700;
-    const mobile = viewportWidth <= 760;
-    const gap = mobile ? 12 : 14;
-
-    if (mobile) {
-      // Mobile Safari was clipping edge-anchored tooltips inside the calculator area.
-      // The stable mobile pattern is a fixed, viewport-centered note positioned near
-      // the tapped icon vertically. It cannot be cut by the calculator container.
-      const estimatedHeight = 74;
-      const roomAbove = rect.top > estimatedHeight + gap;
-      const rawTop = roomAbove ? rect.top - estimatedHeight - 10 : rect.bottom + 10;
-      const top = Math.round(Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
-      setPos({ left: '50vw', top, width: 'min(286px, calc(100vw - 56px))', below: !roomAbove, mobile: true });
+    if (isMobileHelp()) {
+      // On real mobile browsers, anchored tooltips can be clipped by rounded cards,
+      // overflow rules, transformed ancestors, browser bars, or viewport shifts.
+      // Mobile uses a fixed bottom help sheet instead, mounted to <body> by portal.
+      setMode('mobile');
       setOpen(true);
       return;
     }
 
+    const icon = iconRef.current;
+    if (!icon) return;
+    const rect = icon.getBoundingClientRect();
+    const viewportWidth = Math.min(window.innerWidth || 0, document.documentElement.clientWidth || window.innerWidth || 0) || 1024;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 800;
+    const gap = 14;
     const width = Math.min(245, viewportWidth - gap * 2);
     const iconCenter = rect.left + rect.width / 2;
     const left = Math.round(Math.max(gap, Math.min(iconCenter - width / 2, viewportWidth - width - gap)));
-    const estimatedHeight = 70;
+    const estimatedHeight = 76;
     const roomBelow = rect.bottom + estimatedHeight + gap < viewportHeight;
     const below = rect.top < estimatedHeight + gap || roomBelow;
     const rawTop = below ? rect.bottom + 8 : rect.top - estimatedHeight - 8;
     const top = Math.round(Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
 
-    setPos({ left, top, width, below, mobile: false });
+    setMode('desktop');
+    setPos({ left, top, width, below });
     setOpen(true);
   };
 
   useEffect(() => {
     if (!open) return;
     const close = () => setOpen(false);
-    const reposition = () => placeTip();
+    const reposition = () => {
+      if (mode === 'desktop') placeTip();
+    };
     window.addEventListener('scroll', reposition, true);
-    window.addEventListener('resize', reposition);
-    window.visualViewport?.addEventListener('resize', reposition);
-    window.visualViewport?.addEventListener('scroll', reposition);
-    document.addEventListener('pointerdown', close);
+    window.addEventListener('resize', close);
+    window.visualViewport?.addEventListener('resize', close);
+    window.visualViewport?.addEventListener('scroll', close);
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') close(); });
     return () => {
       window.removeEventListener('scroll', reposition, true);
-      window.removeEventListener('resize', reposition);
-      window.visualViewport?.removeEventListener('resize', reposition);
-      window.visualViewport?.removeEventListener('scroll', reposition);
-      document.removeEventListener('pointerdown', close);
+      window.removeEventListener('resize', close);
+      window.visualViewport?.removeEventListener('resize', close);
+      window.visualViewport?.removeEventListener('scroll', close);
     };
-  }, [open]);
+  }, [open, mode]);
 
   const tip = open ? createPortal(
-    <span
-      className={`${pos.mobile ? 'tip floatingTip mobileTip' : 'tip floatingTip'} ${pos.below ? 'below' : ''}`}
-      role="tooltip"
-      style={{ left: pos.left, top: pos.top, width: pos.width }}
-    >{text}</span>,
+    mode === 'mobile' ? (
+      <div className="mobileHelpLayer" role="presentation" onClick={() => setOpen(false)}>
+        <section className="mobileHelpSheet" role="dialog" aria-modal="true" aria-label="More information" onClick={(e) => e.stopPropagation()}>
+          <div className="mobileHelpHeader">
+            <strong>Info</strong>
+            <button type="button" onClick={() => setOpen(false)} aria-label="Close information">Close</button>
+          </div>
+          <p>{text}</p>
+        </section>
+      </div>
+    ) : (
+      <span
+        className={`tip floatingTip ${pos.below ? 'below' : ''}`}
+        role="tooltip"
+        style={{ left: pos.left, top: pos.top, width: pos.width }}
+      >{text}</span>
+    ),
     document.body
   ) : null;
 
-  return <span className="infoWrap" onMouseEnter={placeTip} onMouseLeave={() => setOpen(false)}>
+  return <span className="infoWrap" onMouseEnter={() => { if (!isMobileHelp()) placeTip(); }} onMouseLeave={() => { if (!isMobileHelp()) setOpen(false); }}>
     <span
       ref={iconRef}
       className="infoIcon"
@@ -140,14 +153,13 @@ function Info({text}:{text:string}){
       aria-label="More information"
       onClick={(e) => { e.stopPropagation(); open ? setOpen(false) : placeTip(); }}
       onPointerDown={(e) => e.stopPropagation()}
-      onFocus={placeTip}
-      onBlur={() => setOpen(false)}
+      onFocus={() => { if (!isMobileHelp()) placeTip(); }}
+      onBlur={() => { if (!isMobileHelp()) setOpen(false); }}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open ? setOpen(false) : placeTip(); } }}
     >i</span>
     {tip}
   </span>;
 }
-
 
 function App() {
   const [tab,setTab]=useState<Tab>('between');
