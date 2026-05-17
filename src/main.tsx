@@ -828,18 +828,20 @@ function Calculator() {
           </label>
         )}
 
-        <label className="checkbox-row">
-          <input
-            type="checkbox"
-            checked={includeStart}
-            onChange={(event) => setIncludeStart(event.target.checked)}
-            disabled={mode !== "between"}
-          />
-          <span className="checkbox-copy">
-            Include start date
-            <InfoTip text="When this is on, the start date can count as the first business day. It only counts if it is not a weekend or skipped holiday." label="What does include start date mean?" />
-          </span>
-        </label>
+        {mode !== "left" && (
+          <label className="checkbox-row">
+            <input
+              type="checkbox"
+              checked={includeStart}
+              onChange={(event) => setIncludeStart(event.target.checked)}
+              disabled={mode !== "between"}
+            />
+            <span className="checkbox-copy">
+              Include start date
+              <InfoTip text="When this is on, the start date can count as the first business day. It only counts if it is not a weekend or skipped holiday." label="What does include start date mean?" />
+            </span>
+          </label>
+        )}
       </div>
 
       <div className="form-grid region-grid">
