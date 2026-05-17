@@ -776,13 +776,13 @@ function Calculator() {
         <button className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}>
           <span className="tab-copy">
             Add days
-            <InfoTip text="Pick a start date, then add a number of business days. The calculator gives you the final date." label="What does Add days mean?" />
+            <InfoTip text="Pick a start date, then add business days. Weekends are skipped, and holidays are skipped when holiday exclusion is turned on." label="What does Add days mean?" />
           </span>
         </button>
         <button className={mode === "subtract" ? "active" : ""} onClick={() => setMode("subtract")}>
           <span className="tab-copy">
             Subtract days
-            <InfoTip text="Pick a deadline date, then count backward by a number of business days." label="What does Subtract days mean?" />
+            <InfoTip text="Pick a deadline date, then count backward by business days. Weekends are skipped, and holidays are skipped when holiday exclusion is turned on." label="What does Subtract days mean?" />
           </span>
         </button>
         <button className={mode === "remaining" ? "active" : ""} onClick={() => setMode("remaining")}>
@@ -809,8 +809,15 @@ function Calculator() {
         {(mode === "add" || mode === "subtract") && (
           <label>
             <span className="field-label">
-              Number of business days
-              <InfoTip text="Enter how many workdays you want to add or subtract. Weekends and selected public holidays are skipped." label="What does number of business days mean?" />
+              {mode === "subtract" ? "Number of business days to subtract" : "Number of business days to add"}
+              <InfoTip
+                text={
+                  mode === "subtract"
+                    ? "Enter how many business days to count backward from the selected date. Weekends are skipped, and holidays are skipped when holiday exclusion is turned on."
+                    : "Enter how many business days to count forward from the selected date. Weekends are skipped, and holidays are skipped when holiday exclusion is turned on."
+                }
+                label="What does number of business days mean?"
+              />
             </span>
             <input
               type="number"
@@ -830,7 +837,7 @@ function Calculator() {
           />
           <span className="checkbox-copy">
             Include start date
-            <InfoTip text="When this is on, the start date counts as day one, as long as it is a business day." label="What does include start date mean?" />
+            <InfoTip text="When this is on, the start date can count as the first business day. It only counts if it is not a weekend or skipped holiday." label="What does include start date mean?" />
           </span>
         </label>
       </div>
@@ -864,17 +871,28 @@ function Calculator() {
           </select>
         </label>
 
-        <label className="checkbox-row">
-          <input
-            type="checkbox"
-            checked={excludeHolidays}
-            onChange={(event) => setExcludeHolidays(event.target.checked)}
-          />
-          <span className="checkbox-copy">
-            Exclude public holidays
-            <InfoTip text="Turn this on if holidays should not count as workdays. Example: if Christmas is on a Friday, that Friday will be skipped." label="What does exclude public holidays mean?" />
+        <div className="holiday-toggle-card" role="group" aria-label="Holiday exclusion setting">
+          <span className={!excludeHolidays ? "toggle-side active-side" : "toggle-side"}>
+            Exclude weekends only
           </span>
-        </label>
+
+          <label className="switch-row">
+            <input
+              type="checkbox"
+              checked={excludeHolidays}
+              onChange={(event) => setExcludeHolidays(event.target.checked)}
+              aria-label="Also exclude public holidays"
+            />
+            <span className="switch-track" aria-hidden="true">
+              <span className="switch-thumb" />
+            </span>
+          </label>
+
+          <span className={excludeHolidays ? "toggle-side active-side" : "toggle-side"}>
+            Also exclude holidays
+            <InfoTip text="Weekends are always skipped. Turn this on if weekday public holidays should be skipped too. Example: if Christmas is on a Wednesday, that Wednesday will not count as a business day." label="What does also exclude holidays mean?" />
+          </span>
+        </div>
       </div>
 
       <div className="result" aria-live="polite">
