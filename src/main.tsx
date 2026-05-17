@@ -181,7 +181,7 @@ function Calculator() {
       return {
         headline: `${Math.abs(days).toLocaleString()} business days`,
         detail: `Between ${formatDate(start)} and ${formatDate(end)}${includeStart ? ", including the start date" : ", excluding the start date"}.`,
-        note: "Weekends are excluded. Public holidays will be added in the next version.",
+        note: "Weekends are excluded. Public holidays are not included yet.",
       };
     }
 
@@ -211,7 +211,7 @@ function Calculator() {
     return {
       headline: `${Math.max(0, days).toLocaleString()} business days remaining`,
       detail: `From ${formatDate(start)} through ${formatDate(endYear)}, excluding weekends.`,
-      note: "Public holidays will be added once regional calendars are connected.",
+      note: "Public holidays are not included yet.",
     };
   }, [mode, startDate, endDate, amount, includeStart]);
 
@@ -279,9 +279,9 @@ function Calculator() {
         <h3>Included in this calculation</h3>
         <ul>
           <li>Weekends are excluded.</li>
-          <li>Public holidays are not yet excluded in this first MVP update.</li>
-          <li>Dates are handled consistently using UTC to avoid time-zone drift.</li>
-          <li>Country, state, and province holiday calendars are the next product update.</li>
+          <li>Public holidays are not included yet.</li>
+          <li>Regional holiday calendars for Canada, the United States, the United Kingdom, and Australia are coming next.</li>
+          <li>Dates are calculated consistently to avoid time-zone errors.</li>
         </ul>
       </div>
     </section>
@@ -296,7 +296,7 @@ function HomePage() {
         <h1>Business Days Calculator</h1>
         <p className="lede">
           Count business days, working days, weekdays, and deadline dates in seconds.
-          Built for quick answers, clear assumptions, and future regional holiday support.
+          Fast, clear, and free to use.
         </p>
       </section>
 
@@ -314,7 +314,7 @@ function HomePage() {
         <article>
           <h2>What is counted as a business day?</h2>
           <p>
-            In this first version, a business day means Monday through Friday. Public holiday calendars
+            In this version, a business day means Monday through Friday. Public holiday calendars
             by country, state, and province are planned for the next functional update.
           </p>
         </article>
@@ -383,7 +383,9 @@ function PrivacyPage() {
         If analytics or advertising are added later, this policy will be updated to explain what tools are
         used and how visitors can manage privacy choices.
       </p>
-      <p>Last updated: May 17, 2026.</p>
+      <p>
+        Last updated: May 17, 2026.
+      </p>
     </TextPage>
   );
 }
@@ -399,8 +401,12 @@ function TermsPage() {
         Results should be reviewed before being used for legal, financial, payroll, contractual, shipping,
         or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.
       </p>
-      <p>We may update, improve, or change the site at any time.</p>
-      <p>Last updated: May 17, 2026.</p>
+      <p>
+        We may update, improve, or change the site at any time.
+      </p>
+      <p>
+        Last updated: May 17, 2026.
+      </p>
     </TextPage>
   );
 }
@@ -408,7 +414,9 @@ function TermsPage() {
 function ContactPage() {
   return (
     <TextPage title="Contact" eyebrow="Contact">
-      <p>Have feedback, a correction, or a region you want supported next?</p>
+      <p>
+        Have feedback, a correction, or a region you want supported next?
+      </p>
       <p>
         For now, please contact the site owner directly through the domain owner or project administrator.
         A dedicated contact form or email address will be added in a future update.
