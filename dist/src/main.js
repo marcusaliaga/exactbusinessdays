@@ -87,10 +87,10 @@ const helpText = {
 };
 
 const helpTitle = {
-  between: 'Between dates',
-  add: 'Add days',
-  subtract: 'Subtract days',
-  left: 'Left this year',
+  between: 'Between Dates',
+  add: 'Add Days',
+  subtract: 'Subtract Days',
+  left: 'Left This Year',
   includeStart: 'Include start date',
   country: 'Country',
   region: 'Region',
@@ -274,7 +274,7 @@ function pageContent() {
 }
 function helpSheet() {
   if (!state.help) return '';
-  return `<div class="help-overlay" data-close-help="true"><div class="help-sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h3>${helpTitle[state.help] || 'Quick explanation'}</h3><p>${helpText[state.help]}</p><button class="sheet-close" data-close-help="true">Got it</button></div></div>`;
+  return `<div class="help-overlay" data-close-help="true"><div class="help-sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h3>${helpTitle[state.help] || 'Help'}</h3><p>${helpText[state.help]}</p><button class="sheet-close" data-close-help="true">Got it</button></div></div>`;
 }
 function render() {
   document.title = state.page === 'calculator' ? 'Business Days Calculator | Exact Business Days' : `${state.page.charAt(0).toUpperCase() + state.page.slice(1)} | Exact Business Days`;

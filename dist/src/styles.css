@@ -48,7 +48,7 @@ button { cursor: pointer; }
 .nav-link.active { background: var(--soft); }
 .hero { text-align: center; width: min(820px, calc(100% - 36px)); margin: 74px auto 34px; }
 .eyebrow { text-transform: uppercase; letter-spacing: .22em; color: #a7b4c6; font-weight: 900; font-size: 13px; margin-bottom: 16px; }
-.hero h1, .static-page h1 { margin: 0; font-size: clamp(38px, 4.5vw, 58px); line-height: .98; letter-spacing: -0.065em; }
+.hero h1, .static-page h1 { margin: 0; font-size: clamp(36px, 4vw, 54px); line-height: .98; letter-spacing: -0.06em; }
 .hero p { margin: 16px auto 0; color: var(--muted); font-size: 18px; line-height: 1.45; max-width: 720px; }
 .calculator-card {
   position: relative;
@@ -220,7 +220,7 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
 .info-grid article { padding: 24px; }
 .info-grid p { color: var(--muted); line-height: 1.55; margin: 0; font-size: 16px; }
 .static-page { width: min(900px, calc(100% - 40px)); margin: 80px auto 0; }
-.static-page h1 { font-size: clamp(36px, 4.2vw, 54px); margin-bottom: 18px; }
+.static-page h1 { font-size: clamp(34px, 3.8vw, 50px); margin-bottom: 18px; }
 .content-card { padding: 28px; color: var(--muted); font-size: 18px; line-height: 1.6; }
 .content-card p:first-child { margin-top: 0; }
 .content-card p:last-child { margin-bottom: 0; }
@@ -269,34 +269,39 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   }
   .tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
+    gap: 8px;
     padding: 8px;
     border-radius: 18px;
   }
   .tab-item {
-    min-height: 52px;
-    gap: 7px;
+    min-height: 48px;
+    width: 100%;
+    gap: 6px;
     border-radius: 15px;
+    justify-content: center;
+    padding: 0 8px;
   }
-  .tab-label { font-size: 16px; font-weight: 800; }
+  .tab-label { font-size: 15px; font-weight: 800; white-space: nowrap; }
+  .tab-item .info-button { width: 21px; height: 21px; font-size: 15px; }
   .info-button {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-width: 2px;
-    font-size: 17px;
-    box-shadow: 0 4px 8px rgba(31, 63, 109, 0.22);
+    font-size: 15px;
+    box-shadow: 0 4px 8px rgba(31, 63, 109, 0.20);
   }
   .info-button:hover::after,
   .info-button:focus-visible::after { content: none; }
   .form-grid { display: block; margin-top: 26px; }
   .field, .check-card, .holiday-toggle { margin-top: 18px; }
   .field:first-child { margin-top: 0; }
-  .field span { font-size: 17px; line-height: 1.2; font-weight: 800; }
+  .field span { font-size: 15px; line-height: 1.2; font-weight: 800; }
   input, select {
-    height: 68px;
+    height: 60px;
     border-radius: 16px;
-    font-size: 18px;
-    padding: 0 18px;
+    font-size: 16px;
+    font-weight: 650;
+    padding: 0 16px;
     max-width: 100%;
   }
   input[type="date"] { appearance: none; -webkit-appearance: none; text-align: left; }
@@ -304,7 +309,7 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
     min-height: 60px;
     justify-content: flex-start;
     padding: 0 16px;
-    font-size: 17px;
+    font-size: 15px;
   }
   .check-card input { width: 27px; height: 27px; }
   .holiday-toggle {
@@ -319,13 +324,13 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .holiday-toggle b::after { width: 30px; height: 30px; }
   .holiday-toggle input:checked + b::after { transform: translateX(28px); }
   .result-panel { padding: 30px 26px; border-radius: 18px; margin-top: 26px; }
-  .result-panel h2 { font-size: 38px; line-height: 1.1; letter-spacing: -0.06em; }
-  .result-panel p { font-size: 17px; line-height: 1.4; }
-  .result-panel small { font-size: 15px; }
+  .result-panel h2 { font-size: 32px; line-height: 1.1; letter-spacing: -0.055em; }
+  .result-panel p { font-size: 15px; line-height: 1.4; }
+  .result-panel small { font-size: 13px; }
   .assumptions, .holiday-list { padding: 20px; }
   .assumptions h3, .holiday-list h3 { font-size: 20px; }
-  .assumptions li { font-size: 17px; }
-  .holiday-list div { display: block; font-size: 17px; }
+  .assumptions li { font-size: 15px; }
+  .holiday-list div { display: block; font-size: 15px; }
   .holiday-list strong { display: block; margin-top: 8px; }
   .info-grid { width: min(640px, calc(100% - 28px)); grid-template-columns: 1fr; margin-top: 28px; }
   .info-grid article { padding: 22px; }
@@ -368,10 +373,10 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .nav-link { font-size: 16px; padding: 10px 15px; }
   .hero h1 { font-size: 42px; }
   .hero p { font-size: 18px; }
-  .tab-item { min-height: 48px; }
-  .tab-label { font-size: 15px; }
-  .field span { font-size: 16px; }
-  input, select { font-size: 17px; height: 60px; }
+  .tab-item { min-height: 46px; }
+  .tab-label { font-size: 14px; }
+  .field span { font-size: 14px; }
+  input, select { font-size: 15px; height: 56px; }
   .holiday-toggle span { font-size: 15px; }
   .result-panel h2 { font-size: 34px; }
   .result-panel p { font-size: 16px; }
