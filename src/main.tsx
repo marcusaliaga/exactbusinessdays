@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 
@@ -62,12 +62,59 @@ const addDays = (date: Date, days: number) => { const d = new Date(date); d.setU
 const isWeekend = (d: Date) => [0,6].includes(d.getUTCDay());
 const inRange = (d:string, a:string, b:string) => d >= (a < b ? a : b) && d <= (a < b ? b : a);
 
-function Info({text}:{text:string}) {
-  return <span className="infoWrap">
-    <button className="infoIcon" type="button" aria-label="More information">i</button>
-    <span className="tip" role="tooltip">{text}</span>
+function Info({text}:{text:string}){
+  const iconRef = useRef<HTMLSpanElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState({ left: 0, top: 0, width: 245, below: false });
+
+  const placeTip = () => {
+    const icon = iconRef.current;
+    if (!icon) return;
+    const rect = icon.getBoundingClientRect();
+    const mobile = window.innerWidth <= 760;
+    const width = Math.min(mobile ? 216 : 245, window.innerWidth - 28);
+    const left = Math.max(14, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 14));
+    const below = rect.top < 86;
+    const top = below ? rect.bottom + 8 : rect.top - 8;
+    setPos({ left, top, width, below });
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    const reposition = () => placeTip();
+    window.addEventListener('scroll', reposition, true);
+    window.addEventListener('resize', reposition);
+    document.addEventListener('pointerdown', close);
+    return () => {
+      window.removeEventListener('scroll', reposition, true);
+      window.removeEventListener('resize', reposition);
+      document.removeEventListener('pointerdown', close);
+    };
+  }, [open]);
+
+  return <span className="infoWrap" onMouseEnter={placeTip} onMouseLeave={() => setOpen(false)}>
+    <span
+      ref={iconRef}
+      className="infoIcon"
+      role="button"
+      tabIndex={0}
+      aria-label="More information"
+      onClick={(e) => { e.stopPropagation(); open ? setOpen(false) : placeTip(); }}
+      onPointerDown={(e) => e.stopPropagation()}
+      onFocus={placeTip}
+      onBlur={() => setOpen(false)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open ? setOpen(false) : placeTip(); } }}
+    >i</span>
+    {open && <span
+      className={pos.below ? 'tip floatingTip below' : 'tip floatingTip'}
+      role="tooltip"
+      style={{ left: pos.left, top: pos.top, width: pos.width, transform: pos.below ? 'none' : 'translateY(-100%)' }}
+    >{text}</span>}
   </span>;
 }
+
 
 function App() {
   const [tab,setTab]=useState<Tab>('between');
