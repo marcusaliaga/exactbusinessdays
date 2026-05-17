@@ -13,8 +13,8 @@ This version includes:
 - 2026 holiday calendars for Canada, United States, United Kingdom, and Australia
 - Regional selectors
 - Clear holiday mode toggle: weekends only vs weekends + holidays
-- Clean mobile layout fixes
-- Info icons and click-only help text
+- Final mobile layout polish for iPhone width, date fields, and cards
+- Circular info icons with click-only help text
 - About, Privacy, Terms, and Contact page structure
 - Canonical homepage meta
 - Basic structured data
