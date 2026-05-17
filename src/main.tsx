@@ -1,5 +1,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 
@@ -70,12 +71,24 @@ function Info({text}:{text:string}){
   const placeTip = () => {
     const icon = iconRef.current;
     if (!icon) return;
+
     const rect = icon.getBoundingClientRect();
-    const mobile = window.innerWidth <= 760;
-    const width = Math.min(mobile ? 216 : 245, window.innerWidth - 28);
-    const left = Math.max(14, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 14));
-    const below = rect.top < 86;
-    const top = below ? rect.bottom + 8 : rect.top - 8;
+    const vv = window.visualViewport;
+    const viewportWidth = Math.floor(vv?.width || window.innerWidth || document.documentElement.clientWidth);
+    const viewportHeight = Math.floor(vv?.height || window.innerHeight || document.documentElement.clientHeight);
+    const mobile = viewportWidth <= 760;
+
+    const sideGap = mobile ? 16 : 14;
+    const width = Math.min(mobile ? 246 : 245, viewportWidth - sideGap * 2);
+    const centeredLeft = rect.left + rect.width / 2 - width / 2;
+    const left = Math.round(Math.max(sideGap, Math.min(centeredLeft, viewportWidth - width - sideGap)));
+
+    // On phones, show helper text below tab/label icons whenever possible. This keeps it close to
+    // the information icon while avoiding the clipped, half-hidden look at the top of the calculator.
+    const hasRoomBelow = rect.bottom + 92 < viewportHeight;
+    const below = mobile ? hasRoomBelow : rect.top < 86;
+    const top = Math.round(below ? rect.bottom + 8 : Math.max(12, rect.top - 8));
+
     setPos({ left, top, width, below });
     setOpen(true);
   };
@@ -86,13 +99,26 @@ function Info({text}:{text:string}){
     const reposition = () => placeTip();
     window.addEventListener('scroll', reposition, true);
     window.addEventListener('resize', reposition);
+    window.visualViewport?.addEventListener('resize', reposition);
+    window.visualViewport?.addEventListener('scroll', reposition);
     document.addEventListener('pointerdown', close);
     return () => {
       window.removeEventListener('scroll', reposition, true);
       window.removeEventListener('resize', reposition);
+      window.visualViewport?.removeEventListener('resize', reposition);
+      window.visualViewport?.removeEventListener('scroll', reposition);
       document.removeEventListener('pointerdown', close);
     };
   }, [open]);
+
+  const tip = open ? createPortal(
+    <span
+      className={pos.below ? 'tip floatingTip below' : 'tip floatingTip'}
+      role="tooltip"
+      style={{ left: pos.left, top: pos.top, width: pos.width, transform: pos.below ? 'none' : 'translateY(-100%)' }}
+    >{text}</span>,
+    document.body
+  ) : null;
 
   return <span className="infoWrap" onMouseEnter={placeTip} onMouseLeave={() => setOpen(false)}>
     <span
@@ -107,11 +133,7 @@ function Info({text}:{text:string}){
       onBlur={() => setOpen(false)}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open ? setOpen(false) : placeTip(); } }}
     >i</span>
-    {open && <span
-      className={pos.below ? 'tip floatingTip below' : 'tip floatingTip'}
-      role="tooltip"
-      style={{ left: pos.left, top: pos.top, width: pos.width, transform: pos.below ? 'none' : 'translateY(-100%)' }}
-    >{text}</span>}
+    {tip}
   </span>;
 }
 
