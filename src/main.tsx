@@ -666,6 +666,22 @@ function Header({ page, setPage }: { page: Page; setPage: (page: Page) => void }
   );
 }
 
+function InfoTip({ text, label = "More information" }: { text: string; label?: string }) {
+  return (
+    <span
+      className="info-tooltip"
+      tabIndex={0}
+      role="button"
+      aria-label={label}
+    >
+      i
+      <span className="tooltip-text" role="tooltip">
+        {text}
+      </span>
+    </span>
+  );
+}
+
 function Calculator() {
   const [mode, setMode] = useState<Mode>("between");
   const [startDate, setStartDate] = useState(todayIso());
@@ -752,16 +768,28 @@ function Calculator() {
     <section className="calculator-card" aria-label="Business days calculator">
       <div className="tabs" role="tablist" aria-label="Calculator mode">
         <button className={mode === "between" ? "active" : ""} onClick={() => setMode("between")}>
-          Between dates
+          <span className="tab-copy">
+            Between dates
+            <InfoTip text="Count how many business days are between two dates." label="What does Between dates mean?" />
+          </span>
         </button>
         <button className={mode === "add" ? "active" : ""} onClick={() => setMode("add")}>
-          Add days
+          <span className="tab-copy">
+            Add days
+            <InfoTip text="Pick a start date, then add a number of business days. The calculator gives you the final date." label="What does Add days mean?" />
+          </span>
         </button>
         <button className={mode === "subtract" ? "active" : ""} onClick={() => setMode("subtract")}>
-          Subtract days
+          <span className="tab-copy">
+            Subtract days
+            <InfoTip text="Pick a deadline date, then count backward by a number of business days." label="What does Subtract days mean?" />
+          </span>
         </button>
         <button className={mode === "remaining" ? "active" : ""} onClick={() => setMode("remaining")}>
-          Left this year
+          <span className="tab-copy">
+            Left this year
+            <InfoTip text="See how many business days are left from the start date until December 31." label="What does Left this year mean?" />
+          </span>
         </button>
       </div>
 
@@ -780,7 +808,10 @@ function Calculator() {
 
         {(mode === "add" || mode === "subtract") && (
           <label>
-            Number of business days
+            <span className="field-label">
+              Number of business days
+              <InfoTip text="Enter how many workdays you want to add or subtract. Weekends and selected public holidays are skipped." label="What does number of business days mean?" />
+            </span>
             <input
               type="number"
               min="0"
@@ -797,13 +828,19 @@ function Calculator() {
             onChange={(event) => setIncludeStart(event.target.checked)}
             disabled={mode !== "between"}
           />
-          Include start date
+          <span className="checkbox-copy">
+            Include start date
+            <InfoTip text="When this is on, the start date counts as day one, as long as it is a business day." label="What does include start date mean?" />
+          </span>
         </label>
       </div>
 
       <div className="form-grid region-grid">
         <label>
-          Country
+          <span className="field-label">
+            Country
+            <InfoTip text="Choose the country whose holiday calendar should be used." label="What does country mean?" />
+          </span>
           <select value={countryCode} onChange={(event) => handleCountryChange(event.target.value)}>
             {Object.entries(HOLIDAY_DATA).map(([code, option]) => (
               <option key={code} value={code}>
@@ -814,7 +851,10 @@ function Calculator() {
         </label>
 
         <label>
-          Region
+          <span className="field-label">
+            Region
+            <InfoTip text="Choose the state, province, territory, or UK region. Holidays can be different depending on the region." label="What does region mean?" />
+          </span>
           <select value={regionCode} onChange={(event) => setRegionCode(event.target.value)}>
             {Object.entries(country.regions).map(([code, option]) => (
               <option key={code} value={code}>
@@ -830,7 +870,10 @@ function Calculator() {
             checked={excludeHolidays}
             onChange={(event) => setExcludeHolidays(event.target.checked)}
           />
-          Exclude public holidays
+          <span className="checkbox-copy">
+            Exclude public holidays
+            <InfoTip text="Turn this on if holidays should not count as workdays. Example: if Christmas is on a Friday, that Friday will be skipped." label="What does exclude public holidays mean?" />
+          </span>
         </label>
       </div>
 
