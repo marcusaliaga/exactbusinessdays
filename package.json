@@ -1,16 +1,10 @@
 {
+  "name": "exact-business-days",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "typescript": "latest",
-    "lucide-react": "latest"
-  },
-  "devDependencies": {}
+    "dev": "node scripts/build.js && node scripts/serve.js",
+    "build": "node scripts/build.js"
+  }
 }
