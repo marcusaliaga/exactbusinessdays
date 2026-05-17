@@ -86,6 +86,19 @@ const helpText = {
   numberSubtract: 'Enter how many business days you want to subtract. Weekends and selected holidays are skipped.'
 };
 
+const helpTitle = {
+  between: 'Between dates',
+  add: 'Add days',
+  subtract: 'Subtract days',
+  left: 'Left this year',
+  includeStart: 'Include start date',
+  country: 'Country',
+  region: 'Region',
+  holidays: 'Weekends and holidays',
+  numberAdd: 'Number of business days to add',
+  numberSubtract: 'Number of business days to subtract'
+};
+
 function routeToPage() {
   const path = window.location.pathname.replace(/^\//, '').toLowerCase();
   return ['about', 'privacy', 'terms', 'contact'].includes(path) ? path : 'calculator';
@@ -193,7 +206,7 @@ function hero() {
   return `<section class="hero"><div class="eyebrow">Free business day tool</div><h1>Business Days Calculator</h1><p>Count business days, working days, weekdays, public holidays, and deadline dates in seconds. Fast, clear, and free to use.</p></section>`;
 }
 function tabs() {
-  const t = (key, label) => `<button class="tab ${state.tab === key ? 'active' : ''}" data-tab="${key}">${label} ${InfoButton(key === 'left' ? 'left' : key)}</button>`;
+  const t = (key, label) => `<div class="tab-item ${state.tab === key ? 'active' : ''}"><button type="button" class="tab-label" data-tab="${key}">${label}</button>${InfoButton(key === 'left' ? 'left' : key)}</div>`;
   return `<div class="tabs">${t('between','Between dates')}${t('add','Add days')}${t('subtract','Subtract days')}${t('left','Left this year')}</div>`;
 }
 function dateField(id, label, value) {
@@ -261,7 +274,7 @@ function pageContent() {
 }
 function helpSheet() {
   if (!state.help) return '';
-  return `<div class="help-overlay" data-close-help="true"><div class="help-sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h3>Quick explanation</h3><p>${helpText[state.help]}</p><button class="sheet-close" data-close-help="true">Got it</button></div></div>`;
+  return `<div class="help-overlay" data-close-help="true"><div class="help-sheet" role="dialog" aria-modal="true"><div class="sheet-handle"></div><h3>${helpTitle[state.help] || 'Quick explanation'}</h3><p>${helpText[state.help]}</p><button class="sheet-close" data-close-help="true">Got it</button></div></div>`;
 }
 function render() {
   document.title = state.page === 'calculator' ? 'Business Days Calculator | Exact Business Days' : `${state.page.charAt(0).toUpperCase() + state.page.slice(1)} | Exact Business Days`;
@@ -270,7 +283,7 @@ function render() {
 }
 function bind() {
   document.querySelectorAll('[data-route]').forEach(el => el.addEventListener('click', () => setRoute(el.dataset.route)));
-  document.querySelectorAll('[data-tab]').forEach(el => el.addEventListener('click', (event) => { if (event.target.matches('.info-button')) return; state.tab = el.dataset.tab; render(); }));
+  document.querySelectorAll('[data-tab]').forEach(el => el.addEventListener('click', () => { state.tab = el.dataset.tab; state.help = null; render(); }));
   document.querySelectorAll('.info-button').forEach(button => button.addEventListener('click', (event) => {
     event.stopPropagation();
     if (window.matchMedia('(max-width: 760px)').matches) { state.help = button.dataset.help; render(); }

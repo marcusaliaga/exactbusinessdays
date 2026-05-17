@@ -48,8 +48,8 @@ button { cursor: pointer; }
 .nav-link.active { background: var(--soft); }
 .hero { text-align: center; width: min(820px, calc(100% - 36px)); margin: 74px auto 34px; }
 .eyebrow { text-transform: uppercase; letter-spacing: .22em; color: #a7b4c6; font-weight: 900; font-size: 13px; margin-bottom: 16px; }
-.hero h1, .static-page h1 { margin: 0; font-size: clamp(42px, 5.4vw, 72px); line-height: .94; letter-spacing: -0.07em; }
-.hero p { margin: 18px auto 0; color: var(--muted); font-size: 20px; line-height: 1.45; max-width: 760px; }
+.hero h1, .static-page h1 { margin: 0; font-size: clamp(38px, 4.5vw, 58px); line-height: .98; letter-spacing: -0.065em; }
+.hero p { margin: 16px auto 0; color: var(--muted); font-size: 18px; line-height: 1.45; max-width: 720px; }
 .calculator-card {
   position: relative;
   overflow: visible;
@@ -64,7 +64,7 @@ button { cursor: pointer; }
 .tabs {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   padding: 8px;
   border-radius: 20px;
@@ -72,21 +72,26 @@ button { cursor: pointer; }
   overflow: visible;
   z-index: 3;
 }
-.tab {
+.tab-item {
   position: relative;
   overflow: visible;
   min-height: 52px;
-  border: 0;
   border-radius: 16px;
-  background: transparent;
-  font-weight: 900;
-  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
+  color: var(--ink);
 }
-.tab.active { background: #fff; box-shadow: 0 14px 34px rgba(31, 63, 109, 0.12); }
+.tab-item.active { background: #fff; box-shadow: 0 14px 34px rgba(31, 63, 109, 0.12); }
+.tab-label {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 850;
+  padding: 0;
+  line-height: 1.1;
+}
 .info-button {
   position: relative;
   z-index: 12;
@@ -142,7 +147,7 @@ button { cursor: pointer; }
   overflow: visible;
 }
 .field { display: grid; gap: 8px; min-width: 0; }
-.field span { font-weight: 900; font-size: 15px; color: var(--ink); }
+.field span { font-weight: 800; font-size: 15px; color: var(--ink); }
 input, select {
   width: 100%;
   min-width: 0;
@@ -152,7 +157,7 @@ input, select {
   background: #fff;
   color: var(--ink);
   padding: 0 16px;
-  font-weight: 850;
+  font-weight: 700;
   outline: none;
 }
 input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(31,63,109,0.12); }
@@ -167,7 +172,7 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
   justify-content: center;
   gap: 12px;
   padding: 0 14px;
-  font-weight: 900;
+  font-weight: 800;
 }
 .check-card input { width: 20px; height: 20px; accent-color: var(--teal); padding: 0; }
 .holiday-toggle { gap: 14px; }
@@ -215,7 +220,7 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
 .info-grid article { padding: 24px; }
 .info-grid p { color: var(--muted); line-height: 1.55; margin: 0; font-size: 16px; }
 .static-page { width: min(900px, calc(100% - 40px)); margin: 80px auto 0; }
-.static-page h1 { font-size: clamp(42px, 5vw, 68px); margin-bottom: 18px; }
+.static-page h1 { font-size: clamp(36px, 4.2vw, 54px); margin-bottom: 18px; }
 .content-card { padding: 28px; color: var(--muted); font-size: 18px; line-height: 1.6; }
 .content-card p:first-child { margin-top: 0; }
 .content-card p:last-child { margin-bottom: 0; }
@@ -252,10 +257,10 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .brand span { font-size: 15px; }
   .site-header nav { width: 100%; justify-content: center; gap: 12px; }
   .nav-link { font-size: 18px; padding: 11px 20px; }
-  .hero { margin: 46px auto 24px; width: min(640px, calc(100% - 28px)); }
+  .hero { margin: 42px auto 22px; width: min(640px, calc(100% - 28px)); }
   .eyebrow { font-size: 13px; margin-bottom: 14px; }
-  .hero h1 { font-size: clamp(46px, 13vw, 62px); line-height: 0.98; letter-spacing: -0.075em; }
-  .hero p { font-size: 21px; line-height: 1.38; max-width: 560px; }
+  .hero h1 { font-size: clamp(40px, 11.5vw, 54px); line-height: 1; letter-spacing: -0.075em; }
+  .hero p { font-size: 18px; line-height: 1.38; max-width: 560px; }
   .calculator-card {
     width: min(640px, calc(100% - 28px));
     padding: 12px 12px 18px;
@@ -264,16 +269,16 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   }
   .tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: 7px;
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 18px;
   }
-  .tab {
-    min-height: 64px;
-    font-size: 20px;
-    gap: 8px;
-    border-radius: 16px;
+  .tab-item {
+    min-height: 52px;
+    gap: 7px;
+    border-radius: 15px;
   }
+  .tab-label { font-size: 16px; font-weight: 800; }
   .info-button {
     width: 24px;
     height: 24px;
@@ -286,20 +291,20 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .form-grid { display: block; margin-top: 26px; }
   .field, .check-card, .holiday-toggle { margin-top: 18px; }
   .field:first-child { margin-top: 0; }
-  .field span { font-size: 22px; line-height: 1.15; }
+  .field span { font-size: 17px; line-height: 1.2; font-weight: 800; }
   input, select {
     height: 68px;
     border-radius: 16px;
-    font-size: 23px;
+    font-size: 18px;
     padding: 0 18px;
     max-width: 100%;
   }
   input[type="date"] { appearance: none; -webkit-appearance: none; text-align: left; }
   .check-card {
-    min-height: 66px;
+    min-height: 60px;
     justify-content: flex-start;
-    padding: 0 18px;
-    font-size: 21px;
+    padding: 0 16px;
+    font-size: 17px;
   }
   .check-card input { width: 27px; height: 27px; }
   .holiday-toggle {
@@ -309,29 +314,29 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
     padding: 0 16px;
     width: 100%;
   }
-  .holiday-toggle span { font-size: 17px; line-height: 1.05; max-width: 38%; }
+  .holiday-toggle span { font-size: 14px; line-height: 1.05; max-width: 37%; }
   .holiday-toggle b { width: 64px; height: 36px; }
   .holiday-toggle b::after { width: 30px; height: 30px; }
   .holiday-toggle input:checked + b::after { transform: translateX(28px); }
   .result-panel { padding: 30px 26px; border-radius: 18px; margin-top: 26px; }
-  .result-panel h2 { font-size: 46px; line-height: 1.08; letter-spacing: -0.065em; }
-  .result-panel p { font-size: 22px; line-height: 1.38; }
+  .result-panel h2 { font-size: 38px; line-height: 1.1; letter-spacing: -0.06em; }
+  .result-panel p { font-size: 17px; line-height: 1.4; }
   .result-panel small { font-size: 15px; }
   .assumptions, .holiday-list { padding: 20px; }
-  .assumptions h3, .holiday-list h3 { font-size: 22px; }
+  .assumptions h3, .holiday-list h3 { font-size: 20px; }
   .assumptions li { font-size: 17px; }
-  .holiday-list div { display: block; font-size: 20px; }
+  .holiday-list div { display: block; font-size: 17px; }
   .holiday-list strong { display: block; margin-top: 8px; }
   .info-grid { width: min(640px, calc(100% - 28px)); grid-template-columns: 1fr; margin-top: 28px; }
   .info-grid article { padding: 22px; }
-  .info-grid h3 { font-size: 23px; }
-  .info-grid p { font-size: 18px; }
+  .info-grid h3 { font-size: 20px; }
+  .info-grid p { font-size: 16px; }
   footer { width: min(640px, calc(100% - 28px)); flex-direction: column; align-items: flex-start; }
   footer nav { width: 100%; justify-content: space-between; }
   footer button { padding: 10px 0; }
   .static-page { width: min(640px, calc(100% - 28px)); margin-top: 54px; }
-  .static-page h1 { font-size: clamp(42px, 11vw, 58px); }
-  .content-card { padding: 24px; font-size: 18px; }
+  .static-page h1 { font-size: clamp(36px, 10vw, 50px); }
+  .content-card { padding: 22px; font-size: 16px; }
   .help-overlay {
     position: fixed;
     inset: 0;
@@ -351,8 +356,8 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
     padding: 14px 20px 20px;
   }
   .sheet-handle { width: 44px; height: 5px; border-radius: 999px; background: #cbd8e8; margin: 0 auto 14px; }
-  .help-sheet h3 { margin: 0 0 8px; font-size: 22px; }
-  .help-sheet p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.42; }
+  .help-sheet h3 { margin: 0 0 8px; font-size: 20px; }
+  .help-sheet p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.42; }
   .sheet-close {
     width: 100%; height: 52px; margin-top: 18px; border: 0; border-radius: 14px;
     background: var(--navy); color: #fff; font-weight: 900; font-size: 18px;
@@ -363,10 +368,11 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .nav-link { font-size: 16px; padding: 10px 15px; }
   .hero h1 { font-size: 42px; }
   .hero p { font-size: 18px; }
-  .tab { font-size: 17px; min-height: 58px; }
-  .field span { font-size: 19px; }
-  input, select { font-size: 20px; height: 64px; }
+  .tab-item { min-height: 48px; }
+  .tab-label { font-size: 15px; }
+  .field span { font-size: 16px; }
+  input, select { font-size: 17px; height: 60px; }
   .holiday-toggle span { font-size: 15px; }
-  .result-panel h2 { font-size: 38px; }
-  .result-panel p { font-size: 18px; }
+  .result-panel h2 { font-size: 34px; }
+  .result-panel p { font-size: 16px; }
 }
