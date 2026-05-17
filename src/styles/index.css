@@ -24,7 +24,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -180,6 +181,10 @@ h1 {
   align-items: end;
 }
 
+.region-grid {
+  margin-top: 16px;
+}
+
 label {
   color: #334155;
   display: grid;
@@ -189,7 +194,8 @@ label {
 }
 
 input[type="date"],
-input[type="number"] {
+input[type="number"],
+select {
   width: 100%;
   min-height: 52px;
   border: 1px solid #cbd5e1;
@@ -199,8 +205,18 @@ input[type="number"] {
   padding: 0 14px;
 }
 
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #64748b 50%), linear-gradient(135deg, #64748b 50%, transparent 50%);
+  background-position: calc(100% - 18px) 22px, calc(100% - 12px) 22px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 38px;
+}
+
 input:focus-visible,
-button:focus-visible {
+button:focus-visible,
+select:focus-visible {
   outline: 3px solid rgba(78, 121, 180, 0.35);
   outline-offset: 3px;
 }
@@ -259,7 +275,9 @@ button:focus-visible {
   margin-top: 12px;
 }
 
-.assumptions {
+.notice,
+.assumptions,
+.holiday-list {
   margin-top: 20px;
   border: 1px solid #dbe3ee;
   background: #fbfdff;
@@ -267,7 +285,14 @@ button:focus-visible {
   padding: 20px;
 }
 
+.notice {
+  background: #fff9ed;
+  border-color: #f6d9a8;
+  color: #704900;
+}
+
 .assumptions h3,
+.holiday-list h3,
 .content-grid h2,
 .text-card h2 {
   margin-top: 0;
@@ -276,6 +301,39 @@ button:focus-visible {
 .assumptions ul {
   margin-bottom: 0;
   padding-left: 20px;
+}
+
+.holiday-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.holiday-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #e2e8f0;
+  padding: 12px 0;
+}
+
+.holiday-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.holiday-list li:last-child {
+  padding-bottom: 0;
+}
+
+.holiday-list span {
+  color: #334155;
+}
+
+.holiday-list strong {
+  color: #162033;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .content-grid {
@@ -386,6 +444,16 @@ button:focus-visible {
 
   .result {
     padding: 22px;
+  }
+
+  .holiday-list li {
+    display: block;
+  }
+
+  .holiday-list strong {
+    display: block;
+    margin-top: 3px;
+    text-align: left;
   }
 
   .site-footer {
