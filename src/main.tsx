@@ -828,13 +828,12 @@ function Calculator() {
           </label>
         )}
 
-        {mode !== "left" && (
+        {mode === "between" && (
           <label className="checkbox-row">
             <input
               type="checkbox"
               checked={includeStart}
               onChange={(event) => setIncludeStart(event.target.checked)}
-              disabled={mode !== "between"}
             />
             <span className="checkbox-copy">
               Include start date
@@ -941,7 +940,7 @@ function HomePage() {
   return (
     <>
       <section className="hero">
-        <p className="eyebrow">ExactBusinessDays.com</p>
+        <p className="eyebrow">Free business day tool</p>
         <h1>Business Days Calculator</h1>
         <p className="lede">
           Count business days, working days, weekdays, public holidays, and deadline dates in seconds.
