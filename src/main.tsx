@@ -66,7 +66,7 @@ const inRange = (d:string, a:string, b:string) => d >= (a < b ? a : b) && d <= (
 function Info({text}:{text:string}){
   const iconRef = useRef<HTMLSpanElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [pos, setPos] = useState({ left: 0, top: 0, width: 245, below: false });
+  const [pos, setPos] = useState({ left: 16, top: 16, width: 240, below: false });
 
   const placeTip = () => {
     const icon = iconRef.current;
@@ -74,32 +74,27 @@ function Info({text}:{text:string}){
 
     const rect = icon.getBoundingClientRect();
     const vv = window.visualViewport;
-    const viewportWidth = Math.floor(vv?.width || window.innerWidth || document.documentElement.clientWidth);
-    const viewportHeight = Math.floor(vv?.height || window.innerHeight || document.documentElement.clientHeight);
-    const viewportLeft = Math.floor(vv?.offsetLeft || 0);
-    const viewportTop = Math.floor(vv?.offsetTop || 0);
+    const viewportWidth = vv?.width || window.innerWidth || document.documentElement.clientWidth;
+    const viewportHeight = vv?.height || window.innerHeight || document.documentElement.clientHeight;
+    const viewportLeft = vv?.offsetLeft || 0;
+    const viewportTop = vv?.offsetTop || 0;
     const mobile = viewportWidth <= 760;
+    const gap = mobile ? 12 : 14;
+    const width = Math.min(mobile ? 214 : 245, viewportWidth - gap * 2);
 
-    let width: number;
-    let left: number;
+    // Anchor near the tapped icon, but clamp hard inside the visible viewport.
+    // No CSS transform is used for positioning, because transforms caused Safari
+    // to place the tooltip outside the phone viewport in earlier builds.
+    const iconCenter = viewportLeft + rect.left + rect.width / 2;
+    const minLeft = viewportLeft + gap;
+    const maxLeft = viewportLeft + viewportWidth - width - gap;
+    const left = Math.round(Math.max(minLeft, Math.min(iconCenter - width / 2, maxLeft)));
 
-    if (mobile) {
-      // Mobile Safari can report icon positions in a way that makes edge-anchored tooltips
-      // drift outside the visible viewport. Keep the bubble centered in the visible phone
-      // viewport, while the vertical position still follows the tapped info icon.
-      width = Math.min(260, viewportWidth - 32);
-      left = Math.round(viewportLeft + (viewportWidth - width) / 2);
-    } else {
-      const sideGap = 14;
-      width = Math.min(245, viewportWidth - sideGap * 2);
-      const centeredLeft = viewportLeft + rect.left + rect.width / 2 - width / 2;
-      left = Math.round(Math.max(viewportLeft + sideGap, Math.min(centeredLeft, viewportLeft + viewportWidth - width - sideGap)));
-    }
-
-    const hasRoomBelow = rect.bottom + 104 < viewportHeight;
-    const below = mobile ? hasRoomBelow : rect.top < 86;
-    const rawTop = below ? rect.bottom + 8 : Math.max(12, rect.top - 8);
-    const top = Math.round(viewportTop + rawTop);
+    const estimatedHeight = mobile ? 76 : 70;
+    const roomBelow = rect.bottom + estimatedHeight + gap < viewportHeight;
+    const below = rect.top < estimatedHeight + gap || roomBelow;
+    const rawTop = below ? rect.bottom + 8 : rect.top - estimatedHeight - 8;
+    const top = Math.round(viewportTop + Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
 
     setPos({ left, top, width, below });
     setOpen(true);
@@ -127,7 +122,7 @@ function Info({text}:{text:string}){
     <span
       className={pos.below ? 'tip floatingTip below' : 'tip floatingTip'}
       role="tooltip"
-      style={{ left: pos.left, top: pos.top, width: pos.width, transform: pos.below ? 'none' : 'translateY(-100%)' }}
+      style={{ left: pos.left, top: pos.top, width: pos.width }}
     >{text}</span>,
     document.body
   ) : null;
