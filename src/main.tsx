@@ -73,30 +73,34 @@ function Info({text}:{text:string}){
     if (!icon) return;
 
     const rect = icon.getBoundingClientRect();
-    const vv = window.visualViewport;
-    const viewportWidth = vv?.width || window.innerWidth || document.documentElement.clientWidth;
-    const viewportHeight = vv?.height || window.innerHeight || document.documentElement.clientHeight;
-    const viewportLeft = vv?.offsetLeft || 0;
-    const viewportTop = vv?.offsetTop || 0;
+    const viewportWidth = Math.min(window.innerWidth || 0, document.documentElement.clientWidth || window.innerWidth || 0) || 390;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 700;
     const mobile = viewportWidth <= 760;
     const gap = mobile ? 12 : 14;
-    const width = Math.min(mobile ? 214 : 245, viewportWidth - gap * 2);
 
-    // Anchor near the tapped icon, but clamp hard inside the visible viewport.
-    // No CSS transform is used for positioning, because transforms caused Safari
-    // to place the tooltip outside the phone viewport in earlier builds.
-    const iconCenter = viewportLeft + rect.left + rect.width / 2;
-    const minLeft = viewportLeft + gap;
-    const maxLeft = viewportLeft + viewportWidth - width - gap;
-    const left = Math.round(Math.max(minLeft, Math.min(iconCenter - width / 2, maxLeft)));
+    if (mobile) {
+      // Mobile Safari was clipping edge-anchored tooltips inside the calculator area.
+      // The stable mobile pattern is a fixed, viewport-centered note positioned near
+      // the tapped icon vertically. It cannot be cut by the calculator container.
+      const estimatedHeight = 74;
+      const roomAbove = rect.top > estimatedHeight + gap;
+      const rawTop = roomAbove ? rect.top - estimatedHeight - 10 : rect.bottom + 10;
+      const top = Math.round(Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
+      setPos({ left: '50vw', top, width: 'min(286px, calc(100vw - 56px))', below: !roomAbove, mobile: true });
+      setOpen(true);
+      return;
+    }
 
-    const estimatedHeight = mobile ? 76 : 70;
+    const width = Math.min(245, viewportWidth - gap * 2);
+    const iconCenter = rect.left + rect.width / 2;
+    const left = Math.round(Math.max(gap, Math.min(iconCenter - width / 2, viewportWidth - width - gap)));
+    const estimatedHeight = 70;
     const roomBelow = rect.bottom + estimatedHeight + gap < viewportHeight;
     const below = rect.top < estimatedHeight + gap || roomBelow;
     const rawTop = below ? rect.bottom + 8 : rect.top - estimatedHeight - 8;
-    const top = Math.round(viewportTop + Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
+    const top = Math.round(Math.max(gap, Math.min(rawTop, viewportHeight - estimatedHeight - gap)));
 
-    setPos({ left, top, width, below });
+    setPos({ left, top, width, below, mobile: false });
     setOpen(true);
   };
 
@@ -120,7 +124,7 @@ function Info({text}:{text:string}){
 
   const tip = open ? createPortal(
     <span
-      className={pos.below ? 'tip floatingTip below' : 'tip floatingTip'}
+      className={`${pos.mobile ? 'tip floatingTip mobileTip' : 'tip floatingTip'} ${pos.below ? 'below' : ''}`}
       role="tooltip"
       style={{ left: pos.left, top: pos.top, width: pos.width }}
     >{text}</span>,
