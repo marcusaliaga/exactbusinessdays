@@ -76,18 +76,30 @@ function Info({text}:{text:string}){
     const vv = window.visualViewport;
     const viewportWidth = Math.floor(vv?.width || window.innerWidth || document.documentElement.clientWidth);
     const viewportHeight = Math.floor(vv?.height || window.innerHeight || document.documentElement.clientHeight);
+    const viewportLeft = Math.floor(vv?.offsetLeft || 0);
+    const viewportTop = Math.floor(vv?.offsetTop || 0);
     const mobile = viewportWidth <= 760;
 
-    const sideGap = mobile ? 16 : 14;
-    const width = Math.min(mobile ? 246 : 245, viewportWidth - sideGap * 2);
-    const centeredLeft = rect.left + rect.width / 2 - width / 2;
-    const left = Math.round(Math.max(sideGap, Math.min(centeredLeft, viewportWidth - width - sideGap)));
+    let width: number;
+    let left: number;
 
-    // On phones, show helper text below tab/label icons whenever possible. This keeps it close to
-    // the information icon while avoiding the clipped, half-hidden look at the top of the calculator.
-    const hasRoomBelow = rect.bottom + 92 < viewportHeight;
+    if (mobile) {
+      // Mobile Safari can report icon positions in a way that makes edge-anchored tooltips
+      // drift outside the visible viewport. Keep the bubble centered in the visible phone
+      // viewport, while the vertical position still follows the tapped info icon.
+      width = Math.min(260, viewportWidth - 32);
+      left = Math.round(viewportLeft + (viewportWidth - width) / 2);
+    } else {
+      const sideGap = 14;
+      width = Math.min(245, viewportWidth - sideGap * 2);
+      const centeredLeft = viewportLeft + rect.left + rect.width / 2 - width / 2;
+      left = Math.round(Math.max(viewportLeft + sideGap, Math.min(centeredLeft, viewportLeft + viewportWidth - width - sideGap)));
+    }
+
+    const hasRoomBelow = rect.bottom + 104 < viewportHeight;
     const below = mobile ? hasRoomBelow : rect.top < 86;
-    const top = Math.round(below ? rect.bottom + 8 : Math.max(12, rect.top - 8));
+    const rawTop = below ? rect.bottom + 8 : Math.max(12, rect.top - 8);
+    const top = Math.round(viewportTop + rawTop);
 
     setPos({ left, top, width, below });
     setOpen(true);
