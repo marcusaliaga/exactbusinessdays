@@ -63,10 +63,9 @@ const isWeekend = (d: Date) => [0,6].includes(d.getUTCDay());
 const inRange = (d:string, a:string, b:string) => d >= (a < b ? a : b) && d <= (a < b ? b : a);
 
 function Info({text}:{text:string}) {
-  const [open, setOpen] = useState(false);
   return <span className="infoWrap">
-    <button className="infoIcon" type="button" aria-label="More information" onClick={(e)=>{e.stopPropagation(); setOpen(!open)}} onBlur={()=>setTimeout(()=>setOpen(false),120)}>i</button>
-    {open && <span className="tip">{text}</span>}
+    <button className="infoIcon" type="button" aria-label="More information">i</button>
+    <span className="tip" role="tooltip">{text}</span>
   </span>;
 }
 
