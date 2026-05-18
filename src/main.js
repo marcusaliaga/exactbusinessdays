@@ -352,6 +352,52 @@ function routeToPage() {
   return ROUTES.includes(path) ? path : 'calculator';
 }
 
+function isValidDateValue(value) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T00:00:00Z`).getTime());
+}
+
+function applyQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get('mode');
+  if (['between', 'add', 'subtract', 'left'].includes(mode)) state.tab = mode;
+
+  const start = params.get('start');
+  if (start && isValidDateValue(start)) state.startDate = start;
+
+  const end = params.get('end');
+  if (end && isValidDateValue(end)) state.endDate = end;
+
+  const days = Number(params.get('days'));
+  if (Number.isFinite(days) && days >= 0) state.days = Math.min(9999, Math.floor(days));
+
+  const country = params.get('country');
+  if (country && COUNTRY_REGIONS[country]) state.country = country;
+
+  const region = params.get('region');
+  if (region && COUNTRY_REGIONS[state.country].regions[region]) state.region = region;
+
+  const holidays = params.get('holidays');
+  if (holidays === '0' || holidays === 'false') state.excludeHolidays = false;
+  if (holidays === '1' || holidays === 'true') state.excludeHolidays = true;
+
+  const includeStart = params.get('includeStart');
+  if (includeStart === '0' || includeStart === 'false') state.includeStart = false;
+  if (includeStart === '1' || includeStart === 'true') state.includeStart = true;
+}
+
+function calculationUrl() {
+  const params = new URLSearchParams();
+  params.set('mode', state.tab);
+  params.set('start', state.startDate);
+  if (state.tab === 'between') params.set('end', state.endDate);
+  if (state.tab === 'add' || state.tab === 'subtract') params.set('days', String(state.days));
+  params.set('country', state.country);
+  params.set('region', state.region);
+  params.set('holidays', state.excludeHolidays ? '1' : '0');
+  if (state.tab === 'between') params.set('includeStart', state.includeStart ? '1' : '0');
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+}
+
 let state = {
   page: routeToPage(),
   tab: 'between',
@@ -362,7 +408,8 @@ let state = {
   country: 'ca',
   region: 'on',
   excludeHolidays: true,
-  help: null
+  help: null,
+  toast: null
 };
 
 function applyLandingDefaults(page) {
@@ -373,6 +420,7 @@ function applyLandingDefaults(page) {
   if (landing.region) state.region = landing.region;
 }
 applyLandingDefaults(state.page);
+applyQueryParams();
 
 function setRoute(page) {
   state.page = page;
@@ -381,7 +429,7 @@ function setRoute(page) {
   history.pushState({}, '', path);
   render();
 }
-window.addEventListener('popstate', () => { state.page = routeToPage(); render(); });
+window.addEventListener('popstate', () => { state.page = routeToPage(); applyLandingDefaults(state.page); applyQueryParams(); render(); });
 
 const helpText = {
   between: 'Count how many business days are between two dates.',
@@ -513,6 +561,35 @@ function holidayNote(region, country, excluded) {
   return `${excluded.length} public holiday${excluded.length === 1 ? '' : 's'} ${excluded.length ? 'are' : 'would be'} excluded for ${region}, ${country}.`;
 }
 
+function resultText() {
+  const result = currentResult();
+  const region = COUNTRY_REGIONS[state.country].regions[state.region];
+  const country = COUNTRY_REGIONS[state.country].label;
+  return `${result.title}. ${result.body} ${result.note} Calendar: ${region}, ${country}. Calculated with ExactBusinessDays.com.`;
+}
+
+function copyText(value, message) {
+  const done = () => { state.toast = message; render(); window.setTimeout(() => { state.toast = null; render(); }, 2200); };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(value).then(done).catch(() => fallbackCopy(value, done));
+  } else {
+    fallbackCopy(value, done);
+  }
+}
+
+function fallbackCopy(value, done) {
+  const textarea = document.createElement('textarea');
+  textarea.value = value;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  done();
+}
+
 function esc(value) { return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 function InfoButton(key) {
   return `<button type="button" class="info-button" data-help="${key}" data-tip="${esc(helpText[key])}" aria-label="More information">i</button>`;
@@ -564,7 +641,7 @@ function resultPanel() {
   const result = currentResult();
   const { from, to } = calculationRange();
   const warning = !rangeWithinCalendar(from, to);
-  return `<div class="result-panel"><span>Result</span><h2>${result.title}</h2><p>${result.body}</p><small>${result.note}</small></div>${warning ? '<div class="note">Calendar note: Holiday data currently covers 2026 and 2027. Dates outside this range may not exclude all public holidays yet.</div>' : ''}`;
+  return `<div class="result-panel" aria-live="polite"><div class="result-header"><span>Result</span><div class="result-actions"><button type="button" data-copy-result>Copy result</button><button type="button" data-copy-link>Copy link</button></div></div><h2>${result.title}</h2><p>${result.body}</p><small>${result.note}</small>${state.toast ? `<div class="copy-toast">${state.toast}</div>` : ''}</div>${warning ? '<div class="note">Calendar note: Holiday data currently covers 2026 and 2027. Dates outside this range may not exclude all public holidays yet.</div>' : ''}`;
 }
 function assumptions() {
   const region = COUNTRY_REGIONS[state.country].regions[state.region];
@@ -588,6 +665,21 @@ function landingHero(page) {
 function landingCards(page) {
   return `<section class="info-grid" aria-label="${esc(page.title)} information">${page.cards.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join('')}</section>`;
 }
+function faqItems(page) {
+  const regionPhrase = page.country ? 'the selected country and region' : 'the selected country or region';
+  return [
+    [`What is included in the ${page.title.toLowerCase()}?`, `The calculator excludes weekends and can also exclude public holidays for ${regionPhrase}. The result shows the assumption used in the calculation.`],
+    ['Are public holidays excluded automatically?', 'Public holidays are excluded when the Weekends + holidays option is turned on. You can switch to Weekends only if you want a weekday-only count.'],
+    ['Can I share or copy the result?', 'Yes. Use Copy result for the plain answer, or Copy link to share the same calculation settings with someone else.'],
+    ['Should I use this for legal or payroll deadlines?', 'Use the calculator as a helpful planning tool, but review important deadlines because business-day rules can vary by employer, contract, industry, city, and jurisdiction.']
+  ];
+}
+
+function landingFaq(page) {
+  const items = faqItems(page);
+  return `<section class="faq-section" aria-label="Frequently asked questions"><h2>Frequently asked questions</h2>${items.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</section>`;
+}
+
 function internalLinks() {
   return `<section class="info-grid" aria-label="Popular business day calculator pages">
     <article>
@@ -613,7 +705,7 @@ function internalLinks() {
   </section>`;
 }
 function landingPage(page) {
-  return `<main>${landingHero(page)}${form()}${landingCards(page)}${internalLinks()}</main>`;
+  return `<main>${landingHero(page)}${form()}${landingCards(page)}${landingFaq(page)}${internalLinks()}</main>`;
 }
 function staticPage(title, eyebrow, paragraphs) {
   return `<main class="page"><section class="static-page"><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><div class="content-card">${paragraphs.map(p => `<p>${p}</p>`).join('')}</div></section></main>`;
@@ -676,6 +768,10 @@ function bind() {
   const country = $('country'); if (country) country.addEventListener('change', () => { state.country = country.value; state.region = Object.keys(COUNTRY_REGIONS[state.country].regions)[0]; render(); });
   const region = $('region'); if (region) region.addEventListener('change', () => { state.region = region.value; render(); });
   const holidays = $('excludeHolidays'); if (holidays) holidays.addEventListener('change', () => { state.excludeHolidays = holidays.checked; render(); });
+  const copyResult = document.querySelector('[data-copy-result]');
+  if (copyResult) copyResult.addEventListener('click', () => copyText(resultText(), 'Result copied.'));
+  const copyLink = document.querySelector('[data-copy-link]');
+  if (copyLink) copyLink.addEventListener('click', () => copyText(calculationUrl(), 'Share link copied.'));
 }
 
 render();

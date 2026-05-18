@@ -197,11 +197,49 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
   border-radius: 18px;
   color: #fff;
   background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 28px 64px rgba(17, 43, 77, 0.28), 0 10px 22px rgba(17, 43, 77, 0.18), inset 0 1px 0 rgba(255,255,255,0.18);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(-1px);
 }
-.result-panel span { display: block; text-transform: uppercase; letter-spacing: .28em; font-size: 14px; font-weight: 900; margin-bottom: 18px; }
+.result-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 18% 0%, rgba(255,255,255,0.18), transparent 34%), linear-gradient(180deg, rgba(255,255,255,0.08), transparent 38%);
+}
+.result-panel > * { position: relative; z-index: 1; }
+.result-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+.result-panel span { display: block; text-transform: uppercase; letter-spacing: .28em; font-size: 14px; font-weight: 900; }
 .result-panel h2 { margin: 0; font-size: clamp(36px, 4.2vw, 56px); letter-spacing: -0.06em; line-height: 1.05; }
 .result-panel p { margin: 18px 0 0; font-size: 16px; line-height: 1.45; }
 .result-panel small { display: block; margin-top: 16px; font-size: 13px; opacity: .92; line-height: 1.4; }
+.result-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.result-actions button {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-radius: 999px;
+  padding: 9px 13px;
+  font-weight: 850;
+  font-size: 13px;
+  cursor: pointer;
+}
+.result-actions button:hover,
+.result-actions button:focus-visible { background: rgba(255,255,255,0.2); outline: none; }
+.copy-toast {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  font-weight: 850;
+  font-size: 13px;
+}
 .note { margin-top: 16px; border: 1px solid #e5c079; background: #fff8e8; color: #70501b; border-radius: 14px; padding: 14px 16px; font-weight: 700; }
 .assumptions, .holiday-list, .info-grid article, .content-card {
   background: rgba(255,255,255,0.88);
@@ -245,6 +283,33 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
 .content-card { padding: 28px; color: var(--muted); font-size: 18px; line-height: 1.6; }
 .content-card p:first-child { margin-top: 0; }
 .content-card p:last-child { margin-bottom: 0; }
+.faq-section {
+  width: min(1040px, calc(100% - 40px));
+  margin: 0 auto 44px;
+}
+.faq-section h2 {
+  margin: 0 0 16px;
+  font-size: clamp(24px, 3vw, 34px);
+  letter-spacing: -0.035em;
+}
+.faq-section details {
+  background: rgba(255,255,255,0.88);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-top: 12px;
+}
+.faq-section summary {
+  cursor: pointer;
+  font-weight: 900;
+  color: var(--ink);
+}
+.faq-section p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 footer {
   width: min(1040px, calc(100% - 40px));
   margin: 44px auto 56px;
@@ -344,7 +409,9 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .holiday-toggle b { width: 64px; height: 36px; }
   .holiday-toggle b::after { width: 30px; height: 30px; }
   .holiday-toggle input:checked + b::after { transform: translateX(28px); }
-  .result-panel { padding: 30px 26px; border-radius: 18px; margin-top: 26px; }
+  .result-panel { padding: 30px 26px; border-radius: 18px; margin-top: 26px; box-shadow: 0 22px 46px rgba(17,43,77,0.24), 0 8px 18px rgba(17,43,77,0.16), inset 0 1px 0 rgba(255,255,255,0.18); }
+  .result-header { flex-direction: column; gap: 14px; }
+  .result-actions { justify-content: flex-start; }
   .result-panel h2 { font-size: 32px; line-height: 1.1; letter-spacing: -0.055em; }
   .result-panel p { font-size: 15px; line-height: 1.4; }
   .result-panel small { font-size: 13px; }
