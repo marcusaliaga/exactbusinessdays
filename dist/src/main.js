@@ -588,8 +588,32 @@ function landingHero(page) {
 function landingCards(page) {
   return `<section class="info-grid" aria-label="${esc(page.title)} information">${page.cards.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join('')}</section>`;
 }
+function internalLinks() {
+  return `<section class="info-grid" aria-label="Popular business day calculator pages">
+    <article>
+      <h3>Popular calculators</h3>
+      <p>Choose a focused calculator page for common business-day and working-day questions.</p>
+      <ul class="link-list">
+        <li><a href="/business-days-calculator">Business Days Calculator</a></li>
+        <li><a href="/working-days-calculator">Working Days Calculator</a></li>
+        <li><a href="/add-business-days">Add Business Days</a></li>
+        <li><a href="/business-days-between-dates">Business Days Between Dates</a></li>
+      </ul>
+    </article>
+    <article>
+      <h3>Calculators by country</h3>
+      <p>Use a country page when regional public holidays matter for your deadline or planning calculation.</p>
+      <ul class="link-list">
+        <li><a href="/canada/business-days">Canada Business Days</a></li>
+        <li><a href="/us/business-days">U.S. Business Days</a></li>
+        <li><a href="/uk/working-days">UK Working Days</a></li>
+        <li><a href="/australia/working-days">Australia Working Days</a></li>
+      </ul>
+    </article>
+  </section>`;
+}
 function landingPage(page) {
-  return `<main>${landingHero(page)}${form()}${landingCards(page)}</main>`;
+  return `<main>${landingHero(page)}${form()}${landingCards(page)}${internalLinks()}</main>`;
 }
 function staticPage(title, eyebrow, paragraphs) {
   return `<main class="page"><section class="static-page"><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><div class="content-card">${paragraphs.map(p => `<p>${p}</p>`).join('')}</div></section></main>`;
@@ -600,7 +624,7 @@ function pageContent() {
   if (state.page === 'terms') return staticPage('Terms of Use', 'Terms', ['Exact Business Days is provided as a free informational tool. The calculator is intended to help users estimate business days, working days, weekdays, and deadline dates.', 'Results should be reviewed before being used for legal, financial, payroll, contractual, shipping, or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.', 'Last updated: May 17, 2026.']);
   if (state.page === 'contact') return staticPage('Contact', 'Contact', ['Have feedback, a holiday correction, or a region you want supported next?', 'For now, please contact the site owner directly through the domain owner or project administrator. A dedicated contact form or email address will be added in a future update.']);
   if (LANDING_PAGES[state.page]) return landingPage(LANDING_PAGES[state.page]);
-  return `<main>${hero()}${form()}${infoCards()}</main>`;
+  return `<main>${hero()}${form()}${infoCards()}${internalLinks()}</main>`;
 }
 function helpSheet() {
   if (!state.help) return '';
