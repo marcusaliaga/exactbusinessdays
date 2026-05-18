@@ -1,0 +1,53 @@
+# Cloudflare Pages cache rules for ExactBusinessDays.com
+# Keep HTML fresh so new deployments appear quickly in regular browsers.
+/
+  Cache-Control: no-cache, must-revalidate
+
+/*.html
+  Cache-Control: no-cache, must-revalidate
+
+/business-days-calculator
+  Cache-Control: no-cache, must-revalidate
+
+/working-days-calculator
+  Cache-Control: no-cache, must-revalidate
+
+/add-business-days
+  Cache-Control: no-cache, must-revalidate
+
+/business-days-between-dates
+  Cache-Control: no-cache, must-revalidate
+
+/canada/business-days
+  Cache-Control: no-cache, must-revalidate
+
+/us/business-days
+  Cache-Control: no-cache, must-revalidate
+
+/uk/working-days
+  Cache-Control: no-cache, must-revalidate
+
+/australia/working-days
+  Cache-Control: no-cache, must-revalidate
+
+/about
+  Cache-Control: no-cache, must-revalidate
+
+/contact
+  Cache-Control: no-cache, must-revalidate
+
+/privacy
+  Cache-Control: no-cache, must-revalidate
+
+/terms
+  Cache-Control: no-cache, must-revalidate
+
+# The app uses un-hashed JS/CSS paths, so keep these cached briefly only.
+/src/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Cache-Control: public, max-age=3600, must-revalidate
