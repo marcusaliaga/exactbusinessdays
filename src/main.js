@@ -11,7 +11,7 @@ const COUNTRY_REGIONS = {
     label: 'United States',
     regions: {
       federal: 'Federal holidays', ca: 'California', tx: 'Texas', fl: 'Florida', ny: 'New York', pa: 'Pennsylvania',
-      il: 'Illinois', oh: 'Ohio', ga: 'Georgia', nc: 'North Carolina', mi: 'Michigan'
+      il: 'Illinois', oh: 'Ohio', ga: 'Georgia', nc: 'North Carolina', nj: 'New Jersey'
     }
   },
   uk: {
@@ -24,41 +24,209 @@ const COUNTRY_REGIONS = {
   }
 };
 
-const HOLIDAYS_2026 = {
-  'ca-on': [
-    ['2026-01-01', "New Year's Day"], ['2026-02-16', 'Family Day'], ['2026-04-03', 'Good Friday'], ['2026-05-18', 'Victoria Day'], ['2026-07-01', 'Canada Day'], ['2026-09-07', 'Labour Day'], ['2026-10-12', 'Thanksgiving Day'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, observed']
-  ],
-  'ca-qc': [
-    ['2026-01-01', "New Year's Day"], ['2026-04-03', 'Good Friday'], ['2026-05-18', "National Patriots' Day"], ['2026-06-24', 'Saint-Jean-Baptiste Day'], ['2026-07-01', 'Canada Day'], ['2026-09-07', 'Labour Day'], ['2026-12-25', 'Christmas Day']
-  ],
-  'ca-default': [
-    ['2026-01-01', "New Year's Day"], ['2026-04-03', 'Good Friday'], ['2026-05-18', 'Victoria Day'], ['2026-07-01', 'Canada Day'], ['2026-09-07', 'Labour Day'], ['2026-10-12', 'Thanksgiving Day'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, observed']
-  ],
-  'us-federal': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-19', 'Martin Luther King Jr. Day'], ['2026-02-16', "Washington's Birthday"], ['2026-05-25', 'Memorial Day'], ['2026-06-19', 'Juneteenth National Independence Day'], ['2026-07-03', 'Independence Day, observed'], ['2026-09-07', 'Labor Day'], ['2026-10-12', 'Columbus Day'], ['2026-11-11', 'Veterans Day'], ['2026-11-26', 'Thanksgiving Day'], ['2026-12-25', 'Christmas Day']
-  ],
-  'us-ca': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-19', 'Martin Luther King Jr. Day'], ['2026-02-16', "Presidents' Day"], ['2026-03-31', 'César Chávez Day'], ['2026-05-25', 'Memorial Day'], ['2026-06-19', 'Juneteenth National Independence Day'], ['2026-07-03', 'Independence Day, observed'], ['2026-09-07', 'Labor Day'], ['2026-11-11', 'Veterans Day'], ['2026-11-26', 'Thanksgiving Day'], ['2026-11-27', 'Day after Thanksgiving'], ['2026-12-25', 'Christmas Day']
-  ],
-  'us-default': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-19', 'Martin Luther King Jr. Day'], ['2026-02-16', "Presidents' Day"], ['2026-05-25', 'Memorial Day'], ['2026-06-19', 'Juneteenth National Independence Day'], ['2026-07-03', 'Independence Day, observed'], ['2026-09-07', 'Labor Day'], ['2026-11-11', 'Veterans Day'], ['2026-11-26', 'Thanksgiving Day'], ['2026-12-25', 'Christmas Day']
-  ],
-  'uk-england': [
-    ['2026-01-01', "New Year's Day"], ['2026-04-03', 'Good Friday'], ['2026-04-06', 'Easter Monday'], ['2026-05-04', 'Early May bank holiday'], ['2026-05-25', 'Spring bank holiday'], ['2026-08-31', 'Summer bank holiday'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, substitute day']
-  ],
-  'uk-scotland': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-02', '2nd January'], ['2026-04-03', 'Good Friday'], ['2026-05-04', 'Early May bank holiday'], ['2026-05-25', 'Spring bank holiday'], ['2026-08-03', 'Summer bank holiday'], ['2026-11-30', "St Andrew's Day"], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, substitute day']
-  ],
-  'uk-ni': [
-    ['2026-01-01', "New Year's Day"], ['2026-03-17', "St Patrick's Day"], ['2026-04-03', 'Good Friday'], ['2026-04-06', 'Easter Monday'], ['2026-05-04', 'Early May bank holiday'], ['2026-05-25', 'Spring bank holiday'], ['2026-07-13', 'Battle of the Boyne, substitute day'], ['2026-08-31', 'Summer bank holiday'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, substitute day']
-  ],
-  'au-vic': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-26', 'Australia Day'], ['2026-03-09', 'Labour Day'], ['2026-04-03', 'Good Friday'], ['2026-04-06', 'Easter Monday'], ['2026-04-25', 'Anzac Day'], ['2026-06-08', "King's Birthday"], ['2026-11-03', 'Melbourne Cup Day'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, substitute day']
-  ],
-  'au-default': [
-    ['2026-01-01', "New Year's Day"], ['2026-01-26', 'Australia Day'], ['2026-04-03', 'Good Friday'], ['2026-04-06', 'Easter Monday'], ['2026-04-25', 'Anzac Day'], ['2026-12-25', 'Christmas Day'], ['2026-12-28', 'Boxing Day, substitute day']
-  ]
-};
+const SUPPORTED_HOLIDAY_YEARS = [2026, 2027];
+const MIN_HOLIDAY_YEAR = Math.min(...SUPPORTED_HOLIDAY_YEARS);
+const MAX_HOLIDAY_YEAR = Math.max(...SUPPORTED_HOLIDAY_YEARS);
+
+const pad2 = (value) => String(value).padStart(2, '0');
+const iso = (year, month, day) => `${year}-${pad2(month)}-${pad2(day)}`;
+const holiday = (year, month, day, name) => [iso(year, month, day), name];
+const dayOfWeek = (year, month, day) => new Date(`${iso(year, month, day)}T00:00:00Z`).getUTCDay();
+
+function addDateParts(year, month, day, amount) {
+  const date = new Date(`${iso(year, month, day)}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + amount);
+  return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()];
+}
+
+function observedFixed(year, month, day, name) {
+  const dow = dayOfWeek(year, month, day);
+  const observed = dow === 6 ? addDateParts(year, month, day, -1) : dow === 0 ? addDateParts(year, month, day, 1) : [year, month, day];
+  return [iso(...observed), observed[0] === year && observed[1] === month && observed[2] === day ? name : `${name}, observed`];
+}
+
+function christmasHoliday(year, label = 'Christmas Day') {
+  if (dayOfWeek(year, 12, 25) === 6) return [iso(year, 12, 27), `${label}, observed`];
+  if (dayOfWeek(year, 12, 25) === 0) return [iso(year, 12, 27), `${label}, observed`];
+  return holiday(year, 12, 25, label);
+}
+
+function boxingHoliday(year, label = 'Boxing Day') {
+  const christmasDow = dayOfWeek(year, 12, 25);
+  const boxingDow = dayOfWeek(year, 12, 26);
+  if (christmasDow === 5 || christmasDow === 6 || boxingDow === 6 || boxingDow === 0) return [iso(year, 12, 28), `${label}, observed`];
+  return holiday(year, 12, 26, label);
+}
+
+function nthWeekday(year, month, weekday, n) {
+  let day = 1;
+  while (dayOfWeek(year, month, day) !== weekday) day += 1;
+  return day + (n - 1) * 7;
+}
+
+function lastWeekday(year, month, weekday) {
+  const date = new Date(Date.UTC(year, month, 0));
+  let day = date.getUTCDate();
+  while (dayOfWeek(year, month, day) !== weekday) day -= 1;
+  return day;
+}
+
+function easterSunday(year) {
+  const a = year % 19;
+  const b = Math.floor(year / 100);
+  const c = year % 100;
+  const d = Math.floor(b / 4);
+  const e = b % 4;
+  const f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4);
+  const k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const month = Math.floor((h + l - 7 * m + 114) / 31);
+  const day = ((h + l - 7 * m + 114) % 31) + 1;
+  return new Date(Date.UTC(year, month - 1, day));
+}
+
+function relativeToEaster(year, offset, name) {
+  const date = easterSunday(year);
+  date.setUTCDate(date.getUTCDate() + offset);
+  return [date.toISOString().slice(0, 10), name];
+}
+
+function mondayBeforeMay25(year) {
+  const date = new Date(Date.UTC(year, 4, 24));
+  while (date.getUTCDay() !== 1) date.setUTCDate(date.getUTCDate() - 1);
+  return date.getUTCDate();
+}
+
+function baseCanada(year) {
+  return [
+    observedFixed(year, 1, 1, "New Year's Day"),
+    relativeToEaster(year, -2, 'Good Friday'),
+    observedFixed(year, 7, 1, 'Canada Day'),
+    holiday(year, 9, nthWeekday(year, 9, 1, 1), 'Labour Day'),
+    christmasHoliday(year),
+  ];
+}
+
+function canadaHolidays(year, region) {
+  const familyDay = holiday(year, 2, nthWeekday(year, 2, 1, 3), 'Family Day');
+  const victoriaDay = holiday(year, 5, mondayBeforeMay25(year), 'Victoria Day');
+  const thanksgiving = holiday(year, 10, nthWeekday(year, 10, 1, 2), 'Thanksgiving Day');
+  const remembrance = observedFixed(year, 11, 11, 'Remembrance Day');
+  const truth = holiday(year, 9, 30, 'National Day for Truth and Reconciliation');
+  const common = baseCanada(year);
+  const withBoxing = [...common, boxingHoliday(year)];
+  const map = {
+    ab: [...common, familyDay, victoriaDay, thanksgiving, remembrance],
+    bc: [...common, familyDay, victoriaDay, holiday(year, 8, nthWeekday(year, 8, 1, 1), 'British Columbia Day'), truth, thanksgiving, remembrance],
+    mb: [...common, holiday(year, 2, nthWeekday(year, 2, 1, 3), 'Louis Riel Day'), victoriaDay, holiday(year, 9, 30, 'Orange Shirt Day'), thanksgiving],
+    nb: [...common, familyDay, holiday(year, 8, nthWeekday(year, 8, 1, 1), 'New Brunswick Day'), remembrance],
+    nl: [...common, holiday(year, 7, 1, 'Memorial Day'), holiday(year, 7, 12, "Orangemen's Day"), remembrance],
+    ns: [...common, holiday(year, 2, nthWeekday(year, 2, 1, 3), 'Heritage Day'), holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Natal Day'), remembrance],
+    nt: [...common, victoriaDay, holiday(year, 6, 21, 'National Indigenous Peoples Day'), holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Civic Holiday'), truth, thanksgiving, remembrance],
+    nu: [...common, victoriaDay, holiday(year, 7, 9, 'Nunavut Day'), holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Civic Holiday'), thanksgiving, remembrance],
+    on: [...withBoxing, familyDay, victoriaDay, thanksgiving],
+    pe: [...withBoxing, holiday(year, 2, nthWeekday(year, 2, 1, 3), 'Islander Day'), truth, remembrance],
+    qc: [observedFixed(year, 1, 1, "New Year's Day"), relativeToEaster(year, -2, 'Good Friday'), holiday(year, 5, mondayBeforeMay25(year), "National Patriots' Day"), holiday(year, 6, 24, 'Saint-Jean-Baptiste Day'), observedFixed(year, 7, 1, 'Canada Day'), holiday(year, 9, nthWeekday(year, 9, 1, 1), 'Labour Day'), christmasHoliday(year)],
+    sk: [...common, familyDay, victoriaDay, holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Saskatchewan Day'), thanksgiving, remembrance],
+    yt: [...common, victoriaDay, holiday(year, 6, 21, 'National Indigenous Peoples Day'), holiday(year, 8, nthWeekday(year, 8, 1, 3), 'Discovery Day'), truth, thanksgiving, remembrance]
+  };
+  return map[region] || [...withBoxing, victoriaDay, thanksgiving];
+}
+
+function usFederalHolidays(year) {
+  return [
+    observedFixed(year, 1, 1, "New Year's Day"),
+    holiday(year, 1, nthWeekday(year, 1, 1, 3), 'Martin Luther King Jr. Day'),
+    holiday(year, 2, nthWeekday(year, 2, 1, 3), "Washington's Birthday"),
+    holiday(year, 5, lastWeekday(year, 5, 1), 'Memorial Day'),
+    observedFixed(year, 6, 19, 'Juneteenth National Independence Day'),
+    observedFixed(year, 7, 4, 'Independence Day'),
+    holiday(year, 9, nthWeekday(year, 9, 1, 1), 'Labor Day'),
+    holiday(year, 10, nthWeekday(year, 10, 1, 2), 'Columbus Day'),
+    observedFixed(year, 11, 11, 'Veterans Day'),
+    holiday(year, 11, nthWeekday(year, 11, 4, 4), 'Thanksgiving Day'),
+    christmasHoliday(year)
+  ];
+}
+
+function usDefaultHolidays(year) {
+  return usFederalHolidays(year)
+    .filter(([, name]) => name !== 'Columbus Day')
+    .map(([date, name]) => [date, name === "Washington's Birthday" ? "Presidents' Day" : name]);
+}
+
+function usHolidays(year, region) {
+  const base = region === 'federal' ? usFederalHolidays(year) : usDefaultHolidays(year);
+  const dayAfterThanksgiving = holiday(year, 11, nthWeekday(year, 11, 4, 4) + 1, 'Day after Thanksgiving');
+  const electionDay = holiday(year, 11, nthWeekday(year, 11, 2, 1), 'Election Day');
+  const map = {
+    federal: base,
+    ca: [...base, holiday(year, 3, 31, 'César Chávez Day'), dayAfterThanksgiving],
+    tx: base,
+    fl: base,
+    ny: [...base, holiday(year, 2, 12, "Lincoln's Birthday"), electionDay],
+    pa: [...base, dayAfterThanksgiving],
+    il: [...base, holiday(year, 2, 12, "Lincoln's Birthday"), holiday(year, 3, nthWeekday(year, 3, 1, 1), 'Casimir Pulaski Day'), dayAfterThanksgiving],
+    oh: base,
+    ga: [...base, holiday(year, 4, nthWeekday(year, 4, 1, 4), 'State Holiday')],
+    nc: [...base, dayAfterThanksgiving, holiday(year, 12, 24, 'Christmas Eve')],
+    nj: [...base, relativeToEaster(year, -2, 'Good Friday'), electionDay]
+  };
+  return map[region] || base;
+}
+
+function ukHolidays(year, region) {
+  const common = [
+    observedFixed(year, 1, 1, "New Year's Day"),
+    relativeToEaster(year, -2, 'Good Friday'),
+    holiday(year, 5, nthWeekday(year, 5, 1, 1), 'Early May bank holiday'),
+    holiday(year, 5, lastWeekday(year, 5, 1), 'Spring bank holiday'),
+    christmasHoliday(year),
+    boxingHoliday(year, 'Boxing Day')
+  ];
+  if (region === 'scotland') return [...common, observedFixed(year, 1, 2, '2nd January'), holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Summer bank holiday'), observedFixed(year, 11, 30, "St Andrew's Day")];
+  if (region === 'ni') return [...common, relativeToEaster(year, 1, 'Easter Monday'), holiday(year, 3, 17, "St Patrick's Day"), holiday(year, 7, 12, 'Battle of the Boyne'), holiday(year, 8, lastWeekday(year, 8, 1), 'Summer bank holiday')];
+  return [...common, relativeToEaster(year, 1, 'Easter Monday'), holiday(year, 8, lastWeekday(year, 8, 1), 'Summer bank holiday')];
+}
+
+function australiaBaseHolidays(year) {
+  return [
+    observedFixed(year, 1, 1, "New Year's Day"),
+    observedFixed(year, 1, 26, 'Australia Day'),
+    relativeToEaster(year, -2, 'Good Friday'),
+    relativeToEaster(year, 1, 'Easter Monday'),
+    observedFixed(year, 4, 25, 'Anzac Day'),
+    christmasHoliday(year),
+    boxingHoliday(year, 'Boxing Day')
+  ];
+}
+
+function australiaHolidays(year, region) {
+  const base = australiaBaseHolidays(year);
+  const kingsBirthday = holiday(year, 6, nthWeekday(year, 6, 1, 2), "King's Birthday");
+  const map = {
+    nsw: [...base, kingsBirthday, holiday(year, 10, nthWeekday(year, 10, 1, 1), 'Labour Day')],
+    vic: [...base, holiday(year, 3, nthWeekday(year, 3, 1, 2), 'Labour Day'), kingsBirthday, holiday(year, 11, nthWeekday(year, 11, 2, 1), 'Melbourne Cup Day')],
+    qld: [...base, holiday(year, 5, nthWeekday(year, 5, 1, 1), 'Labour Day'), holiday(year, 10, nthWeekday(year, 10, 1, 1), "King's Birthday")],
+    wa: [...base, holiday(year, 3, nthWeekday(year, 3, 1, 1), 'Labour Day'), holiday(year, 6, nthWeekday(year, 6, 1, 1), 'Western Australia Day'), holiday(year, 9, lastWeekday(year, 9, 1), "King's Birthday")],
+    sa: [...base, holiday(year, 3, nthWeekday(year, 3, 1, 2), 'Adelaide Cup Day'), kingsBirthday, holiday(year, 10, nthWeekday(year, 10, 1, 1), 'Labour Day')],
+    tas: [...base, holiday(year, 3, nthWeekday(year, 3, 1, 2), 'Eight Hours Day'), kingsBirthday, holiday(year, 11, nthWeekday(year, 11, 1, 1), 'Recreation Day')],
+    act: [...base, holiday(year, 3, nthWeekday(year, 3, 1, 2), 'Canberra Day'), holiday(year, 5, lastWeekday(year, 5, 1), 'Reconciliation Day'), kingsBirthday, holiday(year, 10, nthWeekday(year, 10, 1, 1), 'Labour Day')],
+    nt: [...base, holiday(year, 5, nthWeekday(year, 5, 1, 1), 'May Day'), kingsBirthday, holiday(year, 8, nthWeekday(year, 8, 1, 1), 'Picnic Day')]
+  };
+  return map[region] || base;
+}
+
+function holidaysForYear(year, country, region) {
+  if (!SUPPORTED_HOLIDAY_YEARS.includes(year)) return [];
+  const calendars = { ca: canadaHolidays, us: usHolidays, uk: ukHolidays, au: australiaHolidays };
+  const list = calendars[country] ? calendars[country](year, region) : [];
+  return Array.from(new Map(list.sort(([a], [b]) => a.localeCompare(b)).map(item => [item[0], item])).values());
+}
 
 let state = {
   page: routeToPage(),
@@ -121,13 +289,38 @@ function formatDate(value) { return fmt.format(toDate(value)); }
 function isWeekend(date) { const day = date.getUTCDay(); return day === 0 || day === 6; }
 function addDays(date, amount) { const next = new Date(date); next.setUTCDate(next.getUTCDate() + amount); return next; }
 function holidayList() {
-  const key = `${state.country}-${state.region}`;
-  return HOLIDAYS_2026[key] || HOLIDAYS_2026[`${state.country}-default`] || [];
+  return holidaysForYear(toDate(state.startDate).getUTCFullYear(), state.country, state.region);
 }
-function holidaySet() { return new Set(holidayList().map(([date]) => date)); }
-function isHoliday(date) { return state.excludeHolidays && holidaySet().has(toKey(date)); }
+function holidayListForRange(from, to) {
+  const startYear = from.getUTCFullYear();
+  const endYear = to.getUTCFullYear();
+  const list = [];
+  for (let year = startYear; year <= endYear; year += 1) {
+    list.push(...holidaysForYear(year, state.country, state.region));
+  }
+  return Array.from(new Map(list.sort(([a], [b]) => a.localeCompare(b)).map(item => [item[0], item])).values())
+    .filter(([date]) => { const d = toDate(date); return d >= from && d <= to; });
+}
+function holidaySetForYear(year) { return new Set(holidaysForYear(year, state.country, state.region).map(([date]) => date)); }
+function isHoliday(date) { return state.excludeHolidays && holidaySetForYear(date.getUTCFullYear()).has(toKey(date)); }
 function isBusinessDay(date) { return !isWeekend(date) && !isHoliday(date); }
-function inCalendarRange(date) { return date.getUTCFullYear() === 2026; }
+function inCalendarRange(date) { const year = date.getUTCFullYear(); return year >= MIN_HOLIDAY_YEAR && year <= MAX_HOLIDAY_YEAR; }
+function endOfYearDate(value) { return `${toDate(value).getUTCFullYear()}-12-31`; }
+function calculationRange() {
+  let from = toDate(state.startDate);
+  let to = state.tab === 'between' ? toDate(state.endDate) : toDate(state.startDate);
+  if (state.tab === 'add') to = toDate(moveBusinessDays(1));
+  if (state.tab === 'subtract') { to = toDate(state.startDate); from = toDate(moveBusinessDays(-1)); }
+  if (state.tab === 'left') to = toDate(endOfYearDate(state.startDate));
+  if (from > to) [from, to] = [to, from];
+  return { from, to };
+}
+function rangeWithinCalendar(from, to) {
+  for (let year = from.getUTCFullYear(); year <= to.getUTCFullYear(); year += 1) {
+    if (!SUPPORTED_HOLIDAY_YEARS.includes(year)) return false;
+  }
+  return true;
+}
 
 function countBetween() {
   let start = toDate(state.startDate);
@@ -153,7 +346,7 @@ function moveBusinessDays(direction) {
 }
 function leftThisYear() {
   const oldEnd = state.endDate;
-  state.endDate = '2026-12-31';
+  state.endDate = endOfYearDate(state.startDate);
   const count = countBetween();
   state.endDate = oldEnd;
   return count;
@@ -164,12 +357,9 @@ function excludedHolidaysForCurrentResult() {
   let to = toDate(state.endDate);
   if (state.tab === 'add') to = toDate(moveBusinessDays(1));
   if (state.tab === 'subtract') { to = toDate(state.startDate); from = toDate(moveBusinessDays(-1)); }
-  if (state.tab === 'left') to = toDate('2026-12-31');
+  if (state.tab === 'left') to = toDate(endOfYearDate(state.startDate));
   if (from > to) [from, to] = [to, from];
-  return holidayList().filter(([date]) => {
-    const d = toDate(date);
-    return d >= from && d <= to && !isWeekend(d);
-  });
+  return holidayListForRange(from, to).filter(([date]) => !isWeekend(toDate(date))); 
 }
 
 function currentResult() {
@@ -185,7 +375,7 @@ function currentResult() {
     return { title: formatDate(result), body: `${state.days} business days before ${formatDate(state.startDate)}.`, note: holidayNote(region, country, excluded) };
   }
   if (state.tab === 'left') {
-    return { title: `${leftThisYear()} business days remaining`, body: `From ${formatDate(state.startDate)} through Thursday, December 31, 2026, excluding weekends${state.excludeHolidays ? ' and selected public holidays' : ''}.`, note: holidayNote(region, country, excluded) };
+    return { title: `${leftThisYear()} business days remaining`, body: `From ${formatDate(state.startDate)} through ${formatDate(endOfYearDate(state.startDate))}, excluding weekends${state.excludeHolidays ? ' and selected public holidays' : ''}.`, note: holidayNote(region, country, excluded) };
   }
   return { title: `${countBetween()} business days`, body: `Between ${formatDate(state.startDate)} and ${formatDate(state.endDate)}, ${state.includeStart ? 'including' : 'not including'} the start date.`, note: holidayNote(region, country, excluded) };
 }
@@ -243,13 +433,14 @@ function form() {
 }
 function resultPanel() {
   const result = currentResult();
-  const warning = !inCalendarRange(toDate(state.startDate)) || !inCalendarRange(toDate(state.endDate));
-  return `<div class="result-panel"><span>Result</span><h2>${result.title}</h2><p>${result.body}</p><small>${result.note}</small></div>${warning ? '<div class="note">Calendar note: Holiday data is currently available for 2026 only. Dates outside 2026 may not exclude all public holidays yet.</div>' : ''}`;
+  const { from, to } = calculationRange();
+  const warning = !rangeWithinCalendar(from, to);
+  return `<div class="result-panel"><span>Result</span><h2>${result.title}</h2><p>${result.body}</p><small>${result.note}</small></div>${warning ? '<div class="note">Calendar note: Holiday data currently covers 2026 and 2027. Dates outside this range may not exclude all public holidays yet.</div>' : ''}`;
 }
 function assumptions() {
   const region = COUNTRY_REGIONS[state.country].regions[state.region];
   const country = COUNTRY_REGIONS[state.country].label;
-  return `<div class="assumptions"><h3>Included in this calculation</h3><ul><li>Weekends are excluded.</li><li>${state.excludeHolidays ? `Public holidays are excluded for ${region}, ${country}.` : 'Public holidays are not excluded.'}</li><li>Holiday data currently covers 2026.</li><li>Business holiday rules can vary by employer, industry, city, and contract.</li></ul></div>`;
+  return `<div class="assumptions"><h3>Included in this calculation</h3><ul><li>Weekends are excluded.</li><li>${state.excludeHolidays ? `Public holidays are excluded for ${region}, ${country}.` : 'Public holidays are not excluded.'}</li><li>Holiday data currently covers 2026 and 2027.</li><li>Business holiday rules can vary by employer, industry, city, and contract.</li></ul></div>`;
 }
 function holidayTable() {
   const holidays = excludedHolidaysForCurrentResult();
@@ -257,7 +448,7 @@ function holidayTable() {
   return `<div class="holiday-list"><h3>Holidays excluded</h3>${holidays.map(([date, name]) => `<div><span>${name}</span><strong>${fmtShort.format(toDate(date))}</strong></div>`).join('')}</div>`;
 }
 function infoCards() {
-  return `<section class="info-grid" aria-label="Business day calculator information"><article><h3>What can this business days calculator do?</h3><p>Use it to count business days between two dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year.</p></article><article><h3>What counts as a business day?</h3><p>A business day usually means Monday through Friday. When holiday exclusion is turned on, selected public holidays for the chosen country and region are skipped too.</p></article><article><h3>Why use a working days calculator?</h3><p>Deadline math is easy to miscount, especially when weekends, holidays, date ranges, and start-date rules are involved. This tool shows the assumptions used in the result.</p></article><article><h3>Supported holiday calendars</h3><p>Holiday support currently includes 2026 calendars for Canada, the United States, the United Kingdom, and Australia, with regional options included.</p></article><article><h3>Common uses</h3><p>People use business-day calculations for shipping estimates, payroll timing, invoice due dates, project deadlines, contract review periods, school deadlines, and time-off planning.</p></article><article><h3>Important note</h3><p>Business-day rules can vary by employer, industry, contract, city, or jurisdiction. Review the result before using it for legal, financial, payroll, or time-sensitive decisions.</p></article></section>`;
+  return `<section class="info-grid" aria-label="Business day calculator information"><article><h3>What can this business days calculator do?</h3><p>Use it to count business days between two dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year.</p></article><article><h3>What counts as a business day?</h3><p>A business day usually means Monday through Friday. When holiday exclusion is turned on, selected public holidays for the chosen country and region are skipped too.</p></article><article><h3>Why use a working days calculator?</h3><p>Deadline math is easy to miscount, especially when weekends, holidays, date ranges, and start-date rules are involved. This tool shows the assumptions used in the result.</p></article><article><h3>Supported holiday calendars</h3><p>Holiday support currently includes 2026 and 2027 calendars for Canada, the United States, the United Kingdom, and Australia, with regional options included.</p></article><article><h3>Common uses</h3><p>People use business-day calculations for shipping estimates, payroll timing, invoice due dates, project deadlines, contract review periods, school deadlines, and time-off planning.</p></article><article><h3>Important note</h3><p>Business-day rules can vary by employer, industry, contract, city, or jurisdiction. Review the result before using it for legal, financial, payroll, or time-sensitive decisions.</p></article></section>`;
 }
 function footer() {
   return `<footer><div><strong>Exact Business Days</strong><p>Fast business-day and working-day calculations with clear assumptions.</p></div><nav aria-label="Footer navigation"><button data-route="about">About</button><button data-route="privacy">Privacy</button><button data-route="terms">Terms</button><button data-route="contact">Contact</button></nav></footer>`;
@@ -266,7 +457,7 @@ function staticPage(title, eyebrow, paragraphs) {
   return `<main class="page"><section class="static-page"><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><div class="content-card">${paragraphs.map(p => `<p>${p}</p>`).join('')}</div></section></main>`;
 }
 function pageContent() {
-  if (state.page === 'about') return staticPage('About Exact Business Days', 'About', ['Exact Business Days is a simple free utility for counting business days, working days, weekdays, public holidays, and deadline dates.', 'The goal is to keep the tool fast, clear, and easy to use. Every result shows what was included, what was excluded, and which assumptions were used.', 'The current version includes 2026 regional holiday calendars for Canada, the United States, the United Kingdom, and Australia.']);
+  if (state.page === 'about') return staticPage('About Exact Business Days', 'About', ['Exact Business Days is a simple free utility for counting business days, working days, weekdays, public holidays, and deadline dates.', 'The goal is to keep the tool fast, clear, and easy to use. Every result shows what was included, what was excluded, and which assumptions were used.', 'The current version includes 2026 and 2027 regional holiday calendars for Canada, the United States, the United Kingdom, and Australia.']);
   if (state.page === 'privacy') return staticPage('Privacy Policy', 'Privacy', ['Exact Business Days is currently a simple calculator site. We do not require user accounts, and we do not ask visitors to submit personal information to use the calculator.', 'Basic technical information may be processed by hosting, security, and analytics providers to keep the site available, secure, and working properly.', 'Last updated: May 17, 2026.']);
   if (state.page === 'terms') return staticPage('Terms of Use', 'Terms', ['Exact Business Days is provided as a free informational tool. The calculator is intended to help users estimate business days, working days, weekdays, and deadline dates.', 'Results should be reviewed before being used for legal, financial, payroll, contractual, shipping, or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.', 'Last updated: May 17, 2026.']);
   if (state.page === 'contact') return staticPage('Contact', 'Contact', ['Have feedback, a holiday correction, or a region you want supported next?', 'For now, please contact the site owner directly through the domain owner or project administrator. A dedicated contact form or email address will be added in a future update.']);
