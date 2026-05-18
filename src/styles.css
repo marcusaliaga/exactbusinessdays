@@ -70,7 +70,7 @@ button { cursor: pointer; }
   border-radius: 20px;
   background: var(--soft);
   overflow: visible;
-  z-index: 3;
+  z-index: 10;
 }
 .tab-item {
   position: relative;
@@ -137,9 +137,14 @@ button { cursor: pointer; }
   white-space: normal;
   pointer-events: none;
 }
+
+.form-grid .info-button:hover::after,
+.form-grid .info-button:focus-visible::after {
+  z-index: 9999;
+}
 .form-grid {
   position: relative;
-  z-index: 1;
+  z-index: 30;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
