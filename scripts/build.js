@@ -51,6 +51,17 @@ const pages = {
     description: 'Calculate Australian working days with state and territory public holiday options for 2026 and 2027.',
     canonical: 'https://exactbusinessdays.com/australia/working-days'
   },
+
+  '/methodology': {
+    title: 'How Exact Business Days Calculates Working Days | Exact Business Days',
+    description: 'Learn the calculation method used by Exact Business Days, including weekends, public holidays, regional calendars, date ranges, and important limitations.',
+    canonical: 'https://exactbusinessdays.com/methodology'
+  },
+  '/holiday-data': {
+    title: 'Holiday Data Coverage | Exact Business Days',
+    description: 'See which countries, regions, and years are currently supported by the Exact Business Days holiday calendar.',
+    canonical: 'https://exactbusinessdays.com/holiday-data'
+  },
   '/about': {
     title: 'About Exact Business Days | Exact Business Days',
     description: 'Learn about Exact Business Days, a free business-day and working-day calculator with clear assumptions.',

@@ -345,7 +345,7 @@ const LANDING_PAGES = {
   }
 };
 
-const ROUTES = ['about', 'privacy', 'terms', 'contact', ...Object.keys(LANDING_PAGES)];
+const ROUTES = ['about', 'privacy', 'terms', 'contact', 'methodology', 'holiday-data', ...Object.keys(LANDING_PAGES)];
 
 function routeToPage() {
   const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').toLowerCase();
@@ -702,6 +702,14 @@ function internalLinks() {
         <li><a href="/australia/working-days">Australia Working Days</a></li>
       </ul>
     </article>
+    <article>
+      <h3>Trust and data</h3>
+      <p>Review how calculations are handled and which holiday calendars are currently covered.</p>
+      <ul class="link-list">
+        <li><a href="/methodology">Calculation Methodology</a></li>
+        <li><a href="/holiday-data">Holiday Data Coverage</a></li>
+      </ul>
+    </article>
   </section>`;
 }
 function landingPage(page) {
@@ -715,6 +723,8 @@ function pageContent() {
   if (state.page === 'privacy') return staticPage('Privacy Policy', 'Privacy', ['Exact Business Days is currently a simple calculator site. We do not require user accounts, and we do not ask visitors to submit personal information to use the calculator.', 'Basic technical information may be processed by hosting, security, and analytics providers to keep the site available, secure, and working properly.', 'Last updated: May 17, 2026.']);
   if (state.page === 'terms') return staticPage('Terms of Use', 'Terms', ['Exact Business Days is provided as a free informational tool. The calculator is intended to help users estimate business days, working days, weekdays, and deadline dates.', 'Results should be reviewed before being used for legal, financial, payroll, contractual, shipping, or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.', 'Last updated: May 17, 2026.']);
   if (state.page === 'contact') return staticPage('Contact', 'Contact', ['Have feedback, a holiday correction, or a region you want supported next?', 'For now, please contact the site owner directly through the domain owner or project administrator. A dedicated contact form or email address will be added in a future update.']);
+  if (state.page === 'methodology') return staticPage('How Exact Business Days Calculates Working Days', 'Methodology', ['Exact Business Days counts business days by moving through each calendar date in the selected range or direction and checking whether that date is eligible to count.', 'Saturdays and Sundays are excluded by default. When Weekends + holidays is selected, public holidays from the selected country and region are excluded too.', 'The Include start date option controls whether the first date can count as day one when it is itself a valid business day. Add days and Subtract days move forward or backward until the requested number of eligible business days has been reached.', 'The current holiday logic supports 2026 and 2027. If a range crosses from 2026 into 2027, the calculator uses the holiday data for each year where available.', 'Business-day definitions can vary by employer, contract, industry, bank, court, city, province, state, territory, or country. Use the result as a planning tool and review important legal, payroll, financial, shipping, or contractual deadlines before relying on them.']);
+  if (state.page === 'holiday-data') return staticPage('Holiday Data Coverage', 'Holiday data', ['Exact Business Days currently supports 2026 and 2027 holiday calendars for Canada, the United States, the United Kingdom, and Australia.', 'Canada includes province and territory options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Northwest Territories, Nunavut, Ontario, Prince Edward Island, Quebec, Saskatchewan, and Yukon.', 'The United States includes federal holidays plus selected high-value state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, and New Jersey.', 'The United Kingdom includes England and Wales, Scotland, and Northern Ireland bank holiday calendars.', 'Australia includes New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.', 'Some holidays are not observed by every employer or industry, and some local or optional holidays may not apply to all businesses. Always check the relevant official, contractual, or employer-specific rules for critical deadlines.']);
   if (LANDING_PAGES[state.page]) return landingPage(LANDING_PAGES[state.page]);
   return `<main>${hero()}${form()}${infoCards()}${internalLinks()}</main>`;
 }
@@ -731,7 +741,9 @@ function pageMeta() {
     about: ['About Exact Business Days | Exact Business Days', 'Learn about Exact Business Days, a free business-day and working-day calculator with clear assumptions.'],
     privacy: ['Privacy Policy | Exact Business Days', 'Read the privacy policy for Exact Business Days.'],
     terms: ['Terms of Use | Exact Business Days', 'Read the terms of use for Exact Business Days.'],
-    contact: ['Contact | Exact Business Days', 'Contact Exact Business Days with feedback, corrections, or supported-region suggestions.']
+    contact: ['Contact | Exact Business Days', 'Contact Exact Business Days with feedback, corrections, or supported-region suggestions.'],
+    methodology: ['How Exact Business Days Calculates Working Days | Exact Business Days', 'Learn the calculation method used by Exact Business Days, including weekends, public holidays, regional calendars, date ranges, and important limitations.'],
+    'holiday-data': ['Holiday Data Coverage | Exact Business Days', 'See which countries, regions, and years are currently supported by the Exact Business Days holiday calendar.']
   };
   if (staticMeta[state.page]) return { title: staticMeta[state.page][0], description: staticMeta[state.page][1], canonical: `https://exactbusinessdays.com/${state.page}` };
   return { title: 'Business Days Calculator | Exact Business Days', description: 'Count business days, working days, weekdays, public holidays, and deadline dates with clear assumptions.', canonical: 'https://exactbusinessdays.com/' };
