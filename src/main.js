@@ -686,28 +686,28 @@ function internalLinks() {
       <h3>Popular calculators</h3>
       <p>Choose a focused calculator page for common business-day and working-day questions.</p>
       <ul class="link-list">
-        <li><a href="/business-days-calculator">Business Days Calculator</a></li>
-        <li><a href="/working-days-calculator">Working Days Calculator</a></li>
-        <li><a href="/add-business-days">Add Business Days</a></li>
-        <li><a href="/business-days-between-dates">Business Days Between Dates</a></li>
+        <li><a href="/business-days-calculator/">Business Days Calculator</a></li>
+        <li><a href="/working-days-calculator/">Working Days Calculator</a></li>
+        <li><a href="/add-business-days/">Add Business Days</a></li>
+        <li><a href="/business-days-between-dates/">Business Days Between Dates</a></li>
       </ul>
     </article>
     <article>
       <h3>Calculators by country</h3>
       <p>Use a country page when regional public holidays matter for your deadline or planning calculation.</p>
       <ul class="link-list">
-        <li><a href="/canada/business-days">Canada Business Days</a></li>
-        <li><a href="/us/business-days">U.S. Business Days</a></li>
-        <li><a href="/uk/working-days">UK Working Days</a></li>
-        <li><a href="/australia/working-days">Australia Working Days</a></li>
+        <li><a href="/canada/business-days/">Canada Business Days</a></li>
+        <li><a href="/us/business-days/">U.S. Business Days</a></li>
+        <li><a href="/uk/working-days/">UK Working Days</a></li>
+        <li><a href="/australia/working-days/">Australia Working Days</a></li>
       </ul>
     </article>
     <article>
       <h3>Trust and data</h3>
       <p>Review how calculations are handled and which holiday calendars are currently covered.</p>
       <ul class="link-list">
-        <li><a href="/methodology">Calculation Methodology</a></li>
-        <li><a href="/holiday-data">Holiday Data Coverage</a></li>
+        <li><a href="/methodology/">Calculation Methodology</a></li>
+        <li><a href="/holiday-data/">Holiday Data Coverage</a></li>
       </ul>
     </article>
   </section>`;
@@ -735,7 +735,7 @@ function helpSheet() {
 function pageMeta() {
   if (LANDING_PAGES[state.page]) {
     const page = LANDING_PAGES[state.page];
-    return { title: page.metaTitle, description: page.description, canonical: `https://exactbusinessdays.com/${state.page}` };
+    return { title: page.metaTitle, description: page.description, canonical: `https://exactbusinessdays.com/${state.page}/` };
   }
   const staticMeta = {
     about: ['About Exact Business Days | Exact Business Days', 'Learn about Exact Business Days, a free business-day and working-day calculator with clear assumptions.'],
@@ -745,7 +745,7 @@ function pageMeta() {
     methodology: ['How Exact Business Days Calculates Working Days | Exact Business Days', 'Learn the calculation method used by Exact Business Days, including weekends, public holidays, regional calendars, date ranges, and important limitations.'],
     'holiday-data': ['Holiday Data Coverage | Exact Business Days', 'See which countries, regions, and years are currently supported by the Exact Business Days holiday calendar.']
   };
-  if (staticMeta[state.page]) return { title: staticMeta[state.page][0], description: staticMeta[state.page][1], canonical: `https://exactbusinessdays.com/${state.page}` };
+  if (staticMeta[state.page]) return { title: staticMeta[state.page][0], description: staticMeta[state.page][1], canonical: `https://exactbusinessdays.com/${state.page}/` };
   return { title: 'Business Days Calculator | Exact Business Days', description: 'Count business days, working days, weekdays, public holidays, and deadline dates with clear assumptions.', canonical: 'https://exactbusinessdays.com/' };
 }
 function setMetaTag(selector, attr, value) {

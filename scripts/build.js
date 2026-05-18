@@ -14,73 +14,73 @@ const pages = {
   '/business-days-calculator': {
     title: 'Business Days Calculator | Exact Business Days',
     description: 'Use this free business days calculator to count workdays, skip weekends, exclude public holidays, and estimate deadline dates.',
-    canonical: 'https://exactbusinessdays.com/business-days-calculator'
+    canonical: 'https://exactbusinessdays.com/business-days-calculator/'
   },
   '/working-days-calculator': {
     title: 'Working Days Calculator | Exact Business Days',
     description: 'Calculate working days between dates, add working days, subtract working days, and exclude weekends or regional public holidays.',
-    canonical: 'https://exactbusinessdays.com/working-days-calculator'
+    canonical: 'https://exactbusinessdays.com/working-days-calculator/'
   },
   '/add-business-days': {
     title: 'Add Business Days to a Date | Exact Business Days',
     description: 'Add business days to a start date and find the resulting deadline while excluding weekends and selected public holidays.',
-    canonical: 'https://exactbusinessdays.com/add-business-days'
+    canonical: 'https://exactbusinessdays.com/add-business-days/'
   },
   '/business-days-between-dates': {
     title: 'Business Days Between Dates | Exact Business Days',
     description: 'Count how many business days fall between two dates, with options for start-date inclusion and public holiday exclusion.',
-    canonical: 'https://exactbusinessdays.com/business-days-between-dates'
+    canonical: 'https://exactbusinessdays.com/business-days-between-dates/'
   },
   '/canada/business-days': {
     title: 'Canada Business Days Calculator | Exact Business Days',
     description: 'Calculate Canadian business days with province and territory holiday options for 2026 and 2027.',
-    canonical: 'https://exactbusinessdays.com/canada/business-days'
+    canonical: 'https://exactbusinessdays.com/canada/business-days/'
   },
   '/us/business-days': {
     title: 'U.S. Business Days Calculator | Exact Business Days',
     description: 'Calculate U.S. business days with federal holidays and selected state holiday options for 2026 and 2027.',
-    canonical: 'https://exactbusinessdays.com/us/business-days'
+    canonical: 'https://exactbusinessdays.com/us/business-days/'
   },
   '/uk/working-days': {
     title: 'UK Working Days Calculator | Exact Business Days',
     description: 'Calculate UK working days with England and Wales, Scotland, and Northern Ireland bank holiday options for 2026 and 2027.',
-    canonical: 'https://exactbusinessdays.com/uk/working-days'
+    canonical: 'https://exactbusinessdays.com/uk/working-days/'
   },
   '/australia/working-days': {
     title: 'Australia Working Days Calculator | Exact Business Days',
     description: 'Calculate Australian working days with state and territory public holiday options for 2026 and 2027.',
-    canonical: 'https://exactbusinessdays.com/australia/working-days'
+    canonical: 'https://exactbusinessdays.com/australia/working-days/'
   },
 
   '/methodology': {
     title: 'How Exact Business Days Calculates Working Days | Exact Business Days',
     description: 'Learn the calculation method used by Exact Business Days, including weekends, public holidays, regional calendars, date ranges, and important limitations.',
-    canonical: 'https://exactbusinessdays.com/methodology'
+    canonical: 'https://exactbusinessdays.com/methodology/'
   },
   '/holiday-data': {
     title: 'Holiday Data Coverage | Exact Business Days',
     description: 'See which countries, regions, and years are currently supported by the Exact Business Days holiday calendar.',
-    canonical: 'https://exactbusinessdays.com/holiday-data'
+    canonical: 'https://exactbusinessdays.com/holiday-data/'
   },
   '/about': {
     title: 'About Exact Business Days | Exact Business Days',
     description: 'Learn about Exact Business Days, a free business-day and working-day calculator with clear assumptions.',
-    canonical: 'https://exactbusinessdays.com/about'
+    canonical: 'https://exactbusinessdays.com/about/'
   },
   '/privacy': {
     title: 'Privacy Policy | Exact Business Days',
     description: 'Read the privacy policy for Exact Business Days.',
-    canonical: 'https://exactbusinessdays.com/privacy'
+    canonical: 'https://exactbusinessdays.com/privacy/'
   },
   '/terms': {
     title: 'Terms of Use | Exact Business Days',
     description: 'Read the terms of use for Exact Business Days.',
-    canonical: 'https://exactbusinessdays.com/terms'
+    canonical: 'https://exactbusinessdays.com/terms/'
   },
   '/contact': {
     title: 'Contact | Exact Business Days',
     description: 'Contact Exact Business Days with feedback, corrections, or supported-region suggestions.',
-    canonical: 'https://exactbusinessdays.com/contact'
+    canonical: 'https://exactbusinessdays.com/contact/'
   }
 };
 
