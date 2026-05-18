@@ -5,6 +5,74 @@ const root = process.cwd();
 const dist = path.join(root, 'dist');
 const publicDir = path.join(root, 'public');
 
+const pages = {
+  '/': {
+    title: 'Business Days Calculator | Exact Business Days',
+    description: 'Count business days, working days, weekdays, public holidays, and deadline dates with clear assumptions.',
+    canonical: 'https://exactbusinessdays.com/'
+  },
+  '/business-days-calculator': {
+    title: 'Business Days Calculator | Exact Business Days',
+    description: 'Use this free business days calculator to count workdays, skip weekends, exclude public holidays, and estimate deadline dates.',
+    canonical: 'https://exactbusinessdays.com/business-days-calculator'
+  },
+  '/working-days-calculator': {
+    title: 'Working Days Calculator | Exact Business Days',
+    description: 'Calculate working days between dates, add working days, subtract working days, and exclude weekends or regional public holidays.',
+    canonical: 'https://exactbusinessdays.com/working-days-calculator'
+  },
+  '/add-business-days': {
+    title: 'Add Business Days to a Date | Exact Business Days',
+    description: 'Add business days to a start date and find the resulting deadline while excluding weekends and selected public holidays.',
+    canonical: 'https://exactbusinessdays.com/add-business-days'
+  },
+  '/business-days-between-dates': {
+    title: 'Business Days Between Dates | Exact Business Days',
+    description: 'Count how many business days fall between two dates, with options for start-date inclusion and public holiday exclusion.',
+    canonical: 'https://exactbusinessdays.com/business-days-between-dates'
+  },
+  '/canada/business-days': {
+    title: 'Canada Business Days Calculator | Exact Business Days',
+    description: 'Calculate Canadian business days with province and territory holiday options for 2026 and 2027.',
+    canonical: 'https://exactbusinessdays.com/canada/business-days'
+  },
+  '/us/business-days': {
+    title: 'U.S. Business Days Calculator | Exact Business Days',
+    description: 'Calculate U.S. business days with federal holidays and selected state holiday options for 2026 and 2027.',
+    canonical: 'https://exactbusinessdays.com/us/business-days'
+  },
+  '/uk/working-days': {
+    title: 'UK Working Days Calculator | Exact Business Days',
+    description: 'Calculate UK working days with England and Wales, Scotland, and Northern Ireland bank holiday options for 2026 and 2027.',
+    canonical: 'https://exactbusinessdays.com/uk/working-days'
+  },
+  '/australia/working-days': {
+    title: 'Australia Working Days Calculator | Exact Business Days',
+    description: 'Calculate Australian working days with state and territory public holiday options for 2026 and 2027.',
+    canonical: 'https://exactbusinessdays.com/australia/working-days'
+  },
+  '/about': {
+    title: 'About Exact Business Days | Exact Business Days',
+    description: 'Learn about Exact Business Days, a free business-day and working-day calculator with clear assumptions.',
+    canonical: 'https://exactbusinessdays.com/about'
+  },
+  '/privacy': {
+    title: 'Privacy Policy | Exact Business Days',
+    description: 'Read the privacy policy for Exact Business Days.',
+    canonical: 'https://exactbusinessdays.com/privacy'
+  },
+  '/terms': {
+    title: 'Terms of Use | Exact Business Days',
+    description: 'Read the terms of use for Exact Business Days.',
+    canonical: 'https://exactbusinessdays.com/terms'
+  },
+  '/contact': {
+    title: 'Contact | Exact Business Days',
+    description: 'Contact Exact Business Days with feedback, corrections, or supported-region suggestions.',
+    canonical: 'https://exactbusinessdays.com/contact'
+  }
+};
+
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
@@ -19,8 +87,31 @@ function copyDir(from, to) {
   }
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function renderHtml(template, page) {
+  return template
+    .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(page.title)}</title>`)
+    .replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${escapeHtml(page.description)}" />`)
+    .replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="${escapeHtml(page.canonical)}" />`)
+    .replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${escapeHtml(page.title)}" />`)
+    .replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${escapeHtml(page.description)}" />`)
+    .replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${escapeHtml(page.canonical)}" />`);
+}
+
 copyDir(publicDir, dist);
-fs.copyFileSync(path.join(root, 'index.html'), path.join(dist, 'index.html'));
+
+const template = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+fs.writeFileSync(path.join(dist, 'index.html'), renderHtml(template, pages['/']));
+for (const [route, page] of Object.entries(pages)) {
+  if (route === '/') continue;
+  const routeDir = path.join(dist, route.replace(/^\//, ''));
+  fs.mkdirSync(routeDir, { recursive: true });
+  fs.writeFileSync(path.join(routeDir, 'index.html'), renderHtml(template, page));
+}
+
 fs.mkdirSync(path.join(dist, 'src'), { recursive: true });
 for (const file of ['main.js', 'styles.css']) {
   fs.copyFileSync(path.join(root, 'src', file), path.join(dist, 'src', file));
