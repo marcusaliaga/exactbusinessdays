@@ -1,35 +1,90 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D5L1V0ENRX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5L1V0ENRX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-D5L1V0ENRX');
-</script>
+      gtag('config', 'G-D5L1V0ENRX');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Business Days Calculator | Exact Business Days</title>
-    <meta name="description" content="Count business days, working days, weekdays, public holidays, and deadline dates with clear assumptions." />
+    <title>Business Days Calculator with Holidays | Exact Business Days</title>
+    <meta name="description" content="Free business days calculator to count working days, add or subtract business days, and exclude weekends and public holidays by country and region." />
     <link rel="canonical" href="https://exactbusinessdays.com/" />
     <meta property="og:title" content="Business Days Calculator | Exact Business Days" />
     <meta property="og:description" content="Fast business-day and working-day calculations with clear assumptions." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://exactbusinessdays.com/" />
     <meta name="theme-color" content="#1f3f6d" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:site_name" content="Exact Business Days" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Business Days Calculator with Holidays | Exact Business Days" />
+    <meta name="twitter:description" content="Count working days, add or subtract business days, and exclude weekends and selected public holidays." />
     <link rel="stylesheet" href="/src/styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Exact Business Days",
-        "url": "https://exactbusinessdays.com/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any",
-        "description": "Business-day, working-day, weekday, public holiday, and deadline calculator."
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://exactbusinessdays.com/#website",
+            "name": "Exact Business Days",
+            "url": "https://exactbusinessdays.com/",
+            "description": "Free business-day and working-day calculator with regional public holiday support.",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://exactbusinessdays.com/#app",
+            "name": "Exact Business Days",
+            "url": "https://exactbusinessdays.com/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "description": "Free calculator for business days, working days, weekdays, public holidays, and deadline dates.",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://exactbusinessdays.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is a business day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A business day usually means Monday through Friday, excluding weekends and, when selected, public holidays for the chosen country or region."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I add or subtract business days from a date?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The calculator can add business days to a start date or subtract business days from a deadline date while skipping weekends and selected public holidays."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which holiday calendars are supported?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The current version includes 2026 regional holiday calendars for Canada, the United States, the United Kingdom, and Australia."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>

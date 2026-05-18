@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://exactbusinessdays.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://exactbusinessdays.com/about</loc><priority>0.6</priority></url>
-  <url><loc>https://exactbusinessdays.com/privacy</loc><priority>0.5</priority></url>
-  <url><loc>https://exactbusinessdays.com/terms</loc><priority>0.5</priority></url>
-  <url><loc>https://exactbusinessdays.com/contact</loc><priority>0.5</priority></url>
+  <url>
+    <loc>https://exactbusinessdays.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://exactbusinessdays.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://exactbusinessdays.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://exactbusinessdays.com/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://exactbusinessdays.com/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

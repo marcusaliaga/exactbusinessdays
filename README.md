@@ -1,34 +1,23 @@
 # ExactBusinessDays.com
 
-Business days, working days, public holidays, and deadline calculator.
-
-## Current MVP
-
-This version includes:
-- React/Vite front end
-- Business-day counting excluding weekends
-- Add business days
-- Subtract business days
-- Business days left this year
-- 2026 holiday calendars for Canada, United States, United Kingdom, and Australia
-- Regional selectors
-- Clear holiday mode toggle: weekends only vs weekends + holidays
-- Final mobile layout polish for iPhone width, date fields, and cards
-- Circular info icons with click-only help text
-- About, Privacy, Terms, and Contact page structure
-- Canonical homepage meta
-- Basic structured data
-- Sitemap and robots.txt
-
-## Development
-
-```bash
-npm install
-npm run dev
-```
+A free business days, working days, public holidays, and deadline calculator.
 
 ## Build
 
 ```bash
 npm run build
 ```
+
+## Structure
+
+- `index.html` includes SEO metadata, Google Analytics, and schema.
+- `public/` includes `robots.txt`, `sitemap.xml`, and Cloudflare Pages `_redirects`.
+- `src/main.js` contains the calculator logic and page rendering.
+- `src/styles.css` contains the locked desktop/mobile design.
+- `scripts/build.js` copies the site into `dist/` for Cloudflare Pages.
+
+## Current locked scope
+
+- Calculator UI and mobile help sheet are preserved.
+- Google Analytics Measurement ID: `G-D5L1V0ENRX`
+- Sitemap includes homepage, About, Contact, Privacy, and Terms.
