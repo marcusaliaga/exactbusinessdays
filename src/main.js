@@ -228,54 +228,6 @@ function holidaysForYear(year, country, region) {
   return Array.from(new Map(list.sort(([a], [b]) => a.localeCompare(b)).map(item => [item[0], item])).values());
 }
 
-let state = {
-  page: routeToPage(),
-  tab: 'between',
-  startDate: '2026-05-17',
-  endDate: '2026-12-31',
-  days: 10,
-  includeStart: true,
-  country: 'ca',
-  region: 'on',
-  excludeHolidays: true,
-  help: null
-};
-
-function applyLandingDefaults(page) {
-  const landing = LANDING_PAGES[page];
-  if (!landing) return;
-  if (landing.tab) state.tab = landing.tab;
-  if (landing.country) state.country = landing.country;
-  if (landing.region) state.region = landing.region;
-}
-applyLandingDefaults(state.page);
-
-const helpText = {
-  between: 'Count how many business days are between two dates.',
-  add: 'Pick a start date, then count forward by a number of business days.',
-  subtract: 'Pick a deadline date, then count backward by a number of business days.',
-  left: 'See how many business days are left from the start date until December 31.',
-  includeStart: 'When this is on, the start date can count as day one. It only counts if it is a weekday and not a selected holiday.',
-  country: 'Choose the country whose holiday calendar should be used.',
-  region: 'Choose the state, province, territory, or UK region. Holidays can be different depending on the region.',
-  holidays: 'Weekends are always skipped. Turn this on if public holidays should be skipped too. For example, Christmas on a Wednesday would not count as a business day.',
-  numberAdd: 'Enter how many business days you want to add. Weekends and selected holidays are skipped.',
-  numberSubtract: 'Enter how many business days you want to subtract. Weekends and selected holidays are skipped.'
-};
-
-const helpTitle = {
-  between: 'Between Dates',
-  add: 'Add Days',
-  subtract: 'Subtract Days',
-  left: 'Left This Year',
-  includeStart: 'Include start date',
-  country: 'Country',
-  region: 'Region',
-  holidays: 'Weekends and holidays',
-  numberAdd: 'Number of business days to add',
-  numberSubtract: 'Number of business days to subtract'
-};
-
 const LANDING_PAGES = {
   'business-days-calculator': {
     title: 'Business Days Calculator',
@@ -400,6 +352,28 @@ function routeToPage() {
   return ROUTES.includes(path) ? path : 'calculator';
 }
 
+let state = {
+  page: routeToPage(),
+  tab: 'between',
+  startDate: '2026-05-17',
+  endDate: '2026-12-31',
+  days: 10,
+  includeStart: true,
+  country: 'ca',
+  region: 'on',
+  excludeHolidays: true,
+  help: null
+};
+
+function applyLandingDefaults(page) {
+  const landing = LANDING_PAGES[page];
+  if (!landing) return;
+  if (landing.tab) state.tab = landing.tab;
+  if (landing.country) state.country = landing.country;
+  if (landing.region) state.region = landing.region;
+}
+applyLandingDefaults(state.page);
+
 function setRoute(page) {
   state.page = page;
   applyLandingDefaults(page);
@@ -408,6 +382,32 @@ function setRoute(page) {
   render();
 }
 window.addEventListener('popstate', () => { state.page = routeToPage(); render(); });
+
+const helpText = {
+  between: 'Count how many business days are between two dates.',
+  add: 'Pick a start date, then count forward by a number of business days.',
+  subtract: 'Pick a deadline date, then count backward by a number of business days.',
+  left: 'See how many business days are left from the start date until December 31.',
+  includeStart: 'When this is on, the start date can count as day one. It only counts if it is a weekday and not a selected holiday.',
+  country: 'Choose the country whose holiday calendar should be used.',
+  region: 'Choose the state, province, territory, or UK region. Holidays can be different depending on the region.',
+  holidays: 'Weekends are always skipped. Turn this on if public holidays should be skipped too. For example, Christmas on a Wednesday would not count as a business day.',
+  numberAdd: 'Enter how many business days you want to add. Weekends and selected holidays are skipped.',
+  numberSubtract: 'Enter how many business days you want to subtract. Weekends and selected holidays are skipped.'
+};
+
+const helpTitle = {
+  between: 'Between Dates',
+  add: 'Add Days',
+  subtract: 'Subtract Days',
+  left: 'Left This Year',
+  includeStart: 'Include start date',
+  country: 'Country',
+  region: 'Region',
+  holidays: 'Weekends and holidays',
+  numberAdd: 'Number of business days to add',
+  numberSubtract: 'Number of business days to subtract'
+};
 
 const $ = (id) => document.getElementById(id);
 const toDate = (value) => new Date(`${value}T00:00:00Z`);
