@@ -38,8 +38,28 @@ const pages = {
   },
   '/us/business-days': {
     title: 'U.S. Business Days Calculator | Exact Business Days',
-    description: 'Calculate U.S. business days with federal holidays and selected state holiday options for 2026 and 2027.',
+    description: 'Calculate U.S. business days with federal holidays and 20 selected state holiday options for 2026 and 2027.',
     canonical: 'https://exactbusinessdays.com/us/business-days/'
+  },
+  '/us/state-business-days': {
+    title: 'U.S. State Business Days Calculator | Exact Business Days',
+    description: 'Calculate business days for supported U.S. state holiday calendars, with 2026 and 2027 coverage for federal holidays and 20 selected states.',
+    canonical: 'https://exactbusinessdays.com/us/state-business-days/'
+  },
+  '/business-days-in-2026': {
+    title: 'Business Days in 2026 | Exact Business Days',
+    description: 'Calculate business days in 2026 by country and region, with weekend and public holiday options for planning deadlines and work schedules.',
+    canonical: 'https://exactbusinessdays.com/business-days-in-2026/'
+  },
+  '/business-days-in-2027': {
+    title: 'Business Days in 2027 | Exact Business Days',
+    description: 'Calculate business days in 2027 by country and region, including weekends and optional public holidays.',
+    canonical: 'https://exactbusinessdays.com/business-days-in-2027/'
+  },
+  '/holiday-business-days': {
+    title: 'Holiday Business Days Calculator | Exact Business Days',
+    description: 'Calculate business days with public holidays excluded, compare weekends-only and holiday-adjusted results, and review which holidays were skipped.',
+    canonical: 'https://exactbusinessdays.com/holiday-business-days/'
   },
   '/uk/working-days': {
     title: 'UK Working Days Calculator | Exact Business Days',

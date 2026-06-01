@@ -11,7 +11,9 @@ const COUNTRY_REGIONS = {
     label: 'United States',
     regions: {
       federal: 'Federal holidays', ca: 'California', tx: 'Texas', fl: 'Florida', ny: 'New York', pa: 'Pennsylvania',
-      il: 'Illinois', oh: 'Ohio', ga: 'Georgia', nc: 'North Carolina', nj: 'New Jersey'
+      il: 'Illinois', oh: 'Ohio', ga: 'Georgia', nc: 'North Carolina', nj: 'New Jersey', mi: 'Michigan',
+      va: 'Virginia', wa: 'Washington', az: 'Arizona', tn: 'Tennessee', ma: 'Massachusetts', in: 'Indiana',
+      md: 'Maryland', mo: 'Missouri', co: 'Colorado'
     }
   },
   uk: {
@@ -174,7 +176,17 @@ function usHolidays(year, region) {
     oh: base,
     ga: [...base, holiday(year, 4, nthWeekday(year, 4, 1, 4), 'State Holiday')],
     nc: [...base, dayAfterThanksgiving, holiday(year, 12, 24, 'Christmas Eve')],
-    nj: [...base, relativeToEaster(year, -2, 'Good Friday'), electionDay]
+    nj: [...base, relativeToEaster(year, -2, 'Good Friday'), electionDay],
+    mi: [...base, dayAfterThanksgiving, holiday(year, 12, 24, 'Christmas Eve')],
+    va: [...base, electionDay, dayAfterThanksgiving],
+    wa: [...base, dayAfterThanksgiving],
+    az: [...base, holiday(year, 2, 12, "Lincoln/Washington Presidents' Day")],
+    tn: [...base, relativeToEaster(year, -2, 'Good Friday'), dayAfterThanksgiving],
+    ma: [...base, holiday(year, 4, nthWeekday(year, 4, 1, 3), "Patriots' Day")],
+    in: [...base, relativeToEaster(year, -2, 'Good Friday'), electionDay, dayAfterThanksgiving],
+    md: [...base, dayAfterThanksgiving],
+    mo: [...base, holiday(year, 5, 8, 'Truman Day'), dayAfterThanksgiving],
+    co: [...base, holiday(year, 10, nthWeekday(year, 10, 1, 1), 'Frances Xavier Cabrini Day')]
   };
   return map[region] || base;
 }
@@ -232,14 +244,15 @@ const LANDING_PAGES = {
   'business-days-calculator': {
     title: 'Business Days Calculator',
     metaTitle: 'Business Days Calculator | Exact Business Days',
-    description: 'Use this free business days calculator to count workdays, skip weekends, exclude public holidays, and estimate deadline dates.',
+    description: 'Use this free business days calculator to count workdays, skip weekends, exclude public holidays, and estimate deadline dates with clear assumptions.',
     eyebrow: 'Business days calculator',
-    intro: 'Count business days between dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year.',
+    intro: 'Count business days between dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year. Choose weekends-only or a regional holiday calendar for a clearer, easier-to-review result.',
     cards: [
       ['Business days made clear', 'A business day usually means Monday through Friday. With holiday exclusion turned on, the calculator also skips public holidays for the selected country and region.'],
-      ['Useful for real deadlines', 'Use it for invoice due dates, shipping windows, project planning, payroll timing, contract review periods, school deadlines, and time-off planning.'],
+      ['Why exact counting matters', 'Adding calendar days is not the same as adding business days. A two-week period can contain 10 weekdays, 9 business days, or fewer if a public holiday falls inside it.'],
       ['Regional holiday support', 'Holiday calendars currently cover 2026 and 2027 for Canada, the United States, the United Kingdom, and Australia, with regional options included.'],
-      ['Check the assumptions', 'Every result shows whether public holidays were excluded and which calendar was used, so the calculation is easier to review.']
+      ['Did you know?', 'In the United States, Independence Day is tied to July 4, 1776, when the Continental Congress adopted the Declaration of Independence. That is why July 4 is one of the federal holidays this calculator can exclude.'],
+      ['Check the assumptions', 'Every result shows whether public holidays were excluded and which calendar was used, so the calculation is easier to review before you copy or share it.']
     ]
   },
   'working-days-calculator': {
@@ -247,11 +260,12 @@ const LANDING_PAGES = {
     metaTitle: 'Working Days Calculator | Exact Business Days',
     description: 'Calculate working days between dates, add working days, subtract working days, and exclude weekends or regional public holidays.',
     eyebrow: 'Working days calculator',
-    intro: 'Use this working days calculator to estimate weekdays and holiday-adjusted workdays for common planning and deadline questions.',
+    intro: 'Use this working days calculator to estimate weekdays and holiday-adjusted workdays for planning, office deadlines, shipping windows, and administrative date questions.',
     cards: [
       ['Working days vs. calendar days', 'Working days normally exclude Saturdays and Sundays. When holidays are turned on, selected public holidays are excluded as well.'],
       ['For work and planning', 'The calculator is useful for project timelines, office deadlines, HR planning, shipping estimates, payment terms, and administrative reminders.'],
       ['Choose a region', 'Select a country and region so the result can account for local public holidays instead of using a generic weekday count.'],
+      ['Did you know?', 'Many countries use the phrase bank holiday or public holiday, but the practical question is often the same: should that date count as a working day for your deadline?'],
       ['Review before relying on it', 'Employers, contracts, industries, and local rules can treat holidays differently, so important deadlines should always be reviewed.']
     ]
   },
@@ -260,12 +274,13 @@ const LANDING_PAGES = {
     metaTitle: 'Add Business Days to a Date | Exact Business Days',
     description: 'Add business days to a start date and find the resulting deadline while excluding weekends and selected public holidays.',
     eyebrow: 'Add business days',
-    intro: 'Choose the Add days tab to count forward from a start date by a set number of business days, skipping weekends and optional holidays.',
+    intro: 'Choose the Add days tab to count forward from a start date by a set number of business days, skipping weekends and optional public holidays.',
     tab: 'add',
     cards: [
       ['Count forward accurately', 'Instead of adding calendar days, this mode moves forward only when the next day is a business day under the selected settings.'],
       ['Good for due dates', 'Use it for response deadlines, service windows, delivery estimates, contract periods, invoice terms, and internal workback plans.'],
       ['Holidays can change the answer', 'If a public holiday falls inside the period and holiday exclusion is enabled, the deadline moves to the next valid business day.'],
+      ['Did you know?', 'Thanksgiving in the United States is observed on the fourth Thursday in November. If you add business days across that week, the holiday can change the final date.'],
       ['Simple assumptions', 'The result shows the date reached and how many public holidays were excluded from the calculation.']
     ]
   },
@@ -280,6 +295,7 @@ const LANDING_PAGES = {
       ['Count a full date range', 'Enter a start date and an end date to count weekdays or holiday-adjusted business days inside the range.'],
       ['Include or exclude the start date', 'The start-date toggle lets you decide whether the first date can count as day one when it is a valid business day.'],
       ['See excluded holidays', 'When public holidays are enabled, the page lists the holidays that were removed from the calculation.'],
+      ['Did you know?', 'A fixed holiday can be observed on a nearby weekday when it falls on a weekend. That is why observed holidays matter for business-day math.'],
       ['Useful for comparisons', 'This mode is helpful when checking elapsed work time, PTO spans, payroll periods, project schedules, and school or office deadlines.']
     ]
   },
@@ -288,13 +304,14 @@ const LANDING_PAGES = {
     metaTitle: 'Canada Business Days Calculator | Exact Business Days',
     description: 'Calculate Canadian business days with province and territory holiday options for 2026 and 2027.',
     eyebrow: 'Canada business days',
-    intro: 'Calculate business days in Canada with provincial and territorial holiday options for 2026 and 2027.',
+    intro: 'Calculate business days in Canada with provincial and territorial holiday options for 2026 and 2027. Use this page when a Canadian deadline needs more than a simple weekday count.',
     country: 'ca',
     region: 'on',
     cards: [
       ['Canadian regional calendars', 'Canada holiday rules vary by province and territory, so the calculator includes regional options instead of using only one national calendar.'],
       ['Supported regions', 'Select from Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Northwest Territories, Nunavut, Ontario, Prince Edward Island, Quebec, Saskatchewan, and Yukon.'],
       ['Common Canadian uses', 'Use it for Canadian shipping windows, invoice timing, payroll planning, office deadlines, school calendars, and contract review periods.'],
+      ['Did you know?', 'Canada Day is tied to July 1, 1867, when the Constitution Act created the Dominion of Canada. In business-day calculations, its observed date can matter when July 1 falls on a weekend.'],
       ['Important note', 'Some holidays may be treated differently depending on employer, industry, city, contract, or whether the day is federally or provincially regulated.']
     ]
   },
@@ -303,13 +320,14 @@ const LANDING_PAGES = {
     metaTitle: 'U.S. Business Days Calculator | Exact Business Days',
     description: 'Calculate U.S. business days with federal holidays and selected state holiday options for 2026 and 2027.',
     eyebrow: 'U.S. business days',
-    intro: 'Calculate business days in the United States using federal holidays or selected state holiday calendars for 2026 and 2027.',
+    intro: 'Calculate business days in the United States using federal holidays or selected state holiday calendars for 2026 and 2027. The calculator now includes federal holidays plus 20 high-population state options.',
     country: 'us',
     region: 'federal',
     cards: [
       ['Federal and state options', 'Use the federal holiday calendar or choose a supported state when a state-level holiday calendar is more appropriate.'],
-      ['Supported U.S. options', 'The calculator includes federal holidays plus California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, and New Jersey.'],
-      ['Useful for deadline planning', 'Use it for U.S. payment terms, service deadlines, HR timing, shipping windows, court-adjacent planning, vendor timelines, and internal schedules.'],
+      ['Expanded U.S. state coverage', 'The calculator includes federal holidays plus California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.'],
+      ['Useful for deadline planning', 'Use it for U.S. payment terms, service deadlines, HR timing, shipping windows, vendor timelines, and internal schedules.'],
+      ['Did you know?', 'Juneteenth became a U.S. federal holiday in 2021. It marks June 19, 1865, when news of emancipation reached enslaved people in Galveston, Texas.'],
       ['Rules can vary', 'Business-day definitions can vary by organization, contract, industry, banking practice, and state holiday observance. Review important deadlines before relying on them.']
     ]
   },
@@ -325,6 +343,7 @@ const LANDING_PAGES = {
       ['UK bank holiday regions', 'The United Kingdom does not use one identical bank holiday calendar everywhere, so the calculator separates England and Wales, Scotland, and Northern Ireland.'],
       ['Working-day planning', 'Use it for UK project planning, response periods, administrative deadlines, payment terms, school or office planning, and holiday-adjusted timelines.'],
       ['Holidays listed in the result', 'When bank holidays are excluded, the calculator shows which holidays were removed from the working-day count.'],
+      ['Did you know?', 'Scotland has January 2 as a bank holiday, while England and Wales do not. That is a simple example of why UK regional calendars can produce different working-day counts.'],
       ['Check official context', 'Some deadlines depend on contracts, courts, banks, employers, or sector-specific rules, so important results should be reviewed before use.']
     ]
   },
@@ -340,11 +359,73 @@ const LANDING_PAGES = {
       ['State and territory holidays', 'Australian public holidays vary by state and territory, so the calculator includes regional options rather than relying on one national calendar.'],
       ['Supported regions', 'Select from New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.'],
       ['Useful planning cases', 'Use it for Australian work schedules, delivery estimates, payment terms, HR planning, administrative deadlines, project timelines, and time-off planning.'],
+      ['Did you know?', 'Australia Day is a national public holiday, but several other public holidays differ by state or territory. That is why a regional selector matters.'],
       ['Review local rules', 'Public holiday treatment can vary by state, award, employer, industry, and contract, so important calculations should be checked before use.']
+    ]
+  },
+  'us/state-business-days': {
+    title: 'U.S. State Business Days Calculator',
+    metaTitle: 'U.S. State Business Days Calculator | Exact Business Days',
+    description: 'Calculate business days for supported U.S. state holiday calendars, with 2026 and 2027 coverage for federal holidays and 20 selected states.',
+    eyebrow: 'U.S. state business days',
+    intro: 'Use this page when a U.S. business-day calculation needs a state calendar instead of only the federal holiday calendar. Select a supported state, then count between dates or add and subtract business days.',
+    country: 'us',
+    region: 'ca',
+    cards: [
+      ['Why state calendars matter', 'Federal holidays are a helpful baseline, but some states observe additional holidays or treat certain dates differently for public offices, courts, schools, or state employees.'],
+      ['Supported state coverage', 'The calculator supports 20 selected state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.'],
+      ['Good for U.S. planning', 'Use it for state-aware shipping windows, office closures, vendor timelines, HR planning, invoice timing, and internal deadline checks.'],
+      ['Did you know?', 'Colorado observes Frances Xavier Cabrini Day, named for the first U.S. citizen canonized as a saint. State-specific holidays like this are one reason national weekday counts can miss context.'],
+      ['Use with care', 'State calendars are not the same as every employer policy. Private businesses, banks, courts, and schools may use different closure rules.']
+    ]
+  },
+  'business-days-in-2026': {
+    title: 'Business Days in 2026',
+    metaTitle: 'Business Days in 2026 | Exact Business Days',
+    description: 'Calculate business days in 2026 by country and region, with weekend and public holiday options for planning deadlines and work schedules.',
+    eyebrow: '2026 business days',
+    intro: 'Calculate business days in 2026 for the selected country or region. Use the calculator to count a full year, a quarter, a month, or any custom 2026 date range.',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    cards: [
+      ['Plan the year with dates, not guesses', 'A year can have different working-day totals depending on weekends, observed holidays, and the region you choose. This page is built for 2026 date planning.'],
+      ['Use it for annual planning', 'Count business days for project calendars, HR schedules, school or office planning, payroll windows, contract periods, and shipping estimates.'],
+      ['Cross-check holidays', 'When holiday exclusion is enabled, the result lists holidays that fall inside the selected range and are not on a weekend.'],
+      ['Did you know?', 'In 2026, U.S. Independence Day falls on a Saturday, so many federal schedules observe it on Friday, July 3. Observed dates can change deadline math.'],
+      ['Choose the right range', 'For a full-year estimate, set the start date to January 1, 2026 and the end date to December 31, 2026, then choose the country and region.']
+    ]
+  },
+  'business-days-in-2027': {
+    title: 'Business Days in 2027',
+    metaTitle: 'Business Days in 2027 | Exact Business Days',
+    description: 'Calculate business days in 2027 by country and region, including weekends and optional public holidays.',
+    eyebrow: '2027 business days',
+    intro: 'Calculate business days in 2027 for forward planning, future deadlines, payment windows, and holiday-adjusted work schedules.',
+    startDate: '2027-01-01',
+    endDate: '2027-12-31',
+    cards: [
+      ['Future-year planning', 'Use 2027 coverage when a deadline, contract period, project plan, or shipping estimate reaches into next year.'],
+      ['Useful for add and subtract modes', 'The Add days and Subtract days tabs can cross holidays and weekends, which makes future-year holiday coverage useful for longer deadline windows.'],
+      ['Regional differences still matter', 'A 2027 calculation can change when a state, province, territory, or UK region has a holiday that the national weekday count would miss.'],
+      ['Did you know?', 'In 2027, Christmas Day falls on a Saturday. For many observed-holiday calendars, that can move the recognized day away from December 25.'],
+      ['Built for review', 'Every result shows the selected calendar and the holidays excluded, so a future-year result is easier to check before sharing.']
+    ]
+  },
+  'holiday-business-days': {
+    title: 'Holiday Business Days Calculator',
+    metaTitle: 'Holiday Business Days Calculator | Exact Business Days',
+    description: 'Calculate business days with public holidays excluded, compare weekends-only and holiday-adjusted results, and review which holidays were skipped.',
+    eyebrow: 'Holiday business days',
+    intro: 'Use this page when public holidays are the reason a deadline is confusing. Turn holidays on or off, select a region, and see how the excluded-holiday list changes the answer.',
+    cards: [
+      ['Weekend-only vs. holiday-adjusted', 'Weekends-only counts skip Saturdays and Sundays. Holiday-adjusted counts also remove selected public holidays for the chosen country and region.'],
+      ['When it matters most', 'Holiday-adjusted business days are especially useful around Christmas, New Year, Thanksgiving, Easter-related holidays, and regional civic holidays.'],
+      ['See the excluded dates', 'The calculator lists the holidays excluded from the current range, so you can understand why the result changed.'],
+      ['Did you know?', 'Juneteenth is sometimes called the United States’ second Independence Day because it commemorates the end of slavery in the United States after news reached Galveston, Texas in 1865.'],
+      ['Not every workplace closes', 'A public holiday may not be a business closure for every employer, industry, or contract. Use the result as a planning guide and verify critical deadlines.']
     ]
   }
 };
-
 const ROUTES = ['about', 'privacy', 'terms', 'contact', 'methodology', 'holiday-data', ...Object.keys(LANDING_PAGES)];
 
 function routeToPage() {
@@ -416,6 +497,8 @@ function applyLandingDefaults(page) {
   const landing = LANDING_PAGES[page];
   if (!landing) return;
   if (landing.tab) state.tab = landing.tab;
+  if (landing.startDate) state.startDate = landing.startDate;
+  if (landing.endDate) state.endDate = landing.endDate;
   if (landing.country) state.country = landing.country;
   if (landing.region) state.region = landing.region;
 }
@@ -690,6 +773,16 @@ function internalLinks() {
         <li><a href="/working-days-calculator/">Working Days Calculator</a></li>
         <li><a href="/add-business-days/">Add Business Days</a></li>
         <li><a href="/business-days-between-dates/">Business Days Between Dates</a></li>
+        <li><a href="/holiday-business-days/">Holiday Business Days</a></li>
+      </ul>
+    </article>
+    <article>
+      <h3>Planning by year</h3>
+      <p>Use a year-focused page when you are checking annual schedules or future deadline windows.</p>
+      <ul class="link-list">
+        <li><a href="/business-days-in-2026/">Business Days in 2026</a></li>
+        <li><a href="/business-days-in-2027/">Business Days in 2027</a></li>
+        <li><a href="/us/state-business-days/">U.S. State Business Days</a></li>
       </ul>
     </article>
     <article>
@@ -724,7 +817,7 @@ function pageContent() {
   if (state.page === 'terms') return staticPage('Terms of Use', 'Terms', ['Exact Business Days is provided as a free informational tool. The calculator is intended to help users estimate business days, working days, weekdays, and deadline dates.', 'Results should be reviewed before being used for legal, financial, payroll, contractual, shipping, or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.', 'Last updated: May 17, 2026.']);
   if (state.page === 'contact') return staticPage('Contact', 'Contact', ['Have feedback, a holiday correction, or a region you want supported next?', 'For now, please contact the site owner directly through the domain owner or project administrator. A dedicated contact form or email address will be added in a future update.']);
   if (state.page === 'methodology') return staticPage('How Exact Business Days Calculates Working Days', 'Methodology', ['Exact Business Days counts business days by moving through each calendar date in the selected range or direction and checking whether that date is eligible to count.', 'Saturdays and Sundays are excluded by default. When Weekends + holidays is selected, public holidays from the selected country and region are excluded too.', 'The Include start date option controls whether the first date can count as day one when it is itself a valid business day. Add days and Subtract days move forward or backward until the requested number of eligible business days has been reached.', 'The current holiday logic supports 2026 and 2027. If a range crosses from 2026 into 2027, the calculator uses the holiday data for each year where available.', 'Business-day definitions can vary by employer, contract, industry, bank, court, city, province, state, territory, or country. Use the result as a planning tool and review important legal, payroll, financial, shipping, or contractual deadlines before relying on them.']);
-  if (state.page === 'holiday-data') return staticPage('Holiday Data Coverage', 'Holiday data', ['Exact Business Days currently supports 2026 and 2027 holiday calendars for Canada, the United States, the United Kingdom, and Australia.', 'Canada includes province and territory options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Northwest Territories, Nunavut, Ontario, Prince Edward Island, Quebec, Saskatchewan, and Yukon.', 'The United States includes federal holidays plus selected high-value state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, and New Jersey.', 'The United Kingdom includes England and Wales, Scotland, and Northern Ireland bank holiday calendars.', 'Australia includes New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.', 'Some holidays are not observed by every employer or industry, and some local or optional holidays may not apply to all businesses. Always check the relevant official, contractual, or employer-specific rules for critical deadlines.']);
+  if (state.page === 'holiday-data') return staticPage('Holiday Data Coverage', 'Holiday data', ['Exact Business Days currently supports 2026 and 2027 holiday calendars for Canada, the United States, the United Kingdom, and Australia.', 'Canada includes province and territory options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Northwest Territories, Nunavut, Ontario, Prince Edward Island, Quebec, Saskatchewan, and Yukon.', 'The United States includes federal holidays plus selected high-value state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.', 'The United Kingdom includes England and Wales, Scotland, and Northern Ireland bank holiday calendars.', 'Australia includes New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.', 'Some holidays are not observed by every employer or industry, and some local or optional holidays may not apply to all businesses. Always check the relevant official, contractual, or employer-specific rules for critical deadlines.']);
   if (LANDING_PAGES[state.page]) return landingPage(LANDING_PAGES[state.page]);
   return `<main>${hero()}${form()}${infoCards()}${internalLinks()}</main>`;
 }
