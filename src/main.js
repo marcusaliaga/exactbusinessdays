@@ -1,4 +1,6 @@
-const COUNTRY_REGIONS = {
+import { CALENDAR_DATA } from './calendar-data.js';
+
+const LEGACY_COUNTRY_REGIONS = {
   ca: {
     label: 'Canada',
     regions: {
@@ -26,7 +28,17 @@ const COUNTRY_REGIONS = {
   }
 };
 
-const SUPPORTED_HOLIDAY_YEARS = [2026, 2027];
+const COUNTRY_REGIONS = Object.fromEntries(
+  Object.entries(CALENDAR_DATA.countries).map(([countryKey, country]) => [
+    countryKey,
+    {
+      label: country.label,
+      regions: Object.fromEntries(Object.entries(country.regions).map(([regionKey, region]) => [regionKey, region.label]))
+    }
+  ])
+);
+
+const SUPPORTED_HOLIDAY_YEARS = CALENDAR_DATA.supportedYears;
 const MIN_HOLIDAY_YEAR = Math.min(...SUPPORTED_HOLIDAY_YEARS);
 const MAX_HOLIDAY_YEAR = Math.max(...SUPPORTED_HOLIDAY_YEARS);
 
@@ -235,9 +247,9 @@ function australiaHolidays(year, region) {
 
 function holidaysForYear(year, country, region) {
   if (!SUPPORTED_HOLIDAY_YEARS.includes(year)) return [];
-  const calendars = { ca: canadaHolidays, us: usHolidays, uk: ukHolidays, au: australiaHolidays };
-  const list = calendars[country] ? calendars[country](year, region) : [];
-  return Array.from(new Map(list.sort(([a], [b]) => a.localeCompare(b)).map(item => [item[0], item])).values());
+  const countryData = CALENDAR_DATA.countries[country];
+  const regionData = countryData?.regions[region] || countryData?.regions[countryData?.defaultRegion];
+  return regionData?.holidays?.[year] || [];
 }
 
 const LANDING_PAGES = {
@@ -250,7 +262,7 @@ const LANDING_PAGES = {
     cards: [
       ['Business days made clear', 'A business day usually means Monday through Friday. With holiday exclusion turned on, the calculator also skips public holidays for the selected country and region.'],
       ['Why exact counting matters', 'Adding calendar days is not the same as adding business days. A two-week period can contain 10 weekdays, 9 business days, or fewer if a public holiday falls inside it.'],
-      ['Regional holiday support', 'Holiday calendars currently cover 2026 and 2027 for Canada, the United States, the United Kingdom, and Australia, with regional options included.'],
+      ['Regional holiday support', 'Holiday calendars cover 2026 and 2027 for 11 countries, including every U.S. state and Washington, DC, every German state, and regional calendars where available.'],
       ['Did you know?', 'In the United States, Independence Day is tied to July 4, 1776, when the Continental Congress adopted the Declaration of Independence. That is why July 4 is one of the federal holidays this calculator can exclude.'],
       ['Check the assumptions', 'Every result shows whether public holidays were excluded and which calendar was used, so the calculation is easier to review before you copy or share it.']
     ]
@@ -318,14 +330,14 @@ const LANDING_PAGES = {
   'us/business-days': {
     title: 'U.S. Business Days Calculator',
     metaTitle: 'U.S. Business Days Calculator | Exact Business Days',
-    description: 'Calculate U.S. business days with federal holidays and selected state holiday options for 2026 and 2027.',
+    description: 'Calculate U.S. business days with federal holidays and all 50 state calendars plus Washington, DC for 2026 and 2027.',
     eyebrow: 'U.S. business days',
-    intro: 'Calculate business days in the United States using federal holidays or selected state holiday calendars for 2026 and 2027. The calculator now includes federal holidays plus 20 high-population state options.',
+    intro: 'Calculate business days in the United States using federal holidays or a calendar for any of the 50 states and Washington, DC for 2026 and 2027.',
     country: 'us',
     region: 'federal',
     cards: [
       ['Federal and state options', 'Use the federal holiday calendar or choose a supported state when a state-level holiday calendar is more appropriate.'],
-      ['Expanded U.S. state coverage', 'The calculator includes federal holidays plus California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.'],
+      ['Complete U.S. state coverage', 'Choose the federal calendar, any of the 50 states, or Washington, DC. State selections combine the federal baseline with applicable state-government observances.'],
       ['Useful for deadline planning', 'Use it for U.S. payment terms, service deadlines, HR timing, shipping windows, vendor timelines, and internal schedules.'],
       ['Did you know?', 'Juneteenth became a U.S. federal holiday in 2021. It marks June 19, 1865, when news of emancipation reached enslaved people in Galveston, Texas.'],
       ['Rules can vary', 'Business-day definitions can vary by organization, contract, industry, banking practice, and state holiday observance. Review important deadlines before relying on them.']
@@ -366,14 +378,14 @@ const LANDING_PAGES = {
   'us/state-business-days': {
     title: 'U.S. State Business Days Calculator',
     metaTitle: 'U.S. State Business Days Calculator | Exact Business Days',
-    description: 'Calculate business days for supported U.S. state holiday calendars, with 2026 and 2027 coverage for federal holidays and 20 selected states.',
+    description: 'Calculate business days for all 50 U.S. state holiday calendars plus Washington, DC, with 2026 and 2027 coverage.',
     eyebrow: 'U.S. state business days',
-    intro: 'Use this page when a U.S. business-day calculation needs a state calendar instead of only the federal holiday calendar. Select a supported state, then count between dates or add and subtract business days.',
+    intro: 'Use this page when a U.S. business-day calculation needs a state calendar instead of only the federal holiday calendar. Select any state or Washington, DC, then count between dates or add and subtract business days.',
     country: 'us',
     region: 'ca',
     cards: [
       ['Why state calendars matter', 'Federal holidays are a helpful baseline, but some states observe additional holidays or treat certain dates differently for public offices, courts, schools, or state employees.'],
-      ['Supported state coverage', 'The calculator supports 20 selected state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.'],
+      ['All states included', 'The calculator supports all 50 states plus Washington, DC. These are planning calendars; courts, schools, private employers, and local governments may observe different closures.'],
       ['Good for U.S. planning', 'Use it for state-aware shipping windows, office closures, vendor timelines, HR planning, invoice timing, and internal deadline checks.'],
       ['Did you know?', 'Colorado observes Frances Xavier Cabrini Day, named for the first U.S. citizen canonized as a saint. State-specific holidays like this are one reason national weekday counts can miss context.'],
       ['Use with care', 'State calendars are not the same as every employer policy. Private businesses, banks, courts, and schools may use different closure rules.']
@@ -424,6 +436,183 @@ const LANDING_PAGES = {
       ['Did you know?', 'Juneteenth is sometimes called the United States’ second Independence Day because it commemorates the end of slavery in the United States after news reached Galveston, Texas in 1865.'],
       ['Not every workplace closes', 'A public holiday may not be a business closure for every employer, industry, or contract. Use the result as a planning guide and verify critical deadlines.']
     ]
+  },
+  'business-days-from-today': {
+    title: 'Business Days From Today',
+    metaTitle: 'Business Days From Today Calculator | Exact Business Days',
+    description: 'Find the date 5, 10, 30, 60, or 90 business days from today while skipping weekends and selected public holidays.',
+    eyebrow: 'Business days from today',
+    intro: 'Start with today and add a custom number of business days. The quick-reference dates below update with the selected holiday calendar.',
+    tab: 'add',
+    today: true,
+    cards: [
+      ['Common deadline windows', 'Quickly check 5, 10, 15, 30, 60, or 90 business days from today, then enter any custom number in the calculator.'],
+      ['Business days are not calendar days', 'Ten business days usually span about two calendar weeks, and public holidays can extend the period further.'],
+      ['A live starting point', 'The start date is set to today when this page opens, provided today is inside the supported 2026–2027 calendar range.'],
+      ['Regional results', 'Select a country and region before relying on the date because public-holiday calendars differ.'],
+      ['Planning use only', 'Verify legal, payroll, court, banking, and contractual deadlines with the responsible organization.']
+    ]
+  },
+  'business-days-vs-calendar-days': {
+    title: 'Business Days vs. Calendar Days',
+    metaTitle: 'Business Days vs. Calendar Days Explained | Exact Business Days',
+    description: 'Understand the difference between business days and calendar days, with examples and a calculator for exact deadline dates.',
+    eyebrow: 'Business days explained',
+    intro: 'Calendar days include every date. Business days usually exclude Saturdays, Sundays, and—when required—public holidays. Use the calculator to see how that difference changes a real deadline.',
+    cards: [
+      ['Calendar days', 'A calendar-day count includes weekdays, weekends, and public holidays. Seven calendar days always span one full week.'],
+      ['Business days', 'A business-day count normally includes Monday through Friday and may exclude public holidays for the selected jurisdiction.'],
+      ['Example: ten days', 'Ten calendar days are always ten consecutive dates. Ten business days usually span 14 calendar days before public holidays are considered.'],
+      ['Start-date rules matter', 'Some instructions count the starting day as day one; others begin on the following eligible business day. Use the Include start date option to match the rule.'],
+      ['Read the actual wording', 'Contracts and regulations may define “business day” differently. Always use the definition in the controlling document for important deadlines.']
+    ]
+  },
+  'business-days-by-month': {
+    title: 'Business Days by Month',
+    metaTitle: 'Business Days by Month 2026–2027 | Exact Business Days',
+    description: 'See business days by month for 2026 and 2027 by country and region, with public holidays and weekdays shown separately.',
+    eyebrow: 'Monthly business days',
+    intro: 'Compare weekdays, weekday public holidays, and resulting business days for every month in 2026 and 2027 using the selected country and region.',
+    cards: [
+      ['Month-by-month totals', 'The table separates raw Monday-to-Friday weekdays from weekday public holidays and final business-day totals.'],
+      ['Change the region', 'Use the calculator region selector, and the monthly table updates to that calendar.'],
+      ['Download the full dataset', 'CSV downloads include monthly totals for every supported region and can be opened in Excel, Google Sheets, or data tools.'],
+      ['Observed dates count', 'When an official observed date falls on a weekday, it is deducted from the weekday total.'],
+      ['Planning baseline', 'Employer, school, court, bank, municipal, and contract calendars may differ from official public-holiday calendars.']
+    ]
+  },
+  'germany/working-days': {
+    title: 'Germany Working Days Calculator',
+    metaTitle: 'Germany Working Days Calculator | Exact Business Days',
+    description: 'Calculate working days in Germany with all 16 federal-state holiday calendars for 2026 and 2027.',
+    eyebrow: 'Germany working days',
+    intro: 'Calculate working days in Germany with public-holiday options for all 16 federal states. Some municipal holidays are not statewide, so check important local deadlines.',
+    country: 'de', region: 'be',
+    cards: [
+      ['All German states', 'Choose Baden-Württemberg, Bavaria, Berlin, Brandenburg, Bremen, Hamburg, Hesse, Mecklenburg-Western Pomerania, Lower Saxony, North Rhine-Westphalia, Rhineland-Palatinate, Saarland, Saxony, Saxony-Anhalt, Schleswig-Holstein, or Thuringia.'],
+      ['State differences', 'German public holidays vary by federal state, so the same date range can produce different working-day totals.'],
+      ['Municipal exceptions', 'A few holidays apply only in specific municipalities. The calculator uses statewide planning calendars and explains this limitation.'],
+      ['Official reference', 'Coverage is reviewed against information from Germany’s Federal Ministry of the Interior.'],
+      ['Verify critical dates', 'Employment agreements, local rules, and organizational closures can affect actual working days.']
+    ]
+  },
+  'japan/business-days': {
+    title: 'Japan Business Days Calculator',
+    metaTitle: 'Japan Business Days Calculator | Exact Business Days',
+    description: 'Calculate business days in Japan using national holidays and substitute holidays for 2026 and 2027.',
+    eyebrow: 'Japan business days',
+    intro: 'Calculate business days in Japan using the Cabinet Office national-holiday calendar, including published substitute holidays for 2026 and 2027.',
+    country: 'jp', region: 'national',
+    cards: [
+      ['National holidays', 'The Japan calendar includes statutory national holidays and substitute holidays published for 2026 and 2027.'],
+      ['Golden Week planning', 'Several national holidays occur close together in late April and early May, making holiday-aware calculations especially useful.'],
+      ['Official reference', 'The source link points to the Cabinet Office of Japan holiday schedule.'],
+      ['Business practices differ', 'Company shutdowns, banking schedules, and industry practices may add non-working dates.'],
+      ['Check high-stakes deadlines', 'Confirm legal, immigration, banking, and contractual dates with the relevant authority.']
+    ]
+  },
+  'france/working-days': {
+    title: 'France Working Days Calculator',
+    metaTitle: 'France Working Days Calculator | Exact Business Days',
+    description: 'Calculate working days in France with national and Alsace-Moselle public-holiday options for 2026 and 2027.',
+    eyebrow: 'France working days',
+    intro: 'Calculate working days in France using the general national calendar or the additional holiday rules for Alsace-Moselle.',
+    country: 'fr', region: 'national',
+    cards: [
+      ['Two calendar options', 'Choose the general France calendar or Alsace-Moselle, which includes additional regional public holidays.'],
+      ['Official reference', 'Coverage is reviewed against France’s Service-Public holiday guidance.'],
+      ['Weekday holidays', 'Only public holidays falling on Monday through Friday reduce the business-day total.'],
+      ['Workplace differences', 'Collective agreements, sectors, and employers can treat non-working dates differently.'],
+      ['Planning use', 'Verify court, legal, payroll, and contractual deadlines with the relevant organization.']
+    ]
+  },
+  'ireland/working-days': {
+    title: 'Ireland Working Days Calculator',
+    metaTitle: 'Ireland Working Days Calculator | Exact Business Days',
+    description: 'Calculate working days in Ireland using statutory public holidays for 2026 and 2027.',
+    eyebrow: 'Ireland working days',
+    intro: 'Calculate working days in Ireland using statutory public holidays for 2026 and 2027.',
+    country: 'ie', region: 'national',
+    cards: [
+      ['Irish public holidays', 'The calendar includes Ireland’s statutory public holidays for the supported years.'],
+      ['Weekend nuance', 'Holiday-benefit rules do not always mean the next weekday becomes a public holiday when the date falls on a weekend.'],
+      ['Official reference', 'Coverage links to Ireland’s Workplace Relations Commission guidance.'],
+      ['Useful for planning', 'Estimate office schedules, invoice terms, response windows, and project timelines.'],
+      ['Confirm formal deadlines', 'Employment terms, banks, courts, and contracts may use different definitions.']
+    ]
+  },
+  'new-zealand/working-days': {
+    title: 'New Zealand Working Days Calculator',
+    metaTitle: 'New Zealand Working Days Calculator | Exact Business Days',
+    description: 'Calculate New Zealand working days with national and regional anniversary holidays for 2026 and 2027.',
+    eyebrow: 'New Zealand working days',
+    intro: 'Calculate working days in New Zealand with national public holidays and regional anniversary-day options.',
+    country: 'nz', region: 'auk',
+    cards: [
+      ['Regional anniversary days', 'Choose a region so the calendar can include the relevant anniversary-day observance.'],
+      ['Mondayisation', 'Some holidays move to a Monday or Tuesday depending on the calendar and the employee’s normal work pattern.'],
+      ['Official reference', 'Coverage links to Employment New Zealand public-holiday guidance.'],
+      ['Regional planning', 'The selected region can change business-day totals even when national holidays are identical.'],
+      ['Verify employment rules', 'Actual employee entitlements depend on work patterns and statutory rules.']
+    ]
+  },
+  'singapore/business-days': {
+    title: 'Singapore Business Days Calculator',
+    metaTitle: 'Singapore Business Days Calculator | Exact Business Days',
+    description: 'Calculate Singapore business days using gazetted public holidays and substitute days for 2026 and 2027.',
+    eyebrow: 'Singapore business days',
+    intro: 'Calculate business days in Singapore using gazetted public holidays and published substitute days for 2026 and 2027.',
+    country: 'sg', region: 'national',
+    cards: [
+      ['Gazetted holidays', 'The calendar uses Singapore public holidays and published substitute days for the supported years.'],
+      ['Official reference', 'Coverage links to the Ministry of Manpower public-holiday schedule.'],
+      ['Weekend handling', 'Saturday and Sunday are excluded by the calculator before public holidays are considered.'],
+      ['Practical planning', 'Estimate business response periods, shipment windows, office schedules, and invoice dates.'],
+      ['Confirm formal rules', 'Contracts, banks, employers, and government services may define deadlines differently.']
+    ]
+  },
+  'netherlands/working-days': {
+    title: 'Netherlands Working Days Calculator',
+    metaTitle: 'Netherlands Working Days Calculator | Exact Business Days',
+    description: 'Calculate working days in the Netherlands using official public holidays for 2026 and 2027.',
+    eyebrow: 'Netherlands working days',
+    intro: 'Calculate working days in the Netherlands using the official public-holiday list for 2026 and 2027.',
+    country: 'nl', region: 'national',
+    cards: [
+      ['Public holiday list', 'The calendar includes official Dutch public holidays, including Good Friday and Liberation Day.'],
+      ['Not automatically a day off', 'In the Netherlands, an official public holiday is not automatically a statutory day off for every employee.'],
+      ['Official reference', 'Coverage links to Government.nl guidance.'],
+      ['Agreement matters', 'Collective labour agreements and employment contracts determine many actual days off.'],
+      ['Use as a baseline', 'Use the result for planning, then confirm high-stakes dates with the relevant employer or authority.']
+    ]
+  },
+  'data/business-days-2026-2027': {
+    title: 'Business Days Data 2026–2027',
+    metaTitle: 'Business Days Dataset 2026–2027 | Exact Business Days',
+    description: 'Download free CSV data for 2026–2027 public holidays and monthly business-day totals across 11 countries and regional calendars.',
+    eyebrow: 'Open business-day data',
+    intro: 'Download machine-readable holiday and business-day data for every supported country and region. The files are free to use with attribution and include transparent source notes.',
+    cards: [
+      ['Four CSV downloads', 'Download individual holidays, monthly totals for 2026, monthly totals for 2027, or annual summaries.'],
+      ['115 calendars', 'Coverage spans 11 countries and 115 national, state, province, territory, or regional calendar selections.'],
+      ['Transparent sources', 'Each country links to an official government or employment-authority reference.'],
+      ['Useful for research', 'The data can support planning sheets, dashboards, deadline tools, and reproducible comparisons.'],
+      ['Corrections welcome', 'Holiday rules change. Check the data notes and official source before high-stakes use.']
+    ]
+  },
+  'embed': {
+    title: 'Embed the Business Days Calculator',
+    metaTitle: 'Embed a Free Business Days Calculator | Exact Business Days',
+    description: 'Add the free Exact Business Days calculator to your website with a simple responsive iframe embed.',
+    eyebrow: 'Free calculator embed',
+    intro: 'Add a compact, responsive business-days calculator to a resource page, intranet, or planning guide. No API key or account is required.',
+    cards: [
+      ['Simple iframe', 'Copy one small HTML snippet and paste it into a page that accepts iframe embeds.'],
+      ['Responsive layout', 'The widget is designed to fit narrow and wide content areas.'],
+      ['Visible attribution', 'The example includes a normal, visible source link so visitors can open the full calculator and review the methodology.'],
+      ['No hidden SEO tricks', 'The embed uses ordinary visible attribution and does not require keyword-stuffed or hidden links.'],
+      ['Free utility', 'The widget is provided for informational planning and remains subject to the site terms.']
+    ]
   }
 };
 const ROUTES = ['about', 'privacy', 'terms', 'contact', 'methodology', 'holiday-data', ...Object.keys(LANDING_PAGES)];
@@ -464,6 +653,8 @@ function applyQueryParams() {
   const includeStart = params.get('includeStart');
   if (includeStart === '0' || includeStart === 'false') state.includeStart = false;
   if (includeStart === '1' || includeStart === 'true') state.includeStart = true;
+
+  state.embed = params.get('embed') === '1';
 }
 
 function calculationUrl() {
@@ -479,16 +670,23 @@ function calculationUrl() {
   return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
 }
 
+function defaultStartDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  return SUPPORTED_HOLIDAY_YEARS.includes(year) ? today.toISOString().slice(0, 10) : `${MIN_HOLIDAY_YEAR}-01-01`;
+}
+
 let state = {
   page: routeToPage(),
   tab: 'between',
-  startDate: '2026-05-17',
+  startDate: defaultStartDate(),
   endDate: '2026-12-31',
   days: 10,
   includeStart: true,
   country: 'ca',
   region: 'on',
   excludeHolidays: true,
+  embed: false,
   help: null,
   toast: null
 };
@@ -497,6 +695,7 @@ function applyLandingDefaults(page) {
   const landing = LANDING_PAGES[page];
   if (!landing) return;
   if (landing.tab) state.tab = landing.tab;
+  if (landing.today) state.startDate = defaultStartDate();
   if (landing.startDate) state.startDate = landing.startDate;
   if (landing.endDate) state.endDate = landing.endDate;
   if (landing.country) state.country = landing.country;
@@ -564,6 +763,22 @@ function holidayListForRange(from, to) {
 function holidaySetForYear(year) { return new Set(holidaysForYear(year, state.country, state.region).map(([date]) => date)); }
 function isHoliday(date) { return state.excludeHolidays && holidaySetForYear(date.getUTCFullYear()).has(toKey(date)); }
 function isBusinessDay(date) { return !isWeekend(date) && !isHoliday(date); }
+
+function isBusinessDayFor(date, country, region, excludeHolidays = true) {
+  if (isWeekend(date)) return false;
+  if (!excludeHolidays) return true;
+  return !new Set(holidaysForYear(date.getUTCFullYear(), country, region).map(([holidayDate]) => holidayDate)).has(toKey(date));
+}
+
+function moveBusinessDaysFor(startValue, amount, country, region) {
+  let cursor = toDate(startValue);
+  let moved = 0;
+  while (moved < amount) {
+    cursor = addDays(cursor, 1);
+    if (isBusinessDayFor(cursor, country, region, true)) moved += 1;
+  }
+  return toKey(cursor);
+}
 function inCalendarRange(date) { const year = date.getUTCFullYear(); return year >= MIN_HOLIDAY_YEAR && year <= MAX_HOLIDAY_YEAR; }
 function endOfYearDate(value) { return `${toDate(value).getUTCFullYear()}-12-31`; }
 function calculationRange() {
@@ -737,7 +952,7 @@ function holidayTable() {
   return `<div class="holiday-list"><h3>Holidays excluded</h3>${holidays.map(([date, name]) => `<div><span>${name}</span><strong>${fmtShort.format(toDate(date))}</strong></div>`).join('')}</div>`;
 }
 function infoCards() {
-  return `<section class="info-grid" aria-label="Business day calculator information"><article><h3>What can this business days calculator do?</h3><p>Use it to count business days between two dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year.</p></article><article><h3>What counts as a business day?</h3><p>A business day usually means Monday through Friday. When holiday exclusion is turned on, selected public holidays for the chosen country and region are skipped too.</p></article><article><h3>Why use a working days calculator?</h3><p>Deadline math is easy to miscount, especially when weekends, holidays, date ranges, and start-date rules are involved. This tool shows the assumptions used in the result.</p></article><article><h3>Supported holiday calendars</h3><p>Holiday support currently includes 2026 and 2027 calendars for Canada, the United States, the United Kingdom, and Australia, with regional options included.</p></article><article><h3>Common uses</h3><p>People use business-day calculations for shipping estimates, payroll timing, invoice due dates, project deadlines, contract review periods, school deadlines, and time-off planning.</p></article><article><h3>Important note</h3><p>Business-day rules can vary by employer, industry, contract, city, or jurisdiction. Review the result before using it for legal, financial, payroll, or time-sensitive decisions.</p></article></section>`;
+  return `<section class="info-grid" aria-label="Business day calculator information"><article><h3>What can this business days calculator do?</h3><p>Use it to count business days between two dates, add business days to a start date, subtract business days from a deadline, or see how many business days are left in the year.</p></article><article><h3>What counts as a business day?</h3><p>A business day usually means Monday through Friday. When holiday exclusion is turned on, selected public holidays for the chosen country and region are skipped too.</p></article><article><h3>Why use a working days calculator?</h3><p>Deadline math is easy to miscount, especially when weekends, holidays, date ranges, and start-date rules are involved. This tool shows the assumptions used in the result.</p></article><article><h3>Supported holiday calendars</h3><p>Holiday support includes 2026 and 2027 calendars for 11 countries and 115 regional selections, including all U.S. states and all German states.</p></article><article><h3>Common uses</h3><p>People use business-day calculations for shipping estimates, payroll timing, invoice due dates, project deadlines, contract review periods, school deadlines, and time-off planning.</p></article><article><h3>Important note</h3><p>Business-day rules can vary by employer, industry, contract, city, or jurisdiction. Review the result before using it for legal, financial, payroll, or time-sensitive decisions.</p></article></section>`;
 }
 function footer() {
   return `<footer><div><strong>Exact Business Days</strong><p>Fast business-day and working-day calculations with clear assumptions.</p></div><nav aria-label="Footer navigation"><button data-route="about">About</button><button data-route="privacy">Privacy</button><button data-route="terms">Terms</button><button data-route="contact">Contact</button></nav></footer>`;
@@ -763,6 +978,69 @@ function landingFaq(page) {
   return `<section class="faq-section" aria-label="Frequently asked questions"><h2>Frequently asked questions</h2>${items.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join('')}</section>`;
 }
 
+function sourceSection(page) {
+  if (!page.country) return '';
+  const country = CALENDAR_DATA.countries[page.country];
+  return `<section class="source-card"><h2>Holiday calendar source</h2><p>${esc(country.coverageNote)}</p><p><a href="${esc(country.sourceUrl)}" rel="noopener noreferrer" target="_blank">${esc(country.sourceName)}</a></p><small>Calendar data prepared July 10, 2026 for the 2026 and 2027 supported years.</small></section>`;
+}
+
+function monthlyTotals(year, country, region) {
+  const holidayDates = new Set(holidaysForYear(year, country, region).map(([date]) => date));
+  return Array.from({ length: 12 }, (_, index) => {
+    const month = index + 1;
+    const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+    let weekdays = 0;
+    let weekdayHolidays = 0;
+    for (let day = 1; day <= daysInMonth; day += 1) {
+      const date = new Date(Date.UTC(year, index, day));
+      if (!isWeekend(date)) {
+        weekdays += 1;
+        if (holidayDates.has(toKey(date))) weekdayHolidays += 1;
+      }
+    }
+    return { month, weekdays, weekdayHolidays, businessDays: weekdays - weekdayHolidays };
+  });
+}
+
+function businessDaysByMonthSection() {
+  const country = COUNTRY_REGIONS[state.country].label;
+  const region = COUNTRY_REGIONS[state.country].regions[state.region];
+  const monthName = new Intl.DateTimeFormat('en-US', { month: 'long', timeZone: 'UTC' });
+  const table = (year) => `<div class="data-table-wrap"><h3>${year}</h3><table class="data-table"><thead><tr><th>Month</th><th>Weekdays</th><th>Weekday holidays</th><th>Business days</th></tr></thead><tbody>${monthlyTotals(year, state.country, state.region).map(row => `<tr><td>${monthName.format(new Date(Date.UTC(year, row.month - 1, 1)))}</td><td>${row.weekdays}</td><td>${row.weekdayHolidays}</td><td><strong>${row.businessDays}</strong></td></tr>`).join('')}</tbody></table></div>`;
+  return `<section class="source-card"><h2>Monthly totals for ${esc(region)}, ${esc(country)}</h2><p>Business days equal Monday-to-Friday weekdays minus the public holidays that fall on a weekday.</p><div class="year-tables">${SUPPORTED_HOLIDAY_YEARS.map(table).join('')}</div><p><a href="/data/business-days-by-month-2026.csv" download>Download all regions for 2026 (CSV)</a> · <a href="/data/business-days-by-month-2027.csv" download>Download all regions for 2027 (CSV)</a></p></section>`;
+}
+
+function quickDatesSection() {
+  const offsets = [5, 10, 15, 30, 60, 90];
+  const country = COUNTRY_REGIONS[state.country].label;
+  const region = COUNTRY_REGIONS[state.country].regions[state.region];
+  return `<section class="source-card"><h2>Common dates from ${esc(formatDate(state.startDate))}</h2><p>These dates skip weekends and public holidays for ${esc(region)}, ${esc(country)}.</p><div class="quick-date-grid">${offsets.map(days => `<div><strong>${days} business days</strong><span>${esc(formatDate(moveBusinessDaysFor(state.startDate, days, state.country, state.region)))}</span></div>`).join('')}</div></section>`;
+}
+
+function dataHubSection() {
+  const sourceRows = Object.values(CALENDAR_DATA.countries).map(country => `<tr><td>${esc(country.label)}</td><td>${Object.keys(country.regions).length}</td><td><a href="${esc(country.sourceUrl)}" rel="noopener noreferrer" target="_blank">Official source</a></td><td>${esc(country.coverageNote)}</td></tr>`).join('');
+  return `<section class="source-card"><h2>Download the data</h2><div class="download-grid">
+    <a href="/data/holidays-2026-2027.csv" download><strong>Holiday dates</strong><span>All 2026–2027 holiday records</span></a>
+    <a href="/data/business-days-by-month-2026.csv" download><strong>Monthly totals: 2026</strong><span>Every supported region</span></a>
+    <a href="/data/business-days-by-month-2027.csv" download><strong>Monthly totals: 2027</strong><span>Every supported region</span></a>
+    <a href="/data/business-days-summary-2026-2027.csv" download><strong>Annual summaries</strong><span>Weekdays, holidays, and business days</span></a>
+  </div><h2>Coverage and official references</h2><div class="data-table-wrap"><table class="data-table source-table"><thead><tr><th>Country</th><th>Calendars</th><th>Reference</th><th>Coverage note</th></tr></thead><tbody>${sourceRows}</tbody></table></div><p class="data-note">Prepared July 10, 2026. This is a planning dataset, not legal advice. Official rules, employer schedules, local observances, and later government changes can alter the dates that apply to a specific situation.</p></section>`;
+}
+
+const EMBED_CODE = `<iframe src="https://exactbusinessdays.com/?embed=1" title="Business Days Calculator" loading="lazy" style="width:100%;height:960px;border:0;border-radius:18px" referrerpolicy="strict-origin-when-cross-origin"></iframe>\n<p><a href="https://exactbusinessdays.com/">Business Days Calculator by Exact Business Days</a></p>`;
+
+function embedSection() {
+  return `<section class="source-card"><h2>Preview</h2><div class="embed-preview"><iframe src="/?embed=1" title="Business Days Calculator preview" loading="lazy"></iframe></div><h2>Copy this embed code</h2><pre class="code-block"><code>${esc(EMBED_CODE)}</code></pre><button class="copy-code" type="button" data-copy-embed>Copy embed code</button><p class="data-note">Keep the attribution visible and place the widget only on pages where it is useful to readers. The calculator does not create legal, payroll, or contractual advice.</p></section>`;
+}
+
+function specialLandingSection() {
+  if (state.page === 'business-days-from-today') return quickDatesSection();
+  if (state.page === 'business-days-by-month') return businessDaysByMonthSection();
+  if (state.page === 'data/business-days-2026-2027') return dataHubSection();
+  if (state.page === 'embed') return embedSection();
+  return '';
+}
+
 function internalLinks() {
   return `<section class="info-grid" aria-label="Popular business day calculator pages">
     <article>
@@ -774,6 +1052,8 @@ function internalLinks() {
         <li><a href="/add-business-days/">Add Business Days</a></li>
         <li><a href="/business-days-between-dates/">Business Days Between Dates</a></li>
         <li><a href="/holiday-business-days/">Holiday Business Days</a></li>
+        <li><a href="/business-days-from-today/">Business Days From Today</a></li>
+        <li><a href="/business-days-vs-calendar-days/">Business Days vs. Calendar Days</a></li>
       </ul>
     </article>
     <article>
@@ -783,6 +1063,7 @@ function internalLinks() {
         <li><a href="/business-days-in-2026/">Business Days in 2026</a></li>
         <li><a href="/business-days-in-2027/">Business Days in 2027</a></li>
         <li><a href="/us/state-business-days/">U.S. State Business Days</a></li>
+        <li><a href="/business-days-by-month/">Business Days by Month</a></li>
       </ul>
     </article>
     <article>
@@ -793,6 +1074,13 @@ function internalLinks() {
         <li><a href="/us/business-days/">U.S. Business Days</a></li>
         <li><a href="/uk/working-days/">UK Working Days</a></li>
         <li><a href="/australia/working-days/">Australia Working Days</a></li>
+        <li><a href="/germany/working-days/">Germany Working Days</a></li>
+        <li><a href="/japan/business-days/">Japan Business Days</a></li>
+        <li><a href="/france/working-days/">France Working Days</a></li>
+        <li><a href="/ireland/working-days/">Ireland Working Days</a></li>
+        <li><a href="/new-zealand/working-days/">New Zealand Working Days</a></li>
+        <li><a href="/singapore/business-days/">Singapore Business Days</a></li>
+        <li><a href="/netherlands/working-days/">Netherlands Working Days</a></li>
       </ul>
     </article>
     <article>
@@ -801,23 +1089,27 @@ function internalLinks() {
       <ul class="link-list">
         <li><a href="/methodology/">Calculation Methodology</a></li>
         <li><a href="/holiday-data/">Holiday Data Coverage</a></li>
+        <li><a href="/data/business-days-2026-2027/">Download Business Days Data</a></li>
+        <li><a href="/embed/">Embed the Calculator</a></li>
       </ul>
     </article>
   </section>`;
 }
 function landingPage(page) {
-  return `<main>${landingHero(page)}${form()}${landingCards(page)}${landingFaq(page)}${internalLinks()}</main>`;
+  const calculator = ['data/business-days-2026-2027', 'embed'].includes(state.page) ? '' : form();
+  return `<main>${landingHero(page)}${calculator}${specialLandingSection()}${sourceSection(page)}${landingCards(page)}${landingFaq(page)}${internalLinks()}</main>`;
 }
 function staticPage(title, eyebrow, paragraphs) {
   return `<main class="page"><section class="static-page"><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><div class="content-card">${paragraphs.map(p => `<p>${p}</p>`).join('')}</div></section></main>`;
 }
 function pageContent() {
-  if (state.page === 'about') return staticPage('About Exact Business Days', 'About', ['Exact Business Days is a simple free utility for counting business days, working days, weekdays, public holidays, and deadline dates.', 'The goal is to keep the tool fast, clear, and easy to use. Every result shows what was included, what was excluded, and which assumptions were used.', 'The current version includes 2026 and 2027 regional holiday calendars for Canada, the United States, the United Kingdom, and Australia.']);
+  if (state.embed) return `<main class="embed-shell">${form()}<p class="embed-credit"><a href="https://exactbusinessdays.com/" target="_blank" rel="noopener">Open the full Exact Business Days calculator</a></p></main>`;
+  if (state.page === 'about') return staticPage('About Exact Business Days', 'About', ['Exact Business Days is a simple free utility for counting business days, working days, weekdays, public holidays, and deadline dates.', 'The goal is to keep the tool fast, clear, and easy to use. Every result shows what was included, what was excluded, and which assumptions were used.', 'The current version includes 2026 and 2027 calendars for 11 countries and 115 regional selections, including all 50 U.S. states plus Washington, DC and all 16 German states.']);
   if (state.page === 'privacy') return staticPage('Privacy Policy', 'Privacy', ['Exact Business Days is currently a simple calculator site. We do not require user accounts, and we do not ask visitors to submit personal information to use the calculator.', 'Basic technical information may be processed by hosting, security, and analytics providers to keep the site available, secure, and working properly.', 'Last updated: May 17, 2026.']);
   if (state.page === 'terms') return staticPage('Terms of Use', 'Terms', ['Exact Business Days is provided as a free informational tool. The calculator is intended to help users estimate business days, working days, weekdays, and deadline dates.', 'Results should be reviewed before being used for legal, financial, payroll, contractual, shipping, or other time-sensitive decisions. Rules can vary by jurisdiction, organization, and context.', 'Last updated: May 17, 2026.']);
   if (state.page === 'contact') return staticPage('Contact', 'Contact', ['Have feedback, a holiday correction, or a region you want supported next?', 'For now, please contact the site owner directly through the domain owner or project administrator. A dedicated contact form or email address will be added in a future update.']);
-  if (state.page === 'methodology') return staticPage('How Exact Business Days Calculates Working Days', 'Methodology', ['Exact Business Days counts business days by moving through each calendar date in the selected range or direction and checking whether that date is eligible to count.', 'Saturdays and Sundays are excluded by default. When Weekends + holidays is selected, public holidays from the selected country and region are excluded too.', 'The Include start date option controls whether the first date can count as day one when it is itself a valid business day. Add days and Subtract days move forward or backward until the requested number of eligible business days has been reached.', 'The current holiday logic supports 2026 and 2027. If a range crosses from 2026 into 2027, the calculator uses the holiday data for each year where available.', 'Business-day definitions can vary by employer, contract, industry, bank, court, city, province, state, territory, or country. Use the result as a planning tool and review important legal, payroll, financial, shipping, or contractual deadlines before relying on them.']);
-  if (state.page === 'holiday-data') return staticPage('Holiday Data Coverage', 'Holiday data', ['Exact Business Days currently supports 2026 and 2027 holiday calendars for Canada, the United States, the United Kingdom, and Australia.', 'Canada includes province and territory options: Alberta, British Columbia, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Northwest Territories, Nunavut, Ontario, Prince Edward Island, Quebec, Saskatchewan, and Yukon.', 'The United States includes federal holidays plus selected high-value state calendars: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, New Jersey, Michigan, Virginia, Washington, Arizona, Tennessee, Massachusetts, Indiana, Maryland, Missouri, and Colorado.', 'The United Kingdom includes England and Wales, Scotland, and Northern Ireland bank holiday calendars.', 'Australia includes New South Wales, Victoria, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.', 'Some holidays are not observed by every employer or industry, and some local or optional holidays may not apply to all businesses. Always check the relevant official, contractual, or employer-specific rules for critical deadlines.']);
+  if (state.page === 'methodology') return staticPage('How Exact Business Days Calculates Working Days', 'Methodology', ['Exact Business Days counts business days by moving through each calendar date in the selected range or direction and checking whether that date is eligible to count.', 'Saturdays and Sundays are excluded by default. When Weekends + holidays is selected, public holidays from the selected country and region are excluded too.', 'The Include start date option controls whether the first date can count as day one when it is itself a valid business day. Add days and Subtract days move forward or backward until the requested number of eligible business days has been reached.', 'Holiday calendars are generated for 2026 and 2027, cross-checked against the linked government sources, and frozen into the site build so calculations do not depend on a third-party API at runtime.', 'Observed dates and substitute holidays are included where the source calendar provides them. Weekend holidays remain in the data for transparency but do not reduce a Monday-to-Friday total unless an observed weekday is also listed.', 'Business-day definitions can vary by employer, contract, industry, bank, court, city, province, state, territory, or country. Use the result as a planning tool and review important legal, payroll, financial, shipping, or contractual deadlines before relying on them.']);
+  if (state.page === 'holiday-data') return `<main class="page"><section class="static-page"><div class="eyebrow">Holiday data</div><h1>Holiday Data Coverage</h1><div class="content-card"><p>Exact Business Days supports 2026 and 2027 holiday calendars for 11 countries and 115 national or regional selections.</p><p>The United States includes the federal calendar, all 50 states, and Washington, DC. Germany includes all 16 federal states. Canada, the United Kingdom, Australia, France, and New Zealand include regional choices where relevant.</p><p>Japan, Ireland, Singapore, and the Netherlands use national calendars. Some holidays, local observances, employer closures, and employee entitlements can differ from the planning calendar shown here.</p><p>Data was prepared July 10, 2026. Review the official sources and coverage notes below before high-stakes use.</p></div></section>${dataHubSection()}</main>`;
   if (LANDING_PAGES[state.page]) return landingPage(LANDING_PAGES[state.page]);
   return `<main>${hero()}${form()}${infoCards()}${internalLinks()}</main>`;
 }
@@ -856,7 +1148,8 @@ function updateMeta() {
 }
 function render() {
   updateMeta();
-  $('app').innerHTML = `${nav()}${pageContent()}${footer()}${helpSheet()}`;
+  document.body.classList.toggle('embed-mode', state.embed);
+  $('app').innerHTML = state.embed ? `${pageContent()}${helpSheet()}` : `${nav()}${pageContent()}${footer()}${helpSheet()}`;
   bind();
 }
 function bind() {
@@ -870,13 +1163,15 @@ function bind() {
   ['startDate','endDate'].forEach(id => { const el = $(id); if (el) el.addEventListener('change', () => { state[id] = el.value; render(); }); });
   const days = $('days'); if (days) days.addEventListener('input', () => { state.days = Math.max(0, Number(days.value || 0)); render(); });
   const include = $('includeStart'); if (include) include.addEventListener('change', () => { state.includeStart = include.checked; render(); });
-  const country = $('country'); if (country) country.addEventListener('change', () => { state.country = country.value; state.region = Object.keys(COUNTRY_REGIONS[state.country].regions)[0]; render(); });
+  const country = $('country'); if (country) country.addEventListener('change', () => { state.country = country.value; state.region = CALENDAR_DATA.countries[state.country].defaultRegion; render(); });
   const region = $('region'); if (region) region.addEventListener('change', () => { state.region = region.value; render(); });
   const holidays = $('excludeHolidays'); if (holidays) holidays.addEventListener('change', () => { state.excludeHolidays = holidays.checked; render(); });
   const copyResult = document.querySelector('[data-copy-result]');
   if (copyResult) copyResult.addEventListener('click', () => copyText(resultText(), 'Result copied.'));
   const copyLink = document.querySelector('[data-copy-link]');
   if (copyLink) copyLink.addEventListener('click', () => copyText(calculationUrl(), 'Share link copied.'));
+  const copyEmbed = document.querySelector('[data-copy-embed]');
+  if (copyEmbed) copyEmbed.addEventListener('click', () => copyText(EMBED_CODE, 'Embed code copied.'));
 }
 
 render();

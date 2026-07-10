@@ -1,0 +1,231 @@
+country_key,country,region_key,region,year,weekdays,public_holidays_on_weekdays,business_days
+ca,Canada,ab,Alberta,2026,261,9,252
+ca,Canada,ab,Alberta,2027,261,8,253
+ca,Canada,bc,British Columbia,2026,261,10,251
+ca,Canada,bc,British Columbia,2027,261,9,252
+ca,Canada,mb,Manitoba,2026,261,10,251
+ca,Canada,mb,Manitoba,2027,261,9,252
+ca,Canada,nb,New Brunswick,2026,261,10,251
+ca,Canada,nb,New Brunswick,2027,261,9,252
+ca,Canada,nl,Newfoundland and Labrador,2026,261,9,252
+ca,Canada,nl,Newfoundland and Labrador,2027,261,8,253
+ca,Canada,ns,Nova Scotia,2026,261,10,251
+ca,Canada,ns,Nova Scotia,2027,261,9,252
+ca,Canada,nt,Northwest Territories,2026,261,9,252
+ca,Canada,nt,Northwest Territories,2027,261,9,252
+ca,Canada,nu,Nunavut,2026,261,9,252
+ca,Canada,nu,Nunavut,2027,261,8,253
+ca,Canada,on,Ontario,2026,261,11,250
+ca,Canada,on,Ontario,2027,261,10,251
+ca,Canada,pe,Prince Edward Island,2026,261,11,250
+ca,Canada,pe,Prince Edward Island,2027,261,10,251
+ca,Canada,qc,Quebec,2026,261,11,250
+ca,Canada,qc,Quebec,2027,261,10,251
+ca,Canada,sk,Saskatchewan,2026,261,10,251
+ca,Canada,sk,Saskatchewan,2027,261,9,252
+ca,Canada,yt,Yukon,2026,261,11,250
+ca,Canada,yt,Yukon,2027,261,11,250
+us,United States,federal,Federal holidays,2026,261,11,250
+us,United States,federal,Federal holidays,2027,261,12,249
+us,United States,al,Alabama,2026,261,13,248
+us,United States,al,Alabama,2027,261,14,247
+us,United States,ak,Alaska,2026,261,12,249
+us,United States,ak,Alaska,2027,261,14,247
+us,United States,az,Arizona,2026,261,11,250
+us,United States,az,Arizona,2027,261,12,249
+us,United States,ar,Arkansas,2026,261,12,249
+us,United States,ar,Arkansas,2027,261,12,249
+us,United States,ca,California,2026,261,12,249
+us,United States,ca,California,2027,261,13,248
+us,United States,co,Colorado,2026,261,10,251
+us,United States,co,Colorado,2027,261,11,250
+us,United States,ct,Connecticut,2026,261,13,248
+us,United States,ct,Connecticut,2027,261,14,247
+us,United States,de,Delaware,2026,261,12,249
+us,United States,de,Delaware,2027,261,12,249
+us,United States,dc,District of Columbia,2026,261,12,249
+us,United States,dc,District of Columbia,2027,261,13,248
+us,United States,fl,Florida,2026,261,11,250
+us,United States,fl,Florida,2027,261,12,249
+us,United States,ga,Georgia,2026,261,13,248
+us,United States,ga,Georgia,2027,261,13,248
+us,United States,hi,Hawaii,2026,261,15,246
+us,United States,hi,Hawaii,2027,261,14,247
+us,United States,id,Idaho,2026,261,11,250
+us,United States,id,Idaho,2027,261,12,249
+us,United States,il,Illinois,2026,261,15,246
+us,United States,il,Illinois,2027,261,15,246
+us,United States,in,Indiana,2026,261,15,246
+us,United States,in,Indiana,2027,261,16,245
+us,United States,ia,Iowa,2026,261,12,249
+us,United States,ia,Iowa,2027,261,13,248
+us,United States,ks,Kansas,2026,261,10,251
+us,United States,ks,Kansas,2027,261,11,250
+us,United States,ky,Kentucky,2026,261,13,248
+us,United States,ky,Kentucky,2027,261,12,249
+us,United States,la,Louisiana,2026,261,13,248
+us,United States,la,Louisiana,2027,261,13,248
+us,United States,me,Maine,2026,261,12,249
+us,United States,me,Maine,2027,261,13,248
+us,United States,md,Maryland,2026,261,12,249
+us,United States,md,Maryland,2027,261,13,248
+us,United States,ma,Massachusetts,2026,261,14,247
+us,United States,ma,Massachusetts,2027,261,15,246
+us,United States,mi,Michigan,2026,261,13,248
+us,United States,mi,Michigan,2027,261,12,249
+us,United States,mn,Minnesota,2026,261,11,250
+us,United States,mn,Minnesota,2027,261,12,249
+us,United States,ms,Mississippi,2026,261,12,249
+us,United States,ms,Mississippi,2027,261,13,248
+us,United States,mo,Missouri,2026,261,13,248
+us,United States,mo,Missouri,2027,261,13,248
+us,United States,mt,Montana,2026,261,14,247
+us,United States,mt,Montana,2027,261,13,248
+us,United States,ne,Nebraska,2026,261,12,249
+us,United States,ne,Nebraska,2027,261,13,248
+us,United States,nv,Nevada,2026,261,12,249
+us,United States,nv,Nevada,2027,261,13,248
+us,United States,nh,New Hampshire,2026,261,12,249
+us,United States,nh,New Hampshire,2027,261,12,249
+us,United States,nj,New Jersey,2026,261,14,247
+us,United States,nj,New Jersey,2027,261,15,246
+us,United States,nm,New Mexico,2026,261,12,249
+us,United States,nm,New Mexico,2027,261,13,248
+us,United States,ny,New York,2026,261,13,248
+us,United States,ny,New York,2027,261,14,247
+us,United States,nc,North Carolina,2026,261,12,249
+us,United States,nc,North Carolina,2027,261,13,248
+us,United States,nd,North Dakota,2026,261,11,250
+us,United States,nd,North Dakota,2027,261,12,249
+us,United States,oh,Ohio,2026,261,11,250
+us,United States,oh,Ohio,2027,261,12,249
+us,United States,ok,Oklahoma,2026,261,12,249
+us,United States,ok,Oklahoma,2027,261,13,248
+us,United States,or,Oregon,2026,261,11,250
+us,United States,or,Oregon,2027,261,12,249
+us,United States,pa,Pennsylvania,2026,261,11,250
+us,United States,pa,Pennsylvania,2027,261,13,248
+us,United States,ri,Rhode Island,2026,261,12,249
+us,United States,ri,Rhode Island,2027,261,13,248
+us,United States,sc,South Carolina,2026,261,11,250
+us,United States,sc,South Carolina,2027,261,13,248
+us,United States,sd,South Dakota,2026,261,11,250
+us,United States,sd,South Dakota,2027,261,12,249
+us,United States,tn,Tennessee,2026,261,13,248
+us,United States,tn,Tennessee,2027,261,13,248
+us,United States,tx,Texas,2026,261,13,248
+us,United States,tx,Texas,2027,261,13,248
+us,United States,ut,Utah,2026,261,12,249
+us,United States,ut,Utah,2027,261,12,249
+us,United States,vt,Vermont,2026,261,13,248
+us,United States,vt,Vermont,2027,261,14,247
+us,United States,va,Virginia,2026,261,12,249
+us,United States,va,Virginia,2027,261,12,249
+us,United States,wa,Washington,2026,261,11,250
+us,United States,wa,Washington,2027,261,12,249
+us,United States,wv,West Virginia,2026,261,12,249
+us,United States,wv,West Virginia,2027,261,13,248
+us,United States,wi,Wisconsin,2026,261,13,248
+us,United States,wi,Wisconsin,2027,261,14,247
+us,United States,wy,Wyoming,2026,261,11,250
+us,United States,wy,Wyoming,2027,261,12,249
+uk,United Kingdom,england,England and Wales,2026,261,8,253
+uk,United Kingdom,england,England and Wales,2027,261,8,253
+uk,United Kingdom,scotland,Scotland,2026,261,10,251
+uk,United Kingdom,scotland,Scotland,2027,261,9,252
+uk,United Kingdom,ni,Northern Ireland,2026,261,10,251
+uk,United Kingdom,ni,Northern Ireland,2027,261,10,251
+au,Australia,act,Australian Capital Territory,2026,261,11,250
+au,Australia,act,Australian Capital Territory,2027,261,11,250
+au,Australia,nsw,New South Wales,2026,261,9,252
+au,Australia,nsw,New South Wales,2027,261,9,252
+au,Australia,nt,Northern Territory,2026,261,11,250
+au,Australia,nt,Northern Territory,2027,261,12,249
+au,Australia,qld,Queensland,2026,261,9,252
+au,Australia,qld,Queensland,2027,261,10,251
+au,Australia,sa,South Australia,2026,261,11,250
+au,Australia,sa,South Australia,2027,261,11,250
+au,Australia,tas,Tasmania,2026,261,8,253
+au,Australia,tas,Tasmania,2027,261,8,253
+au,Australia,vic,Victoria,2026,261,10,251
+au,Australia,vic,Victoria,2027,261,10,251
+au,Australia,wa,Western Australia,2026,261,10,251
+au,Australia,wa,Western Australia,2027,261,10,251
+de,Germany,bb,Brandenburg,2026,261,7,254
+de,Germany,bb,Brandenburg,2027,261,5,256
+de,Germany,be,Berlin,2026,261,7,254
+de,Germany,be,Berlin,2027,261,6,255
+de,Germany,bw,Baden-Württemberg,2026,261,9,252
+de,Germany,bw,Baden-Württemberg,2027,261,8,253
+de,Germany,by,Bayern,2026,261,9,252
+de,Germany,by,Bayern,2027,261,8,253
+de,Germany,hb,Hansestadt Bremen,2026,261,7,254
+de,Germany,hb,Hansestadt Bremen,2027,261,5,256
+de,Germany,he,Hessen,2026,261,8,253
+de,Germany,he,Hessen,2027,261,6,255
+de,Germany,hh,Hansestadt Hamburg,2026,261,7,254
+de,Germany,hh,Hansestadt Hamburg,2027,261,5,256
+de,Germany,mv,Mecklenburg-Vorpommern,2026,261,7,254
+de,Germany,mv,Mecklenburg-Vorpommern,2027,261,6,255
+de,Germany,ni,Niedersachsen,2026,261,7,254
+de,Germany,ni,Niedersachsen,2027,261,5,256
+de,Germany,nw,Nordrhein-Westfalen,2026,261,8,253
+de,Germany,nw,Nordrhein-Westfalen,2027,261,7,254
+de,Germany,rp,Rheinland-Pfalz,2026,261,8,253
+de,Germany,rp,Rheinland-Pfalz,2027,261,7,254
+de,Germany,sh,Schleswig-Holstein,2026,261,7,254
+de,Germany,sh,Schleswig-Holstein,2027,261,5,256
+de,Germany,sl,Saarland,2026,261,8,253
+de,Germany,sl,Saarland,2027,261,7,254
+de,Germany,sn,Sachsen,2026,261,8,253
+de,Germany,sn,Sachsen,2027,261,6,255
+de,Germany,st,Sachsen-Anhalt,2026,261,8,253
+de,Germany,st,Sachsen-Anhalt,2027,261,6,255
+de,Germany,th,Thüringen,2026,261,7,254
+de,Germany,th,Thüringen,2027,261,6,255
+jp,Japan,national,National holidays,2026,261,17,244
+jp,Japan,national,National holidays,2027,261,16,245
+fr,France,national,Metropolitan France,2026,261,9,252
+fr,France,national,Metropolitan France,2027,261,7,254
+fr,France,alsace-moselle,Alsace-Moselle,2026,261,10,251
+fr,France,alsace-moselle,Alsace-Moselle,2027,261,8,253
+ie,Ireland,national,National holidays,2026,261,9,252
+ie,Ireland,national,National holidays,2027,261,8,253
+nz,New Zealand,auk,Auckland Province,2026,261,12,249
+nz,New Zealand,auk,Auckland Province,2027,261,12,249
+nz,New Zealand,bop,Bay of Plenty,2026,261,12,249
+nz,New Zealand,bop,Bay of Plenty,2027,261,12,249
+nz,New Zealand,can,Canterbury,2026,261,12,249
+nz,New Zealand,can,Canterbury,2027,261,12,249
+nz,New Zealand,cit,Chatham Islands,2026,261,12,249
+nz,New Zealand,cit,Chatham Islands,2027,261,12,249
+nz,New Zealand,gis,Gisborne,2026,261,12,249
+nz,New Zealand,gis,Gisborne,2027,261,12,249
+nz,New Zealand,hkb,Hawke's Bay,2026,261,12,249
+nz,New Zealand,hkb,Hawke's Bay,2027,261,12,249
+nz,New Zealand,mbh,Marlborough,2026,261,12,249
+nz,New Zealand,mbh,Marlborough,2027,261,12,249
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,261,12,249
+nz,New Zealand,mwt,Manawatu-Wanganui,2027,261,12,249
+nz,New Zealand,nsn,Nelson,2026,261,12,249
+nz,New Zealand,nsn,Nelson,2027,261,12,249
+nz,New Zealand,ntl,Northland,2026,261,12,249
+nz,New Zealand,ntl,Northland,2027,261,12,249
+nz,New Zealand,ota,Otago Province,2026,261,12,249
+nz,New Zealand,ota,Otago Province,2027,261,12,249
+nz,New Zealand,stl,Southland,2026,261,12,249
+nz,New Zealand,stl,Southland,2027,261,12,249
+nz,New Zealand,tas,Tasman,2026,261,12,249
+nz,New Zealand,tas,Tasman,2027,261,12,249
+nz,New Zealand,tki,Taranaki,2026,261,12,249
+nz,New Zealand,tki,Taranaki,2027,261,12,249
+nz,New Zealand,wko,Waikato,2026,261,12,249
+nz,New Zealand,wko,Waikato,2027,261,12,249
+nz,New Zealand,wgn,Wellington Province,2026,261,12,249
+nz,New Zealand,wgn,Wellington Province,2027,261,12,249
+nz,New Zealand,wtc,Westland,2026,261,12,249
+nz,New Zealand,wtc,Westland,2027,261,12,249
+sg,Singapore,national,National holidays,2026,261,10,251
+sg,Singapore,national,National holidays,2027,261,6,255
+nl,Netherlands,national,National holidays,2026,261,8,253
+nl,Netherlands,national,National holidays,2027,261,7,254

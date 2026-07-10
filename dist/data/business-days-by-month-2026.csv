@@ -1,0 +1,1381 @@
+country_key,country,region_key,region,year,month_number,month,weekdays,public_holidays_on_weekdays,business_days
+ca,Canada,ab,Alberta,2026,1,January,22,1,21
+ca,Canada,ab,Alberta,2026,2,February,20,1,19
+ca,Canada,ab,Alberta,2026,3,March,22,0,22
+ca,Canada,ab,Alberta,2026,4,April,22,1,21
+ca,Canada,ab,Alberta,2026,5,May,21,1,20
+ca,Canada,ab,Alberta,2026,6,June,22,0,22
+ca,Canada,ab,Alberta,2026,7,July,23,1,22
+ca,Canada,ab,Alberta,2026,8,August,21,0,21
+ca,Canada,ab,Alberta,2026,9,September,22,1,21
+ca,Canada,ab,Alberta,2026,10,October,22,1,21
+ca,Canada,ab,Alberta,2026,11,November,21,1,20
+ca,Canada,ab,Alberta,2026,12,December,23,1,22
+ca,Canada,bc,British Columbia,2026,1,January,22,1,21
+ca,Canada,bc,British Columbia,2026,2,February,20,1,19
+ca,Canada,bc,British Columbia,2026,3,March,22,0,22
+ca,Canada,bc,British Columbia,2026,4,April,22,1,21
+ca,Canada,bc,British Columbia,2026,5,May,21,1,20
+ca,Canada,bc,British Columbia,2026,6,June,22,0,22
+ca,Canada,bc,British Columbia,2026,7,July,23,1,22
+ca,Canada,bc,British Columbia,2026,8,August,21,1,20
+ca,Canada,bc,British Columbia,2026,9,September,22,1,21
+ca,Canada,bc,British Columbia,2026,10,October,22,1,21
+ca,Canada,bc,British Columbia,2026,11,November,21,1,20
+ca,Canada,bc,British Columbia,2026,12,December,23,1,22
+ca,Canada,mb,Manitoba,2026,1,January,22,1,21
+ca,Canada,mb,Manitoba,2026,2,February,20,1,19
+ca,Canada,mb,Manitoba,2026,3,March,22,0,22
+ca,Canada,mb,Manitoba,2026,4,April,22,1,21
+ca,Canada,mb,Manitoba,2026,5,May,21,1,20
+ca,Canada,mb,Manitoba,2026,6,June,22,0,22
+ca,Canada,mb,Manitoba,2026,7,July,23,1,22
+ca,Canada,mb,Manitoba,2026,8,August,21,1,20
+ca,Canada,mb,Manitoba,2026,9,September,22,1,21
+ca,Canada,mb,Manitoba,2026,10,October,22,1,21
+ca,Canada,mb,Manitoba,2026,11,November,21,1,20
+ca,Canada,mb,Manitoba,2026,12,December,23,1,22
+ca,Canada,nb,New Brunswick,2026,1,January,22,1,21
+ca,Canada,nb,New Brunswick,2026,2,February,20,1,19
+ca,Canada,nb,New Brunswick,2026,3,March,22,0,22
+ca,Canada,nb,New Brunswick,2026,4,April,22,1,21
+ca,Canada,nb,New Brunswick,2026,5,May,21,1,20
+ca,Canada,nb,New Brunswick,2026,6,June,22,0,22
+ca,Canada,nb,New Brunswick,2026,7,July,23,1,22
+ca,Canada,nb,New Brunswick,2026,8,August,21,1,20
+ca,Canada,nb,New Brunswick,2026,9,September,22,1,21
+ca,Canada,nb,New Brunswick,2026,10,October,22,1,21
+ca,Canada,nb,New Brunswick,2026,11,November,21,1,20
+ca,Canada,nb,New Brunswick,2026,12,December,23,1,22
+ca,Canada,nl,Newfoundland and Labrador,2026,1,January,22,1,21
+ca,Canada,nl,Newfoundland and Labrador,2026,2,February,20,0,20
+ca,Canada,nl,Newfoundland and Labrador,2026,3,March,22,0,22
+ca,Canada,nl,Newfoundland and Labrador,2026,4,April,22,1,21
+ca,Canada,nl,Newfoundland and Labrador,2026,5,May,21,1,20
+ca,Canada,nl,Newfoundland and Labrador,2026,6,June,22,0,22
+ca,Canada,nl,Newfoundland and Labrador,2026,7,July,23,1,22
+ca,Canada,nl,Newfoundland and Labrador,2026,8,August,21,1,20
+ca,Canada,nl,Newfoundland and Labrador,2026,9,September,22,1,21
+ca,Canada,nl,Newfoundland and Labrador,2026,10,October,22,1,21
+ca,Canada,nl,Newfoundland and Labrador,2026,11,November,21,1,20
+ca,Canada,nl,Newfoundland and Labrador,2026,12,December,23,1,22
+ca,Canada,ns,Nova Scotia,2026,1,January,22,1,21
+ca,Canada,ns,Nova Scotia,2026,2,February,20,1,19
+ca,Canada,ns,Nova Scotia,2026,3,March,22,0,22
+ca,Canada,ns,Nova Scotia,2026,4,April,22,1,21
+ca,Canada,ns,Nova Scotia,2026,5,May,21,1,20
+ca,Canada,ns,Nova Scotia,2026,6,June,22,0,22
+ca,Canada,ns,Nova Scotia,2026,7,July,23,1,22
+ca,Canada,ns,Nova Scotia,2026,8,August,21,1,20
+ca,Canada,ns,Nova Scotia,2026,9,September,22,1,21
+ca,Canada,ns,Nova Scotia,2026,10,October,22,1,21
+ca,Canada,ns,Nova Scotia,2026,11,November,21,1,20
+ca,Canada,ns,Nova Scotia,2026,12,December,23,1,22
+ca,Canada,nt,Northwest Territories,2026,1,January,22,1,21
+ca,Canada,nt,Northwest Territories,2026,2,February,20,0,20
+ca,Canada,nt,Northwest Territories,2026,3,March,22,0,22
+ca,Canada,nt,Northwest Territories,2026,4,April,22,1,21
+ca,Canada,nt,Northwest Territories,2026,5,May,21,1,20
+ca,Canada,nt,Northwest Territories,2026,6,June,22,0,22
+ca,Canada,nt,Northwest Territories,2026,7,July,23,1,22
+ca,Canada,nt,Northwest Territories,2026,8,August,21,1,20
+ca,Canada,nt,Northwest Territories,2026,9,September,22,1,21
+ca,Canada,nt,Northwest Territories,2026,10,October,22,1,21
+ca,Canada,nt,Northwest Territories,2026,11,November,21,1,20
+ca,Canada,nt,Northwest Territories,2026,12,December,23,1,22
+ca,Canada,nu,Nunavut,2026,1,January,22,1,21
+ca,Canada,nu,Nunavut,2026,2,February,20,0,20
+ca,Canada,nu,Nunavut,2026,3,March,22,0,22
+ca,Canada,nu,Nunavut,2026,4,April,22,1,21
+ca,Canada,nu,Nunavut,2026,5,May,21,1,20
+ca,Canada,nu,Nunavut,2026,6,June,22,0,22
+ca,Canada,nu,Nunavut,2026,7,July,23,1,22
+ca,Canada,nu,Nunavut,2026,8,August,21,1,20
+ca,Canada,nu,Nunavut,2026,9,September,22,1,21
+ca,Canada,nu,Nunavut,2026,10,October,22,1,21
+ca,Canada,nu,Nunavut,2026,11,November,21,1,20
+ca,Canada,nu,Nunavut,2026,12,December,23,1,22
+ca,Canada,on,Ontario,2026,1,January,22,1,21
+ca,Canada,on,Ontario,2026,2,February,20,1,19
+ca,Canada,on,Ontario,2026,3,March,22,0,22
+ca,Canada,on,Ontario,2026,4,April,22,2,20
+ca,Canada,on,Ontario,2026,5,May,21,1,20
+ca,Canada,on,Ontario,2026,6,June,22,0,22
+ca,Canada,on,Ontario,2026,7,July,23,1,22
+ca,Canada,on,Ontario,2026,8,August,21,1,20
+ca,Canada,on,Ontario,2026,9,September,22,1,21
+ca,Canada,on,Ontario,2026,10,October,22,1,21
+ca,Canada,on,Ontario,2026,11,November,21,1,20
+ca,Canada,on,Ontario,2026,12,December,23,1,22
+ca,Canada,pe,Prince Edward Island,2026,1,January,22,1,21
+ca,Canada,pe,Prince Edward Island,2026,2,February,20,1,19
+ca,Canada,pe,Prince Edward Island,2026,3,March,22,0,22
+ca,Canada,pe,Prince Edward Island,2026,4,April,22,1,21
+ca,Canada,pe,Prince Edward Island,2026,5,May,21,1,20
+ca,Canada,pe,Prince Edward Island,2026,6,June,22,0,22
+ca,Canada,pe,Prince Edward Island,2026,7,July,23,1,22
+ca,Canada,pe,Prince Edward Island,2026,8,August,21,2,19
+ca,Canada,pe,Prince Edward Island,2026,9,September,22,1,21
+ca,Canada,pe,Prince Edward Island,2026,10,October,22,1,21
+ca,Canada,pe,Prince Edward Island,2026,11,November,21,1,20
+ca,Canada,pe,Prince Edward Island,2026,12,December,23,1,22
+ca,Canada,qc,Quebec,2026,1,January,22,1,21
+ca,Canada,qc,Quebec,2026,2,February,20,0,20
+ca,Canada,qc,Quebec,2026,3,March,22,0,22
+ca,Canada,qc,Quebec,2026,4,April,22,2,20
+ca,Canada,qc,Quebec,2026,5,May,21,1,20
+ca,Canada,qc,Quebec,2026,6,June,22,1,21
+ca,Canada,qc,Quebec,2026,7,July,23,1,22
+ca,Canada,qc,Quebec,2026,8,August,21,1,20
+ca,Canada,qc,Quebec,2026,9,September,22,1,21
+ca,Canada,qc,Quebec,2026,10,October,22,1,21
+ca,Canada,qc,Quebec,2026,11,November,21,1,20
+ca,Canada,qc,Quebec,2026,12,December,23,1,22
+ca,Canada,sk,Saskatchewan,2026,1,January,22,1,21
+ca,Canada,sk,Saskatchewan,2026,2,February,20,1,19
+ca,Canada,sk,Saskatchewan,2026,3,March,22,0,22
+ca,Canada,sk,Saskatchewan,2026,4,April,22,1,21
+ca,Canada,sk,Saskatchewan,2026,5,May,21,1,20
+ca,Canada,sk,Saskatchewan,2026,6,June,22,0,22
+ca,Canada,sk,Saskatchewan,2026,7,July,23,1,22
+ca,Canada,sk,Saskatchewan,2026,8,August,21,1,20
+ca,Canada,sk,Saskatchewan,2026,9,September,22,1,21
+ca,Canada,sk,Saskatchewan,2026,10,October,22,1,21
+ca,Canada,sk,Saskatchewan,2026,11,November,21,1,20
+ca,Canada,sk,Saskatchewan,2026,12,December,23,1,22
+ca,Canada,yt,Yukon,2026,1,January,22,1,21
+ca,Canada,yt,Yukon,2026,2,February,20,0,20
+ca,Canada,yt,Yukon,2026,3,March,22,0,22
+ca,Canada,yt,Yukon,2026,4,April,22,2,20
+ca,Canada,yt,Yukon,2026,5,May,21,1,20
+ca,Canada,yt,Yukon,2026,6,June,22,0,22
+ca,Canada,yt,Yukon,2026,7,July,23,1,22
+ca,Canada,yt,Yukon,2026,8,August,21,2,19
+ca,Canada,yt,Yukon,2026,9,September,22,1,21
+ca,Canada,yt,Yukon,2026,10,October,22,1,21
+ca,Canada,yt,Yukon,2026,11,November,21,1,20
+ca,Canada,yt,Yukon,2026,12,December,23,1,22
+us,United States,federal,Federal holidays,2026,1,January,22,2,20
+us,United States,federal,Federal holidays,2026,2,February,20,1,19
+us,United States,federal,Federal holidays,2026,3,March,22,0,22
+us,United States,federal,Federal holidays,2026,4,April,22,0,22
+us,United States,federal,Federal holidays,2026,5,May,21,1,20
+us,United States,federal,Federal holidays,2026,6,June,22,1,21
+us,United States,federal,Federal holidays,2026,7,July,23,1,22
+us,United States,federal,Federal holidays,2026,8,August,21,0,21
+us,United States,federal,Federal holidays,2026,9,September,22,1,21
+us,United States,federal,Federal holidays,2026,10,October,22,1,21
+us,United States,federal,Federal holidays,2026,11,November,21,2,19
+us,United States,federal,Federal holidays,2026,12,December,23,1,22
+us,United States,al,Alabama,2026,1,January,22,2,20
+us,United States,al,Alabama,2026,2,February,20,1,19
+us,United States,al,Alabama,2026,3,March,22,0,22
+us,United States,al,Alabama,2026,4,April,22,1,21
+us,United States,al,Alabama,2026,5,May,21,1,20
+us,United States,al,Alabama,2026,6,June,22,2,20
+us,United States,al,Alabama,2026,7,July,23,1,22
+us,United States,al,Alabama,2026,8,August,21,0,21
+us,United States,al,Alabama,2026,9,September,22,1,21
+us,United States,al,Alabama,2026,10,October,22,1,21
+us,United States,al,Alabama,2026,11,November,21,2,19
+us,United States,al,Alabama,2026,12,December,23,1,22
+us,United States,ak,Alaska,2026,1,January,22,2,20
+us,United States,ak,Alaska,2026,2,February,20,1,19
+us,United States,ak,Alaska,2026,3,March,22,1,21
+us,United States,ak,Alaska,2026,4,April,22,0,22
+us,United States,ak,Alaska,2026,5,May,21,1,20
+us,United States,ak,Alaska,2026,6,June,22,1,21
+us,United States,ak,Alaska,2026,7,July,23,1,22
+us,United States,ak,Alaska,2026,8,August,21,0,21
+us,United States,ak,Alaska,2026,9,September,22,1,21
+us,United States,ak,Alaska,2026,10,October,22,1,21
+us,United States,ak,Alaska,2026,11,November,21,2,19
+us,United States,ak,Alaska,2026,12,December,23,1,22
+us,United States,az,Arizona,2026,1,January,22,2,20
+us,United States,az,Arizona,2026,2,February,20,1,19
+us,United States,az,Arizona,2026,3,March,22,0,22
+us,United States,az,Arizona,2026,4,April,22,0,22
+us,United States,az,Arizona,2026,5,May,21,1,20
+us,United States,az,Arizona,2026,6,June,22,1,21
+us,United States,az,Arizona,2026,7,July,23,1,22
+us,United States,az,Arizona,2026,8,August,21,0,21
+us,United States,az,Arizona,2026,9,September,22,1,21
+us,United States,az,Arizona,2026,10,October,22,1,21
+us,United States,az,Arizona,2026,11,November,21,2,19
+us,United States,az,Arizona,2026,12,December,23,1,22
+us,United States,ar,Arkansas,2026,1,January,22,2,20
+us,United States,ar,Arkansas,2026,2,February,20,1,19
+us,United States,ar,Arkansas,2026,3,March,22,0,22
+us,United States,ar,Arkansas,2026,4,April,22,0,22
+us,United States,ar,Arkansas,2026,5,May,21,1,20
+us,United States,ar,Arkansas,2026,6,June,22,1,21
+us,United States,ar,Arkansas,2026,7,July,23,1,22
+us,United States,ar,Arkansas,2026,8,August,21,0,21
+us,United States,ar,Arkansas,2026,9,September,22,1,21
+us,United States,ar,Arkansas,2026,10,October,22,1,21
+us,United States,ar,Arkansas,2026,11,November,21,2,19
+us,United States,ar,Arkansas,2026,12,December,23,2,21
+us,United States,ca,California,2026,1,January,22,2,20
+us,United States,ca,California,2026,2,February,20,1,19
+us,United States,ca,California,2026,3,March,22,1,21
+us,United States,ca,California,2026,4,April,22,0,22
+us,United States,ca,California,2026,5,May,21,1,20
+us,United States,ca,California,2026,6,June,22,1,21
+us,United States,ca,California,2026,7,July,23,1,22
+us,United States,ca,California,2026,8,August,21,0,21
+us,United States,ca,California,2026,9,September,22,1,21
+us,United States,ca,California,2026,10,October,22,0,22
+us,United States,ca,California,2026,11,November,21,3,18
+us,United States,ca,California,2026,12,December,23,1,22
+us,United States,co,Colorado,2026,1,January,22,2,20
+us,United States,co,Colorado,2026,2,February,20,1,19
+us,United States,co,Colorado,2026,3,March,22,0,22
+us,United States,co,Colorado,2026,4,April,22,0,22
+us,United States,co,Colorado,2026,5,May,21,1,20
+us,United States,co,Colorado,2026,6,June,22,1,21
+us,United States,co,Colorado,2026,7,July,23,1,22
+us,United States,co,Colorado,2026,8,August,21,0,21
+us,United States,co,Colorado,2026,9,September,22,1,21
+us,United States,co,Colorado,2026,10,October,22,0,22
+us,United States,co,Colorado,2026,11,November,21,2,19
+us,United States,co,Colorado,2026,12,December,23,1,22
+us,United States,ct,Connecticut,2026,1,January,22,2,20
+us,United States,ct,Connecticut,2026,2,February,20,2,18
+us,United States,ct,Connecticut,2026,3,March,22,0,22
+us,United States,ct,Connecticut,2026,4,April,22,1,21
+us,United States,ct,Connecticut,2026,5,May,21,1,20
+us,United States,ct,Connecticut,2026,6,June,22,1,21
+us,United States,ct,Connecticut,2026,7,July,23,1,22
+us,United States,ct,Connecticut,2026,8,August,21,0,21
+us,United States,ct,Connecticut,2026,9,September,22,1,21
+us,United States,ct,Connecticut,2026,10,October,22,1,21
+us,United States,ct,Connecticut,2026,11,November,21,2,19
+us,United States,ct,Connecticut,2026,12,December,23,1,22
+us,United States,de,Delaware,2026,1,January,22,2,20
+us,United States,de,Delaware,2026,2,February,20,0,20
+us,United States,de,Delaware,2026,3,March,22,0,22
+us,United States,de,Delaware,2026,4,April,22,1,21
+us,United States,de,Delaware,2026,5,May,21,1,20
+us,United States,de,Delaware,2026,6,June,22,1,21
+us,United States,de,Delaware,2026,7,July,23,1,22
+us,United States,de,Delaware,2026,8,August,21,0,21
+us,United States,de,Delaware,2026,9,September,22,1,21
+us,United States,de,Delaware,2026,10,October,22,0,22
+us,United States,de,Delaware,2026,11,November,21,4,17
+us,United States,de,Delaware,2026,12,December,23,1,22
+us,United States,dc,District of Columbia,2026,1,January,22,2,20
+us,United States,dc,District of Columbia,2026,2,February,20,1,19
+us,United States,dc,District of Columbia,2026,3,March,22,0,22
+us,United States,dc,District of Columbia,2026,4,April,22,1,21
+us,United States,dc,District of Columbia,2026,5,May,21,1,20
+us,United States,dc,District of Columbia,2026,6,June,22,1,21
+us,United States,dc,District of Columbia,2026,7,July,23,1,22
+us,United States,dc,District of Columbia,2026,8,August,21,0,21
+us,United States,dc,District of Columbia,2026,9,September,22,1,21
+us,United States,dc,District of Columbia,2026,10,October,22,1,21
+us,United States,dc,District of Columbia,2026,11,November,21,2,19
+us,United States,dc,District of Columbia,2026,12,December,23,1,22
+us,United States,fl,Florida,2026,1,January,22,2,20
+us,United States,fl,Florida,2026,2,February,20,1,19
+us,United States,fl,Florida,2026,3,March,22,0,22
+us,United States,fl,Florida,2026,4,April,22,0,22
+us,United States,fl,Florida,2026,5,May,21,1,20
+us,United States,fl,Florida,2026,6,June,22,1,21
+us,United States,fl,Florida,2026,7,July,23,1,22
+us,United States,fl,Florida,2026,8,August,21,0,21
+us,United States,fl,Florida,2026,9,September,22,1,21
+us,United States,fl,Florida,2026,10,October,22,0,22
+us,United States,fl,Florida,2026,11,November,21,3,18
+us,United States,fl,Florida,2026,12,December,23,1,22
+us,United States,ga,Georgia,2026,1,January,22,2,20
+us,United States,ga,Georgia,2026,2,February,20,0,20
+us,United States,ga,Georgia,2026,3,March,22,0,22
+us,United States,ga,Georgia,2026,4,April,22,1,21
+us,United States,ga,Georgia,2026,5,May,21,1,20
+us,United States,ga,Georgia,2026,6,June,22,1,21
+us,United States,ga,Georgia,2026,7,July,23,1,22
+us,United States,ga,Georgia,2026,8,August,21,0,21
+us,United States,ga,Georgia,2026,9,September,22,1,21
+us,United States,ga,Georgia,2026,10,October,22,1,21
+us,United States,ga,Georgia,2026,11,November,21,3,18
+us,United States,ga,Georgia,2026,12,December,23,2,21
+us,United States,hi,Hawaii,2026,1,January,22,2,20
+us,United States,hi,Hawaii,2026,2,February,20,1,19
+us,United States,hi,Hawaii,2026,3,March,22,1,21
+us,United States,hi,Hawaii,2026,4,April,22,1,21
+us,United States,hi,Hawaii,2026,5,May,21,1,20
+us,United States,hi,Hawaii,2026,6,June,22,2,20
+us,United States,hi,Hawaii,2026,7,July,23,1,22
+us,United States,hi,Hawaii,2026,8,August,21,1,20
+us,United States,hi,Hawaii,2026,9,September,22,1,21
+us,United States,hi,Hawaii,2026,10,October,22,0,22
+us,United States,hi,Hawaii,2026,11,November,21,3,18
+us,United States,hi,Hawaii,2026,12,December,23,1,22
+us,United States,id,Idaho,2026,1,January,22,2,20
+us,United States,id,Idaho,2026,2,February,20,1,19
+us,United States,id,Idaho,2026,3,March,22,0,22
+us,United States,id,Idaho,2026,4,April,22,0,22
+us,United States,id,Idaho,2026,5,May,21,1,20
+us,United States,id,Idaho,2026,6,June,22,1,21
+us,United States,id,Idaho,2026,7,July,23,1,22
+us,United States,id,Idaho,2026,8,August,21,0,21
+us,United States,id,Idaho,2026,9,September,22,1,21
+us,United States,id,Idaho,2026,10,October,22,1,21
+us,United States,id,Idaho,2026,11,November,21,2,19
+us,United States,id,Idaho,2026,12,December,23,1,22
+us,United States,il,Illinois,2026,1,January,22,2,20
+us,United States,il,Illinois,2026,2,February,20,2,18
+us,United States,il,Illinois,2026,3,March,22,1,21
+us,United States,il,Illinois,2026,4,April,22,0,22
+us,United States,il,Illinois,2026,5,May,21,2,19
+us,United States,il,Illinois,2026,6,June,22,1,21
+us,United States,il,Illinois,2026,7,July,23,1,22
+us,United States,il,Illinois,2026,8,August,21,0,21
+us,United States,il,Illinois,2026,9,September,22,1,21
+us,United States,il,Illinois,2026,10,October,22,1,21
+us,United States,il,Illinois,2026,11,November,21,3,18
+us,United States,il,Illinois,2026,12,December,23,1,22
+us,United States,in,Indiana,2026,1,January,22,2,20
+us,United States,in,Indiana,2026,2,February,20,1,19
+us,United States,in,Indiana,2026,3,March,22,0,22
+us,United States,in,Indiana,2026,4,April,22,1,21
+us,United States,in,Indiana,2026,5,May,21,2,19
+us,United States,in,Indiana,2026,6,June,22,1,21
+us,United States,in,Indiana,2026,7,July,23,1,22
+us,United States,in,Indiana,2026,8,August,21,0,21
+us,United States,in,Indiana,2026,9,September,22,1,21
+us,United States,in,Indiana,2026,10,October,22,1,21
+us,United States,in,Indiana,2026,11,November,21,4,17
+us,United States,in,Indiana,2026,12,December,23,1,22
+us,United States,ia,Iowa,2026,1,January,22,2,20
+us,United States,ia,Iowa,2026,2,February,20,2,18
+us,United States,ia,Iowa,2026,3,March,22,0,22
+us,United States,ia,Iowa,2026,4,April,22,0,22
+us,United States,ia,Iowa,2026,5,May,21,1,20
+us,United States,ia,Iowa,2026,6,June,22,1,21
+us,United States,ia,Iowa,2026,7,July,23,1,22
+us,United States,ia,Iowa,2026,8,August,21,0,21
+us,United States,ia,Iowa,2026,9,September,22,1,21
+us,United States,ia,Iowa,2026,10,October,22,1,21
+us,United States,ia,Iowa,2026,11,November,21,2,19
+us,United States,ia,Iowa,2026,12,December,23,1,22
+us,United States,ks,Kansas,2026,1,January,22,2,20
+us,United States,ks,Kansas,2026,2,February,20,0,20
+us,United States,ks,Kansas,2026,3,March,22,0,22
+us,United States,ks,Kansas,2026,4,April,22,0,22
+us,United States,ks,Kansas,2026,5,May,21,1,20
+us,United States,ks,Kansas,2026,6,June,22,1,21
+us,United States,ks,Kansas,2026,7,July,23,1,22
+us,United States,ks,Kansas,2026,8,August,21,0,21
+us,United States,ks,Kansas,2026,9,September,22,1,21
+us,United States,ks,Kansas,2026,10,October,22,1,21
+us,United States,ks,Kansas,2026,11,November,21,2,19
+us,United States,ks,Kansas,2026,12,December,23,1,22
+us,United States,ky,Kentucky,2026,1,January,22,2,20
+us,United States,ky,Kentucky,2026,2,February,20,0,20
+us,United States,ky,Kentucky,2026,3,March,22,0,22
+us,United States,ky,Kentucky,2026,4,April,22,1,21
+us,United States,ky,Kentucky,2026,5,May,21,1,20
+us,United States,ky,Kentucky,2026,6,June,22,1,21
+us,United States,ky,Kentucky,2026,7,July,23,1,22
+us,United States,ky,Kentucky,2026,8,August,21,0,21
+us,United States,ky,Kentucky,2026,9,September,22,1,21
+us,United States,ky,Kentucky,2026,10,October,22,1,21
+us,United States,ky,Kentucky,2026,11,November,21,2,19
+us,United States,ky,Kentucky,2026,12,December,23,3,20
+us,United States,la,Louisiana,2026,1,January,22,2,20
+us,United States,la,Louisiana,2026,2,February,20,1,19
+us,United States,la,Louisiana,2026,3,March,22,0,22
+us,United States,la,Louisiana,2026,4,April,22,1,21
+us,United States,la,Louisiana,2026,5,May,21,1,20
+us,United States,la,Louisiana,2026,6,June,22,1,21
+us,United States,la,Louisiana,2026,7,July,23,1,22
+us,United States,la,Louisiana,2026,8,August,21,0,21
+us,United States,la,Louisiana,2026,9,September,22,1,21
+us,United States,la,Louisiana,2026,10,October,22,1,21
+us,United States,la,Louisiana,2026,11,November,21,3,18
+us,United States,la,Louisiana,2026,12,December,23,1,22
+us,United States,me,Maine,2026,1,January,22,2,20
+us,United States,me,Maine,2026,2,February,20,1,19
+us,United States,me,Maine,2026,3,March,22,0,22
+us,United States,me,Maine,2026,4,April,22,1,21
+us,United States,me,Maine,2026,5,May,21,1,20
+us,United States,me,Maine,2026,6,June,22,1,21
+us,United States,me,Maine,2026,7,July,23,1,22
+us,United States,me,Maine,2026,8,August,21,0,21
+us,United States,me,Maine,2026,9,September,22,1,21
+us,United States,me,Maine,2026,10,October,22,1,21
+us,United States,me,Maine,2026,11,November,21,2,19
+us,United States,me,Maine,2026,12,December,23,1,22
+us,United States,md,Maryland,2026,1,January,22,2,20
+us,United States,md,Maryland,2026,2,February,20,1,19
+us,United States,md,Maryland,2026,3,March,22,0,22
+us,United States,md,Maryland,2026,4,April,22,0,22
+us,United States,md,Maryland,2026,5,May,21,1,20
+us,United States,md,Maryland,2026,6,June,22,1,21
+us,United States,md,Maryland,2026,7,July,23,1,22
+us,United States,md,Maryland,2026,8,August,21,0,21
+us,United States,md,Maryland,2026,9,September,22,1,21
+us,United States,md,Maryland,2026,10,October,22,1,21
+us,United States,md,Maryland,2026,11,November,21,3,18
+us,United States,md,Maryland,2026,12,December,23,1,22
+us,United States,ma,Massachusetts,2026,1,January,22,2,20
+us,United States,ma,Massachusetts,2026,2,February,20,1,19
+us,United States,ma,Massachusetts,2026,3,March,22,1,21
+us,United States,ma,Massachusetts,2026,4,April,22,1,21
+us,United States,ma,Massachusetts,2026,5,May,21,1,20
+us,United States,ma,Massachusetts,2026,6,June,22,2,20
+us,United States,ma,Massachusetts,2026,7,July,23,1,22
+us,United States,ma,Massachusetts,2026,8,August,21,0,21
+us,United States,ma,Massachusetts,2026,9,September,22,1,21
+us,United States,ma,Massachusetts,2026,10,October,22,1,21
+us,United States,ma,Massachusetts,2026,11,November,21,2,19
+us,United States,ma,Massachusetts,2026,12,December,23,1,22
+us,United States,mi,Michigan,2026,1,January,22,2,20
+us,United States,mi,Michigan,2026,2,February,20,1,19
+us,United States,mi,Michigan,2026,3,March,22,0,22
+us,United States,mi,Michigan,2026,4,April,22,0,22
+us,United States,mi,Michigan,2026,5,May,21,1,20
+us,United States,mi,Michigan,2026,6,June,22,1,21
+us,United States,mi,Michigan,2026,7,July,23,1,22
+us,United States,mi,Michigan,2026,8,August,21,0,21
+us,United States,mi,Michigan,2026,9,September,22,1,21
+us,United States,mi,Michigan,2026,10,October,22,1,21
+us,United States,mi,Michigan,2026,11,November,21,2,19
+us,United States,mi,Michigan,2026,12,December,23,3,20
+us,United States,mn,Minnesota,2026,1,January,22,2,20
+us,United States,mn,Minnesota,2026,2,February,20,1,19
+us,United States,mn,Minnesota,2026,3,March,22,0,22
+us,United States,mn,Minnesota,2026,4,April,22,0,22
+us,United States,mn,Minnesota,2026,5,May,21,1,20
+us,United States,mn,Minnesota,2026,6,June,22,1,21
+us,United States,mn,Minnesota,2026,7,July,23,1,22
+us,United States,mn,Minnesota,2026,8,August,21,0,21
+us,United States,mn,Minnesota,2026,9,September,22,1,21
+us,United States,mn,Minnesota,2026,10,October,22,1,21
+us,United States,mn,Minnesota,2026,11,November,21,2,19
+us,United States,mn,Minnesota,2026,12,December,23,1,22
+us,United States,ms,Mississippi,2026,1,January,22,2,20
+us,United States,ms,Mississippi,2026,2,February,20,1,19
+us,United States,ms,Mississippi,2026,3,March,22,0,22
+us,United States,ms,Mississippi,2026,4,April,22,1,21
+us,United States,ms,Mississippi,2026,5,May,21,1,20
+us,United States,ms,Mississippi,2026,6,June,22,1,21
+us,United States,ms,Mississippi,2026,7,July,23,1,22
+us,United States,ms,Mississippi,2026,8,August,21,0,21
+us,United States,ms,Mississippi,2026,9,September,22,1,21
+us,United States,ms,Mississippi,2026,10,October,22,1,21
+us,United States,ms,Mississippi,2026,11,November,21,2,19
+us,United States,ms,Mississippi,2026,12,December,23,1,22
+us,United States,mo,Missouri,2026,1,January,22,2,20
+us,United States,mo,Missouri,2026,2,February,20,2,18
+us,United States,mo,Missouri,2026,3,March,22,0,22
+us,United States,mo,Missouri,2026,4,April,22,0,22
+us,United States,mo,Missouri,2026,5,May,21,2,19
+us,United States,mo,Missouri,2026,6,June,22,1,21
+us,United States,mo,Missouri,2026,7,July,23,1,22
+us,United States,mo,Missouri,2026,8,August,21,0,21
+us,United States,mo,Missouri,2026,9,September,22,1,21
+us,United States,mo,Missouri,2026,10,October,22,1,21
+us,United States,mo,Missouri,2026,11,November,21,2,19
+us,United States,mo,Missouri,2026,12,December,23,1,22
+us,United States,mt,Montana,2026,1,January,22,2,20
+us,United States,mt,Montana,2026,2,February,20,1,19
+us,United States,mt,Montana,2026,3,March,22,0,22
+us,United States,mt,Montana,2026,4,April,22,0,22
+us,United States,mt,Montana,2026,5,May,21,1,20
+us,United States,mt,Montana,2026,6,June,22,1,21
+us,United States,mt,Montana,2026,7,July,23,1,22
+us,United States,mt,Montana,2026,8,August,21,0,21
+us,United States,mt,Montana,2026,9,September,22,1,21
+us,United States,mt,Montana,2026,10,October,22,1,21
+us,United States,mt,Montana,2026,11,November,21,3,18
+us,United States,mt,Montana,2026,12,December,23,3,20
+us,United States,ne,Nebraska,2026,1,January,22,2,20
+us,United States,ne,Nebraska,2026,2,February,20,1,19
+us,United States,ne,Nebraska,2026,3,March,22,0,22
+us,United States,ne,Nebraska,2026,4,April,22,1,21
+us,United States,ne,Nebraska,2026,5,May,21,1,20
+us,United States,ne,Nebraska,2026,6,June,22,1,21
+us,United States,ne,Nebraska,2026,7,July,23,1,22
+us,United States,ne,Nebraska,2026,8,August,21,0,21
+us,United States,ne,Nebraska,2026,9,September,22,1,21
+us,United States,ne,Nebraska,2026,10,October,22,1,21
+us,United States,ne,Nebraska,2026,11,November,21,2,19
+us,United States,ne,Nebraska,2026,12,December,23,1,22
+us,United States,nv,Nevada,2026,1,January,22,2,20
+us,United States,nv,Nevada,2026,2,February,20,1,19
+us,United States,nv,Nevada,2026,3,March,22,0,22
+us,United States,nv,Nevada,2026,4,April,22,0,22
+us,United States,nv,Nevada,2026,5,May,21,1,20
+us,United States,nv,Nevada,2026,6,June,22,1,21
+us,United States,nv,Nevada,2026,7,July,23,1,22
+us,United States,nv,Nevada,2026,8,August,21,0,21
+us,United States,nv,Nevada,2026,9,September,22,1,21
+us,United States,nv,Nevada,2026,10,October,22,1,21
+us,United States,nv,Nevada,2026,11,November,21,3,18
+us,United States,nv,Nevada,2026,12,December,23,1,22
+us,United States,nh,New Hampshire,2026,1,January,22,2,20
+us,United States,nh,New Hampshire,2026,2,February,20,1,19
+us,United States,nh,New Hampshire,2026,3,March,22,0,22
+us,United States,nh,New Hampshire,2026,4,April,22,0,22
+us,United States,nh,New Hampshire,2026,5,May,21,1,20
+us,United States,nh,New Hampshire,2026,6,June,22,1,21
+us,United States,nh,New Hampshire,2026,7,July,23,1,22
+us,United States,nh,New Hampshire,2026,8,August,21,0,21
+us,United States,nh,New Hampshire,2026,9,September,22,1,21
+us,United States,nh,New Hampshire,2026,10,October,22,0,22
+us,United States,nh,New Hampshire,2026,11,November,21,4,17
+us,United States,nh,New Hampshire,2026,12,December,23,1,22
+us,United States,nj,New Jersey,2026,1,January,22,2,20
+us,United States,nj,New Jersey,2026,2,February,20,2,18
+us,United States,nj,New Jersey,2026,3,March,22,0,22
+us,United States,nj,New Jersey,2026,4,April,22,1,21
+us,United States,nj,New Jersey,2026,5,May,21,1,20
+us,United States,nj,New Jersey,2026,6,June,22,1,21
+us,United States,nj,New Jersey,2026,7,July,23,1,22
+us,United States,nj,New Jersey,2026,8,August,21,0,21
+us,United States,nj,New Jersey,2026,9,September,22,1,21
+us,United States,nj,New Jersey,2026,10,October,22,1,21
+us,United States,nj,New Jersey,2026,11,November,21,3,18
+us,United States,nj,New Jersey,2026,12,December,23,1,22
+us,United States,nm,New Mexico,2026,1,January,22,2,20
+us,United States,nm,New Mexico,2026,2,February,20,1,19
+us,United States,nm,New Mexico,2026,3,March,22,0,22
+us,United States,nm,New Mexico,2026,4,April,22,0,22
+us,United States,nm,New Mexico,2026,5,May,21,1,20
+us,United States,nm,New Mexico,2026,6,June,22,1,21
+us,United States,nm,New Mexico,2026,7,July,23,1,22
+us,United States,nm,New Mexico,2026,8,August,21,0,21
+us,United States,nm,New Mexico,2026,9,September,22,1,21
+us,United States,nm,New Mexico,2026,10,October,22,1,21
+us,United States,nm,New Mexico,2026,11,November,21,3,18
+us,United States,nm,New Mexico,2026,12,December,23,1,22
+us,United States,ny,New York,2026,1,January,22,2,20
+us,United States,ny,New York,2026,2,February,20,2,18
+us,United States,ny,New York,2026,3,March,22,0,22
+us,United States,ny,New York,2026,4,April,22,0,22
+us,United States,ny,New York,2026,5,May,21,1,20
+us,United States,ny,New York,2026,6,June,22,1,21
+us,United States,ny,New York,2026,7,July,23,1,22
+us,United States,ny,New York,2026,8,August,21,0,21
+us,United States,ny,New York,2026,9,September,22,1,21
+us,United States,ny,New York,2026,10,October,22,1,21
+us,United States,ny,New York,2026,11,November,21,3,18
+us,United States,ny,New York,2026,12,December,23,1,22
+us,United States,nc,North Carolina,2026,1,January,22,2,20
+us,United States,nc,North Carolina,2026,2,February,20,0,20
+us,United States,nc,North Carolina,2026,3,March,22,0,22
+us,United States,nc,North Carolina,2026,4,April,22,1,21
+us,United States,nc,North Carolina,2026,5,May,21,1,20
+us,United States,nc,North Carolina,2026,6,June,22,1,21
+us,United States,nc,North Carolina,2026,7,July,23,1,22
+us,United States,nc,North Carolina,2026,8,August,21,0,21
+us,United States,nc,North Carolina,2026,9,September,22,1,21
+us,United States,nc,North Carolina,2026,10,October,22,0,22
+us,United States,nc,North Carolina,2026,11,November,21,3,18
+us,United States,nc,North Carolina,2026,12,December,23,2,21
+us,United States,nd,North Dakota,2026,1,January,22,2,20
+us,United States,nd,North Dakota,2026,2,February,20,1,19
+us,United States,nd,North Dakota,2026,3,March,22,0,22
+us,United States,nd,North Dakota,2026,4,April,22,0,22
+us,United States,nd,North Dakota,2026,5,May,21,1,20
+us,United States,nd,North Dakota,2026,6,June,22,1,21
+us,United States,nd,North Dakota,2026,7,July,23,1,22
+us,United States,nd,North Dakota,2026,8,August,21,0,21
+us,United States,nd,North Dakota,2026,9,September,22,1,21
+us,United States,nd,North Dakota,2026,10,October,22,1,21
+us,United States,nd,North Dakota,2026,11,November,21,2,19
+us,United States,nd,North Dakota,2026,12,December,23,1,22
+us,United States,oh,Ohio,2026,1,January,22,2,20
+us,United States,oh,Ohio,2026,2,February,20,1,19
+us,United States,oh,Ohio,2026,3,March,22,0,22
+us,United States,oh,Ohio,2026,4,April,22,0,22
+us,United States,oh,Ohio,2026,5,May,21,1,20
+us,United States,oh,Ohio,2026,6,June,22,1,21
+us,United States,oh,Ohio,2026,7,July,23,1,22
+us,United States,oh,Ohio,2026,8,August,21,0,21
+us,United States,oh,Ohio,2026,9,September,22,1,21
+us,United States,oh,Ohio,2026,10,October,22,1,21
+us,United States,oh,Ohio,2026,11,November,21,2,19
+us,United States,oh,Ohio,2026,12,December,23,1,22
+us,United States,ok,Oklahoma,2026,1,January,22,2,20
+us,United States,ok,Oklahoma,2026,2,February,20,1,19
+us,United States,ok,Oklahoma,2026,3,March,22,0,22
+us,United States,ok,Oklahoma,2026,4,April,22,0,22
+us,United States,ok,Oklahoma,2026,5,May,21,1,20
+us,United States,ok,Oklahoma,2026,6,June,22,1,21
+us,United States,ok,Oklahoma,2026,7,July,23,1,22
+us,United States,ok,Oklahoma,2026,8,August,21,0,21
+us,United States,ok,Oklahoma,2026,9,September,22,1,21
+us,United States,ok,Oklahoma,2026,10,October,22,1,21
+us,United States,ok,Oklahoma,2026,11,November,21,3,18
+us,United States,ok,Oklahoma,2026,12,December,23,1,22
+us,United States,or,Oregon,2026,1,January,22,2,20
+us,United States,or,Oregon,2026,2,February,20,1,19
+us,United States,or,Oregon,2026,3,March,22,0,22
+us,United States,or,Oregon,2026,4,April,22,0,22
+us,United States,or,Oregon,2026,5,May,21,1,20
+us,United States,or,Oregon,2026,6,June,22,1,21
+us,United States,or,Oregon,2026,7,July,23,1,22
+us,United States,or,Oregon,2026,8,August,21,0,21
+us,United States,or,Oregon,2026,9,September,22,1,21
+us,United States,or,Oregon,2026,10,October,22,1,21
+us,United States,or,Oregon,2026,11,November,21,2,19
+us,United States,or,Oregon,2026,12,December,23,1,22
+us,United States,pa,Pennsylvania,2026,1,January,22,2,20
+us,United States,pa,Pennsylvania,2026,2,February,20,1,19
+us,United States,pa,Pennsylvania,2026,3,March,22,0,22
+us,United States,pa,Pennsylvania,2026,4,April,22,0,22
+us,United States,pa,Pennsylvania,2026,5,May,21,1,20
+us,United States,pa,Pennsylvania,2026,6,June,22,1,21
+us,United States,pa,Pennsylvania,2026,7,July,23,1,22
+us,United States,pa,Pennsylvania,2026,8,August,21,0,21
+us,United States,pa,Pennsylvania,2026,9,September,22,1,21
+us,United States,pa,Pennsylvania,2026,10,October,22,1,21
+us,United States,pa,Pennsylvania,2026,11,November,21,2,19
+us,United States,pa,Pennsylvania,2026,12,December,23,1,22
+us,United States,ri,Rhode Island,2026,1,January,22,2,20
+us,United States,ri,Rhode Island,2026,2,February,20,1,19
+us,United States,ri,Rhode Island,2026,3,March,22,0,22
+us,United States,ri,Rhode Island,2026,4,April,22,0,22
+us,United States,ri,Rhode Island,2026,5,May,21,1,20
+us,United States,ri,Rhode Island,2026,6,June,22,1,21
+us,United States,ri,Rhode Island,2026,7,July,23,1,22
+us,United States,ri,Rhode Island,2026,8,August,21,1,20
+us,United States,ri,Rhode Island,2026,9,September,22,1,21
+us,United States,ri,Rhode Island,2026,10,October,22,1,21
+us,United States,ri,Rhode Island,2026,11,November,21,2,19
+us,United States,ri,Rhode Island,2026,12,December,23,1,22
+us,United States,sc,South Carolina,2026,1,January,22,2,20
+us,United States,sc,South Carolina,2026,2,February,20,1,19
+us,United States,sc,South Carolina,2026,3,March,22,0,22
+us,United States,sc,South Carolina,2026,4,April,22,0,22
+us,United States,sc,South Carolina,2026,5,May,21,1,20
+us,United States,sc,South Carolina,2026,6,June,22,1,21
+us,United States,sc,South Carolina,2026,7,July,23,1,22
+us,United States,sc,South Carolina,2026,8,August,21,0,21
+us,United States,sc,South Carolina,2026,9,September,22,1,21
+us,United States,sc,South Carolina,2026,10,October,22,1,21
+us,United States,sc,South Carolina,2026,11,November,21,2,19
+us,United States,sc,South Carolina,2026,12,December,23,1,22
+us,United States,sd,South Dakota,2026,1,January,22,2,20
+us,United States,sd,South Dakota,2026,2,February,20,1,19
+us,United States,sd,South Dakota,2026,3,March,22,0,22
+us,United States,sd,South Dakota,2026,4,April,22,0,22
+us,United States,sd,South Dakota,2026,5,May,21,1,20
+us,United States,sd,South Dakota,2026,6,June,22,1,21
+us,United States,sd,South Dakota,2026,7,July,23,1,22
+us,United States,sd,South Dakota,2026,8,August,21,0,21
+us,United States,sd,South Dakota,2026,9,September,22,1,21
+us,United States,sd,South Dakota,2026,10,October,22,1,21
+us,United States,sd,South Dakota,2026,11,November,21,2,19
+us,United States,sd,South Dakota,2026,12,December,23,1,22
+us,United States,tn,Tennessee,2026,1,January,22,2,20
+us,United States,tn,Tennessee,2026,2,February,20,1,19
+us,United States,tn,Tennessee,2026,3,March,22,0,22
+us,United States,tn,Tennessee,2026,4,April,22,1,21
+us,United States,tn,Tennessee,2026,5,May,21,1,20
+us,United States,tn,Tennessee,2026,6,June,22,1,21
+us,United States,tn,Tennessee,2026,7,July,23,1,22
+us,United States,tn,Tennessee,2026,8,August,21,0,21
+us,United States,tn,Tennessee,2026,9,September,22,1,21
+us,United States,tn,Tennessee,2026,10,October,22,1,21
+us,United States,tn,Tennessee,2026,11,November,21,2,19
+us,United States,tn,Tennessee,2026,12,December,23,2,21
+us,United States,tx,Texas,2026,1,January,22,2,20
+us,United States,tx,Texas,2026,2,February,20,1,19
+us,United States,tx,Texas,2026,3,March,22,0,22
+us,United States,tx,Texas,2026,4,April,22,0,22
+us,United States,tx,Texas,2026,5,May,21,1,20
+us,United States,tx,Texas,2026,6,June,22,1,21
+us,United States,tx,Texas,2026,7,July,23,1,22
+us,United States,tx,Texas,2026,8,August,21,0,21
+us,United States,tx,Texas,2026,9,September,22,1,21
+us,United States,tx,Texas,2026,10,October,22,1,21
+us,United States,tx,Texas,2026,11,November,21,3,18
+us,United States,tx,Texas,2026,12,December,23,2,21
+us,United States,ut,Utah,2026,1,January,22,2,20
+us,United States,ut,Utah,2026,2,February,20,1,19
+us,United States,ut,Utah,2026,3,March,22,0,22
+us,United States,ut,Utah,2026,4,April,22,0,22
+us,United States,ut,Utah,2026,5,May,21,1,20
+us,United States,ut,Utah,2026,6,June,22,1,21
+us,United States,ut,Utah,2026,7,July,23,2,21
+us,United States,ut,Utah,2026,8,August,21,0,21
+us,United States,ut,Utah,2026,9,September,22,1,21
+us,United States,ut,Utah,2026,10,October,22,1,21
+us,United States,ut,Utah,2026,11,November,21,2,19
+us,United States,ut,Utah,2026,12,December,23,1,22
+us,United States,vt,Vermont,2026,1,January,22,2,20
+us,United States,vt,Vermont,2026,2,February,20,1,19
+us,United States,vt,Vermont,2026,3,March,22,1,21
+us,United States,vt,Vermont,2026,4,April,22,0,22
+us,United States,vt,Vermont,2026,5,May,21,1,20
+us,United States,vt,Vermont,2026,6,June,22,1,21
+us,United States,vt,Vermont,2026,7,July,23,1,22
+us,United States,vt,Vermont,2026,8,August,21,1,20
+us,United States,vt,Vermont,2026,9,September,22,1,21
+us,United States,vt,Vermont,2026,10,October,22,1,21
+us,United States,vt,Vermont,2026,11,November,21,2,19
+us,United States,vt,Vermont,2026,12,December,23,1,22
+us,United States,va,Virginia,2026,1,January,22,2,20
+us,United States,va,Virginia,2026,2,February,20,1,19
+us,United States,va,Virginia,2026,3,March,22,0,22
+us,United States,va,Virginia,2026,4,April,22,0,22
+us,United States,va,Virginia,2026,5,May,21,1,20
+us,United States,va,Virginia,2026,6,June,22,1,21
+us,United States,va,Virginia,2026,7,July,23,1,22
+us,United States,va,Virginia,2026,8,August,21,0,21
+us,United States,va,Virginia,2026,9,September,22,1,21
+us,United States,va,Virginia,2026,10,October,22,1,21
+us,United States,va,Virginia,2026,11,November,21,3,18
+us,United States,va,Virginia,2026,12,December,23,1,22
+us,United States,wa,Washington,2026,1,January,22,2,20
+us,United States,wa,Washington,2026,2,February,20,1,19
+us,United States,wa,Washington,2026,3,March,22,0,22
+us,United States,wa,Washington,2026,4,April,22,0,22
+us,United States,wa,Washington,2026,5,May,21,1,20
+us,United States,wa,Washington,2026,6,June,22,1,21
+us,United States,wa,Washington,2026,7,July,23,1,22
+us,United States,wa,Washington,2026,8,August,21,0,21
+us,United States,wa,Washington,2026,9,September,22,1,21
+us,United States,wa,Washington,2026,10,October,22,1,21
+us,United States,wa,Washington,2026,11,November,21,2,19
+us,United States,wa,Washington,2026,12,December,23,1,22
+us,United States,wv,West Virginia,2026,1,January,22,2,20
+us,United States,wv,West Virginia,2026,2,February,20,1,19
+us,United States,wv,West Virginia,2026,3,March,22,0,22
+us,United States,wv,West Virginia,2026,4,April,22,0,22
+us,United States,wv,West Virginia,2026,5,May,21,1,20
+us,United States,wv,West Virginia,2026,6,June,22,1,21
+us,United States,wv,West Virginia,2026,7,July,23,1,22
+us,United States,wv,West Virginia,2026,8,August,21,0,21
+us,United States,wv,West Virginia,2026,9,September,22,1,21
+us,United States,wv,West Virginia,2026,10,October,22,1,21
+us,United States,wv,West Virginia,2026,11,November,21,3,18
+us,United States,wv,West Virginia,2026,12,December,23,1,22
+us,United States,wi,Wisconsin,2026,1,January,22,2,20
+us,United States,wi,Wisconsin,2026,2,February,20,1,19
+us,United States,wi,Wisconsin,2026,3,March,22,0,22
+us,United States,wi,Wisconsin,2026,4,April,22,0,22
+us,United States,wi,Wisconsin,2026,5,May,21,1,20
+us,United States,wi,Wisconsin,2026,6,June,22,1,21
+us,United States,wi,Wisconsin,2026,7,July,23,1,22
+us,United States,wi,Wisconsin,2026,8,August,21,0,21
+us,United States,wi,Wisconsin,2026,9,September,22,2,20
+us,United States,wi,Wisconsin,2026,10,October,22,1,21
+us,United States,wi,Wisconsin,2026,11,November,21,3,18
+us,United States,wi,Wisconsin,2026,12,December,23,1,22
+us,United States,wy,Wyoming,2026,1,January,22,2,20
+us,United States,wy,Wyoming,2026,2,February,20,1,19
+us,United States,wy,Wyoming,2026,3,March,22,0,22
+us,United States,wy,Wyoming,2026,4,April,22,0,22
+us,United States,wy,Wyoming,2026,5,May,21,1,20
+us,United States,wy,Wyoming,2026,6,June,22,1,21
+us,United States,wy,Wyoming,2026,7,July,23,1,22
+us,United States,wy,Wyoming,2026,8,August,21,0,21
+us,United States,wy,Wyoming,2026,9,September,22,1,21
+us,United States,wy,Wyoming,2026,10,October,22,1,21
+us,United States,wy,Wyoming,2026,11,November,21,2,19
+us,United States,wy,Wyoming,2026,12,December,23,1,22
+uk,United Kingdom,england,England and Wales,2026,1,January,22,1,21
+uk,United Kingdom,england,England and Wales,2026,2,February,20,0,20
+uk,United Kingdom,england,England and Wales,2026,3,March,22,0,22
+uk,United Kingdom,england,England and Wales,2026,4,April,22,2,20
+uk,United Kingdom,england,England and Wales,2026,5,May,21,2,19
+uk,United Kingdom,england,England and Wales,2026,6,June,22,0,22
+uk,United Kingdom,england,England and Wales,2026,7,July,23,0,23
+uk,United Kingdom,england,England and Wales,2026,8,August,21,1,20
+uk,United Kingdom,england,England and Wales,2026,9,September,22,0,22
+uk,United Kingdom,england,England and Wales,2026,10,October,22,0,22
+uk,United Kingdom,england,England and Wales,2026,11,November,21,0,21
+uk,United Kingdom,england,England and Wales,2026,12,December,23,2,21
+uk,United Kingdom,scotland,Scotland,2026,1,January,22,2,20
+uk,United Kingdom,scotland,Scotland,2026,2,February,20,0,20
+uk,United Kingdom,scotland,Scotland,2026,3,March,22,0,22
+uk,United Kingdom,scotland,Scotland,2026,4,April,22,1,21
+uk,United Kingdom,scotland,Scotland,2026,5,May,21,2,19
+uk,United Kingdom,scotland,Scotland,2026,6,June,22,1,21
+uk,United Kingdom,scotland,Scotland,2026,7,July,23,0,23
+uk,United Kingdom,scotland,Scotland,2026,8,August,21,1,20
+uk,United Kingdom,scotland,Scotland,2026,9,September,22,0,22
+uk,United Kingdom,scotland,Scotland,2026,10,October,22,0,22
+uk,United Kingdom,scotland,Scotland,2026,11,November,21,1,20
+uk,United Kingdom,scotland,Scotland,2026,12,December,23,2,21
+uk,United Kingdom,ni,Northern Ireland,2026,1,January,22,1,21
+uk,United Kingdom,ni,Northern Ireland,2026,2,February,20,0,20
+uk,United Kingdom,ni,Northern Ireland,2026,3,March,22,1,21
+uk,United Kingdom,ni,Northern Ireland,2026,4,April,22,2,20
+uk,United Kingdom,ni,Northern Ireland,2026,5,May,21,2,19
+uk,United Kingdom,ni,Northern Ireland,2026,6,June,22,0,22
+uk,United Kingdom,ni,Northern Ireland,2026,7,July,23,1,22
+uk,United Kingdom,ni,Northern Ireland,2026,8,August,21,1,20
+uk,United Kingdom,ni,Northern Ireland,2026,9,September,22,0,22
+uk,United Kingdom,ni,Northern Ireland,2026,10,October,22,0,22
+uk,United Kingdom,ni,Northern Ireland,2026,11,November,21,0,21
+uk,United Kingdom,ni,Northern Ireland,2026,12,December,23,2,21
+au,Australia,act,Australian Capital Territory,2026,1,January,22,2,20
+au,Australia,act,Australian Capital Territory,2026,2,February,20,0,20
+au,Australia,act,Australian Capital Territory,2026,3,March,22,1,21
+au,Australia,act,Australian Capital Territory,2026,4,April,22,3,19
+au,Australia,act,Australian Capital Territory,2026,5,May,21,0,21
+au,Australia,act,Australian Capital Territory,2026,6,June,22,2,20
+au,Australia,act,Australian Capital Territory,2026,7,July,23,0,23
+au,Australia,act,Australian Capital Territory,2026,8,August,21,0,21
+au,Australia,act,Australian Capital Territory,2026,9,September,22,0,22
+au,Australia,act,Australian Capital Territory,2026,10,October,22,1,21
+au,Australia,act,Australian Capital Territory,2026,11,November,21,0,21
+au,Australia,act,Australian Capital Territory,2026,12,December,23,2,21
+au,Australia,nsw,New South Wales,2026,1,January,22,2,20
+au,Australia,nsw,New South Wales,2026,2,February,20,0,20
+au,Australia,nsw,New South Wales,2026,3,March,22,0,22
+au,Australia,nsw,New South Wales,2026,4,April,22,3,19
+au,Australia,nsw,New South Wales,2026,5,May,21,0,21
+au,Australia,nsw,New South Wales,2026,6,June,22,1,21
+au,Australia,nsw,New South Wales,2026,7,July,23,0,23
+au,Australia,nsw,New South Wales,2026,8,August,21,0,21
+au,Australia,nsw,New South Wales,2026,9,September,22,0,22
+au,Australia,nsw,New South Wales,2026,10,October,22,1,21
+au,Australia,nsw,New South Wales,2026,11,November,21,0,21
+au,Australia,nsw,New South Wales,2026,12,December,23,2,21
+au,Australia,nt,Northern Territory,2026,1,January,22,2,20
+au,Australia,nt,Northern Territory,2026,2,February,20,0,20
+au,Australia,nt,Northern Territory,2026,3,March,22,0,22
+au,Australia,nt,Northern Territory,2026,4,April,22,2,20
+au,Australia,nt,Northern Territory,2026,5,May,21,1,20
+au,Australia,nt,Northern Territory,2026,6,June,22,1,21
+au,Australia,nt,Northern Territory,2026,7,July,23,0,23
+au,Australia,nt,Northern Territory,2026,8,August,21,1,20
+au,Australia,nt,Northern Territory,2026,9,September,22,0,22
+au,Australia,nt,Northern Territory,2026,10,October,22,0,22
+au,Australia,nt,Northern Territory,2026,11,November,21,0,21
+au,Australia,nt,Northern Territory,2026,12,December,23,4,19
+au,Australia,qld,Queensland,2026,1,January,22,2,20
+au,Australia,qld,Queensland,2026,2,February,20,0,20
+au,Australia,qld,Queensland,2026,3,March,22,0,22
+au,Australia,qld,Queensland,2026,4,April,22,2,20
+au,Australia,qld,Queensland,2026,5,May,21,1,20
+au,Australia,qld,Queensland,2026,6,June,22,0,22
+au,Australia,qld,Queensland,2026,7,July,23,0,23
+au,Australia,qld,Queensland,2026,8,August,21,0,21
+au,Australia,qld,Queensland,2026,9,September,22,0,22
+au,Australia,qld,Queensland,2026,10,October,22,1,21
+au,Australia,qld,Queensland,2026,11,November,21,0,21
+au,Australia,qld,Queensland,2026,12,December,23,3,20
+au,Australia,sa,South Australia,2026,1,January,22,2,20
+au,Australia,sa,South Australia,2026,2,February,20,0,20
+au,Australia,sa,South Australia,2026,3,March,22,1,21
+au,Australia,sa,South Australia,2026,4,April,22,2,20
+au,Australia,sa,South Australia,2026,5,May,21,0,21
+au,Australia,sa,South Australia,2026,6,June,22,1,21
+au,Australia,sa,South Australia,2026,7,July,23,0,23
+au,Australia,sa,South Australia,2026,8,August,21,0,21
+au,Australia,sa,South Australia,2026,9,September,22,0,22
+au,Australia,sa,South Australia,2026,10,October,22,1,21
+au,Australia,sa,South Australia,2026,11,November,21,0,21
+au,Australia,sa,South Australia,2026,12,December,23,4,19
+au,Australia,tas,Tasmania,2026,1,January,22,2,20
+au,Australia,tas,Tasmania,2026,2,February,20,0,20
+au,Australia,tas,Tasmania,2026,3,March,22,1,21
+au,Australia,tas,Tasmania,2026,4,April,22,2,20
+au,Australia,tas,Tasmania,2026,5,May,21,0,21
+au,Australia,tas,Tasmania,2026,6,June,22,1,21
+au,Australia,tas,Tasmania,2026,7,July,23,0,23
+au,Australia,tas,Tasmania,2026,8,August,21,0,21
+au,Australia,tas,Tasmania,2026,9,September,22,0,22
+au,Australia,tas,Tasmania,2026,10,October,22,0,22
+au,Australia,tas,Tasmania,2026,11,November,21,0,21
+au,Australia,tas,Tasmania,2026,12,December,23,2,21
+au,Australia,vic,Victoria,2026,1,January,22,2,20
+au,Australia,vic,Victoria,2026,2,February,20,0,20
+au,Australia,vic,Victoria,2026,3,March,22,1,21
+au,Australia,vic,Victoria,2026,4,April,22,2,20
+au,Australia,vic,Victoria,2026,5,May,21,0,21
+au,Australia,vic,Victoria,2026,6,June,22,1,21
+au,Australia,vic,Victoria,2026,7,July,23,0,23
+au,Australia,vic,Victoria,2026,8,August,21,0,21
+au,Australia,vic,Victoria,2026,9,September,22,1,21
+au,Australia,vic,Victoria,2026,10,October,22,0,22
+au,Australia,vic,Victoria,2026,11,November,21,1,20
+au,Australia,vic,Victoria,2026,12,December,23,2,21
+au,Australia,wa,Western Australia,2026,1,January,22,2,20
+au,Australia,wa,Western Australia,2026,2,February,20,0,20
+au,Australia,wa,Western Australia,2026,3,March,22,1,21
+au,Australia,wa,Western Australia,2026,4,April,22,3,19
+au,Australia,wa,Western Australia,2026,5,May,21,0,21
+au,Australia,wa,Western Australia,2026,6,June,22,1,21
+au,Australia,wa,Western Australia,2026,7,July,23,0,23
+au,Australia,wa,Western Australia,2026,8,August,21,0,21
+au,Australia,wa,Western Australia,2026,9,September,22,1,21
+au,Australia,wa,Western Australia,2026,10,October,22,0,22
+au,Australia,wa,Western Australia,2026,11,November,21,0,21
+au,Australia,wa,Western Australia,2026,12,December,23,2,21
+de,Germany,bb,Brandenburg,2026,1,January,22,1,21
+de,Germany,bb,Brandenburg,2026,2,February,20,0,20
+de,Germany,bb,Brandenburg,2026,3,March,22,0,22
+de,Germany,bb,Brandenburg,2026,4,April,22,2,20
+de,Germany,bb,Brandenburg,2026,5,May,21,3,18
+de,Germany,bb,Brandenburg,2026,6,June,22,0,22
+de,Germany,bb,Brandenburg,2026,7,July,23,0,23
+de,Germany,bb,Brandenburg,2026,8,August,21,0,21
+de,Germany,bb,Brandenburg,2026,9,September,22,0,22
+de,Germany,bb,Brandenburg,2026,10,October,22,0,22
+de,Germany,bb,Brandenburg,2026,11,November,21,0,21
+de,Germany,bb,Brandenburg,2026,12,December,23,1,22
+de,Germany,be,Berlin,2026,1,January,22,1,21
+de,Germany,be,Berlin,2026,2,February,20,0,20
+de,Germany,be,Berlin,2026,3,March,22,0,22
+de,Germany,be,Berlin,2026,4,April,22,2,20
+de,Germany,be,Berlin,2026,5,May,21,3,18
+de,Germany,be,Berlin,2026,6,June,22,0,22
+de,Germany,be,Berlin,2026,7,July,23,0,23
+de,Germany,be,Berlin,2026,8,August,21,0,21
+de,Germany,be,Berlin,2026,9,September,22,0,22
+de,Germany,be,Berlin,2026,10,October,22,0,22
+de,Germany,be,Berlin,2026,11,November,21,0,21
+de,Germany,be,Berlin,2026,12,December,23,1,22
+de,Germany,bw,Baden-Württemberg,2026,1,January,22,2,20
+de,Germany,bw,Baden-Württemberg,2026,2,February,20,0,20
+de,Germany,bw,Baden-Württemberg,2026,3,March,22,0,22
+de,Germany,bw,Baden-Württemberg,2026,4,April,22,2,20
+de,Germany,bw,Baden-Württemberg,2026,5,May,21,3,18
+de,Germany,bw,Baden-Württemberg,2026,6,June,22,1,21
+de,Germany,bw,Baden-Württemberg,2026,7,July,23,0,23
+de,Germany,bw,Baden-Württemberg,2026,8,August,21,0,21
+de,Germany,bw,Baden-Württemberg,2026,9,September,22,0,22
+de,Germany,bw,Baden-Württemberg,2026,10,October,22,0,22
+de,Germany,bw,Baden-Württemberg,2026,11,November,21,0,21
+de,Germany,bw,Baden-Württemberg,2026,12,December,23,1,22
+de,Germany,by,Bayern,2026,1,January,22,2,20
+de,Germany,by,Bayern,2026,2,February,20,0,20
+de,Germany,by,Bayern,2026,3,March,22,0,22
+de,Germany,by,Bayern,2026,4,April,22,2,20
+de,Germany,by,Bayern,2026,5,May,21,3,18
+de,Germany,by,Bayern,2026,6,June,22,1,21
+de,Germany,by,Bayern,2026,7,July,23,0,23
+de,Germany,by,Bayern,2026,8,August,21,0,21
+de,Germany,by,Bayern,2026,9,September,22,0,22
+de,Germany,by,Bayern,2026,10,October,22,0,22
+de,Germany,by,Bayern,2026,11,November,21,0,21
+de,Germany,by,Bayern,2026,12,December,23,1,22
+de,Germany,hb,Hansestadt Bremen,2026,1,January,22,1,21
+de,Germany,hb,Hansestadt Bremen,2026,2,February,20,0,20
+de,Germany,hb,Hansestadt Bremen,2026,3,March,22,0,22
+de,Germany,hb,Hansestadt Bremen,2026,4,April,22,2,20
+de,Germany,hb,Hansestadt Bremen,2026,5,May,21,3,18
+de,Germany,hb,Hansestadt Bremen,2026,6,June,22,0,22
+de,Germany,hb,Hansestadt Bremen,2026,7,July,23,0,23
+de,Germany,hb,Hansestadt Bremen,2026,8,August,21,0,21
+de,Germany,hb,Hansestadt Bremen,2026,9,September,22,0,22
+de,Germany,hb,Hansestadt Bremen,2026,10,October,22,0,22
+de,Germany,hb,Hansestadt Bremen,2026,11,November,21,0,21
+de,Germany,hb,Hansestadt Bremen,2026,12,December,23,1,22
+de,Germany,he,Hessen,2026,1,January,22,1,21
+de,Germany,he,Hessen,2026,2,February,20,0,20
+de,Germany,he,Hessen,2026,3,March,22,0,22
+de,Germany,he,Hessen,2026,4,April,22,2,20
+de,Germany,he,Hessen,2026,5,May,21,3,18
+de,Germany,he,Hessen,2026,6,June,22,1,21
+de,Germany,he,Hessen,2026,7,July,23,0,23
+de,Germany,he,Hessen,2026,8,August,21,0,21
+de,Germany,he,Hessen,2026,9,September,22,0,22
+de,Germany,he,Hessen,2026,10,October,22,0,22
+de,Germany,he,Hessen,2026,11,November,21,0,21
+de,Germany,he,Hessen,2026,12,December,23,1,22
+de,Germany,hh,Hansestadt Hamburg,2026,1,January,22,1,21
+de,Germany,hh,Hansestadt Hamburg,2026,2,February,20,0,20
+de,Germany,hh,Hansestadt Hamburg,2026,3,March,22,0,22
+de,Germany,hh,Hansestadt Hamburg,2026,4,April,22,2,20
+de,Germany,hh,Hansestadt Hamburg,2026,5,May,21,3,18
+de,Germany,hh,Hansestadt Hamburg,2026,6,June,22,0,22
+de,Germany,hh,Hansestadt Hamburg,2026,7,July,23,0,23
+de,Germany,hh,Hansestadt Hamburg,2026,8,August,21,0,21
+de,Germany,hh,Hansestadt Hamburg,2026,9,September,22,0,22
+de,Germany,hh,Hansestadt Hamburg,2026,10,October,22,0,22
+de,Germany,hh,Hansestadt Hamburg,2026,11,November,21,0,21
+de,Germany,hh,Hansestadt Hamburg,2026,12,December,23,1,22
+de,Germany,mv,Mecklenburg-Vorpommern,2026,1,January,22,1,21
+de,Germany,mv,Mecklenburg-Vorpommern,2026,2,February,20,0,20
+de,Germany,mv,Mecklenburg-Vorpommern,2026,3,March,22,0,22
+de,Germany,mv,Mecklenburg-Vorpommern,2026,4,April,22,2,20
+de,Germany,mv,Mecklenburg-Vorpommern,2026,5,May,21,3,18
+de,Germany,mv,Mecklenburg-Vorpommern,2026,6,June,22,0,22
+de,Germany,mv,Mecklenburg-Vorpommern,2026,7,July,23,0,23
+de,Germany,mv,Mecklenburg-Vorpommern,2026,8,August,21,0,21
+de,Germany,mv,Mecklenburg-Vorpommern,2026,9,September,22,0,22
+de,Germany,mv,Mecklenburg-Vorpommern,2026,10,October,22,0,22
+de,Germany,mv,Mecklenburg-Vorpommern,2026,11,November,21,0,21
+de,Germany,mv,Mecklenburg-Vorpommern,2026,12,December,23,1,22
+de,Germany,ni,Niedersachsen,2026,1,January,22,1,21
+de,Germany,ni,Niedersachsen,2026,2,February,20,0,20
+de,Germany,ni,Niedersachsen,2026,3,March,22,0,22
+de,Germany,ni,Niedersachsen,2026,4,April,22,2,20
+de,Germany,ni,Niedersachsen,2026,5,May,21,3,18
+de,Germany,ni,Niedersachsen,2026,6,June,22,0,22
+de,Germany,ni,Niedersachsen,2026,7,July,23,0,23
+de,Germany,ni,Niedersachsen,2026,8,August,21,0,21
+de,Germany,ni,Niedersachsen,2026,9,September,22,0,22
+de,Germany,ni,Niedersachsen,2026,10,October,22,0,22
+de,Germany,ni,Niedersachsen,2026,11,November,21,0,21
+de,Germany,ni,Niedersachsen,2026,12,December,23,1,22
+de,Germany,nw,Nordrhein-Westfalen,2026,1,January,22,1,21
+de,Germany,nw,Nordrhein-Westfalen,2026,2,February,20,0,20
+de,Germany,nw,Nordrhein-Westfalen,2026,3,March,22,0,22
+de,Germany,nw,Nordrhein-Westfalen,2026,4,April,22,2,20
+de,Germany,nw,Nordrhein-Westfalen,2026,5,May,21,3,18
+de,Germany,nw,Nordrhein-Westfalen,2026,6,June,22,1,21
+de,Germany,nw,Nordrhein-Westfalen,2026,7,July,23,0,23
+de,Germany,nw,Nordrhein-Westfalen,2026,8,August,21,0,21
+de,Germany,nw,Nordrhein-Westfalen,2026,9,September,22,0,22
+de,Germany,nw,Nordrhein-Westfalen,2026,10,October,22,0,22
+de,Germany,nw,Nordrhein-Westfalen,2026,11,November,21,0,21
+de,Germany,nw,Nordrhein-Westfalen,2026,12,December,23,1,22
+de,Germany,rp,Rheinland-Pfalz,2026,1,January,22,1,21
+de,Germany,rp,Rheinland-Pfalz,2026,2,February,20,0,20
+de,Germany,rp,Rheinland-Pfalz,2026,3,March,22,0,22
+de,Germany,rp,Rheinland-Pfalz,2026,4,April,22,2,20
+de,Germany,rp,Rheinland-Pfalz,2026,5,May,21,3,18
+de,Germany,rp,Rheinland-Pfalz,2026,6,June,22,1,21
+de,Germany,rp,Rheinland-Pfalz,2026,7,July,23,0,23
+de,Germany,rp,Rheinland-Pfalz,2026,8,August,21,0,21
+de,Germany,rp,Rheinland-Pfalz,2026,9,September,22,0,22
+de,Germany,rp,Rheinland-Pfalz,2026,10,October,22,0,22
+de,Germany,rp,Rheinland-Pfalz,2026,11,November,21,0,21
+de,Germany,rp,Rheinland-Pfalz,2026,12,December,23,1,22
+de,Germany,sh,Schleswig-Holstein,2026,1,January,22,1,21
+de,Germany,sh,Schleswig-Holstein,2026,2,February,20,0,20
+de,Germany,sh,Schleswig-Holstein,2026,3,March,22,0,22
+de,Germany,sh,Schleswig-Holstein,2026,4,April,22,2,20
+de,Germany,sh,Schleswig-Holstein,2026,5,May,21,3,18
+de,Germany,sh,Schleswig-Holstein,2026,6,June,22,0,22
+de,Germany,sh,Schleswig-Holstein,2026,7,July,23,0,23
+de,Germany,sh,Schleswig-Holstein,2026,8,August,21,0,21
+de,Germany,sh,Schleswig-Holstein,2026,9,September,22,0,22
+de,Germany,sh,Schleswig-Holstein,2026,10,October,22,0,22
+de,Germany,sh,Schleswig-Holstein,2026,11,November,21,0,21
+de,Germany,sh,Schleswig-Holstein,2026,12,December,23,1,22
+de,Germany,sl,Saarland,2026,1,January,22,1,21
+de,Germany,sl,Saarland,2026,2,February,20,0,20
+de,Germany,sl,Saarland,2026,3,March,22,0,22
+de,Germany,sl,Saarland,2026,4,April,22,2,20
+de,Germany,sl,Saarland,2026,5,May,21,3,18
+de,Germany,sl,Saarland,2026,6,June,22,1,21
+de,Germany,sl,Saarland,2026,7,July,23,0,23
+de,Germany,sl,Saarland,2026,8,August,21,0,21
+de,Germany,sl,Saarland,2026,9,September,22,0,22
+de,Germany,sl,Saarland,2026,10,October,22,0,22
+de,Germany,sl,Saarland,2026,11,November,21,0,21
+de,Germany,sl,Saarland,2026,12,December,23,1,22
+de,Germany,sn,Sachsen,2026,1,January,22,1,21
+de,Germany,sn,Sachsen,2026,2,February,20,0,20
+de,Germany,sn,Sachsen,2026,3,March,22,0,22
+de,Germany,sn,Sachsen,2026,4,April,22,2,20
+de,Germany,sn,Sachsen,2026,5,May,21,3,18
+de,Germany,sn,Sachsen,2026,6,June,22,0,22
+de,Germany,sn,Sachsen,2026,7,July,23,0,23
+de,Germany,sn,Sachsen,2026,8,August,21,0,21
+de,Germany,sn,Sachsen,2026,9,September,22,0,22
+de,Germany,sn,Sachsen,2026,10,October,22,0,22
+de,Germany,sn,Sachsen,2026,11,November,21,1,20
+de,Germany,sn,Sachsen,2026,12,December,23,1,22
+de,Germany,st,Sachsen-Anhalt,2026,1,January,22,2,20
+de,Germany,st,Sachsen-Anhalt,2026,2,February,20,0,20
+de,Germany,st,Sachsen-Anhalt,2026,3,March,22,0,22
+de,Germany,st,Sachsen-Anhalt,2026,4,April,22,2,20
+de,Germany,st,Sachsen-Anhalt,2026,5,May,21,3,18
+de,Germany,st,Sachsen-Anhalt,2026,6,June,22,0,22
+de,Germany,st,Sachsen-Anhalt,2026,7,July,23,0,23
+de,Germany,st,Sachsen-Anhalt,2026,8,August,21,0,21
+de,Germany,st,Sachsen-Anhalt,2026,9,September,22,0,22
+de,Germany,st,Sachsen-Anhalt,2026,10,October,22,0,22
+de,Germany,st,Sachsen-Anhalt,2026,11,November,21,0,21
+de,Germany,st,Sachsen-Anhalt,2026,12,December,23,1,22
+de,Germany,th,Thüringen,2026,1,January,22,1,21
+de,Germany,th,Thüringen,2026,2,February,20,0,20
+de,Germany,th,Thüringen,2026,3,March,22,0,22
+de,Germany,th,Thüringen,2026,4,April,22,2,20
+de,Germany,th,Thüringen,2026,5,May,21,3,18
+de,Germany,th,Thüringen,2026,6,June,22,0,22
+de,Germany,th,Thüringen,2026,7,July,23,0,23
+de,Germany,th,Thüringen,2026,8,August,21,0,21
+de,Germany,th,Thüringen,2026,9,September,22,0,22
+de,Germany,th,Thüringen,2026,10,October,22,0,22
+de,Germany,th,Thüringen,2026,11,November,21,0,21
+de,Germany,th,Thüringen,2026,12,December,23,1,22
+jp,Japan,national,National holidays,2026,1,January,22,2,20
+jp,Japan,national,National holidays,2026,2,February,20,2,18
+jp,Japan,national,National holidays,2026,3,March,22,1,21
+jp,Japan,national,National holidays,2026,4,April,22,1,21
+jp,Japan,national,National holidays,2026,5,May,21,3,18
+jp,Japan,national,National holidays,2026,6,June,22,0,22
+jp,Japan,national,National holidays,2026,7,July,23,1,22
+jp,Japan,national,National holidays,2026,8,August,21,1,20
+jp,Japan,national,National holidays,2026,9,September,22,3,19
+jp,Japan,national,National holidays,2026,10,October,22,1,21
+jp,Japan,national,National holidays,2026,11,November,21,2,19
+jp,Japan,national,National holidays,2026,12,December,23,0,23
+fr,France,national,Metropolitan France,2026,1,January,22,1,21
+fr,France,national,Metropolitan France,2026,2,February,20,0,20
+fr,France,national,Metropolitan France,2026,3,March,22,0,22
+fr,France,national,Metropolitan France,2026,4,April,22,1,21
+fr,France,national,Metropolitan France,2026,5,May,21,4,17
+fr,France,national,Metropolitan France,2026,6,June,22,0,22
+fr,France,national,Metropolitan France,2026,7,July,23,1,22
+fr,France,national,Metropolitan France,2026,8,August,21,0,21
+fr,France,national,Metropolitan France,2026,9,September,22,0,22
+fr,France,national,Metropolitan France,2026,10,October,22,0,22
+fr,France,national,Metropolitan France,2026,11,November,21,1,20
+fr,France,national,Metropolitan France,2026,12,December,23,1,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,1,January,22,1,21
+fr,France,alsace-moselle,Alsace-Moselle,2026,2,February,20,0,20
+fr,France,alsace-moselle,Alsace-Moselle,2026,3,March,22,0,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,4,April,22,2,20
+fr,France,alsace-moselle,Alsace-Moselle,2026,5,May,21,4,17
+fr,France,alsace-moselle,Alsace-Moselle,2026,6,June,22,0,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,7,July,23,1,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,8,August,21,0,21
+fr,France,alsace-moselle,Alsace-Moselle,2026,9,September,22,0,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,10,October,22,0,22
+fr,France,alsace-moselle,Alsace-Moselle,2026,11,November,21,1,20
+fr,France,alsace-moselle,Alsace-Moselle,2026,12,December,23,1,22
+ie,Ireland,national,National holidays,2026,1,January,22,1,21
+ie,Ireland,national,National holidays,2026,2,February,20,1,19
+ie,Ireland,national,National holidays,2026,3,March,22,1,21
+ie,Ireland,national,National holidays,2026,4,April,22,1,21
+ie,Ireland,national,National holidays,2026,5,May,21,1,20
+ie,Ireland,national,National holidays,2026,6,June,22,1,21
+ie,Ireland,national,National holidays,2026,7,July,23,0,23
+ie,Ireland,national,National holidays,2026,8,August,21,1,20
+ie,Ireland,national,National holidays,2026,9,September,22,0,22
+ie,Ireland,national,National holidays,2026,10,October,22,1,21
+ie,Ireland,national,National holidays,2026,11,November,21,0,21
+ie,Ireland,national,National holidays,2026,12,December,23,1,22
+nz,New Zealand,auk,Auckland Province,2026,1,January,22,3,19
+nz,New Zealand,auk,Auckland Province,2026,2,February,20,1,19
+nz,New Zealand,auk,Auckland Province,2026,3,March,22,0,22
+nz,New Zealand,auk,Auckland Province,2026,4,April,22,3,19
+nz,New Zealand,auk,Auckland Province,2026,5,May,21,0,21
+nz,New Zealand,auk,Auckland Province,2026,6,June,22,1,21
+nz,New Zealand,auk,Auckland Province,2026,7,July,23,1,22
+nz,New Zealand,auk,Auckland Province,2026,8,August,21,0,21
+nz,New Zealand,auk,Auckland Province,2026,9,September,22,0,22
+nz,New Zealand,auk,Auckland Province,2026,10,October,22,1,21
+nz,New Zealand,auk,Auckland Province,2026,11,November,21,0,21
+nz,New Zealand,auk,Auckland Province,2026,12,December,23,2,21
+nz,New Zealand,bop,Bay of Plenty,2026,1,January,22,3,19
+nz,New Zealand,bop,Bay of Plenty,2026,2,February,20,1,19
+nz,New Zealand,bop,Bay of Plenty,2026,3,March,22,0,22
+nz,New Zealand,bop,Bay of Plenty,2026,4,April,22,3,19
+nz,New Zealand,bop,Bay of Plenty,2026,5,May,21,0,21
+nz,New Zealand,bop,Bay of Plenty,2026,6,June,22,1,21
+nz,New Zealand,bop,Bay of Plenty,2026,7,July,23,1,22
+nz,New Zealand,bop,Bay of Plenty,2026,8,August,21,0,21
+nz,New Zealand,bop,Bay of Plenty,2026,9,September,22,0,22
+nz,New Zealand,bop,Bay of Plenty,2026,10,October,22,1,21
+nz,New Zealand,bop,Bay of Plenty,2026,11,November,21,0,21
+nz,New Zealand,bop,Bay of Plenty,2026,12,December,23,2,21
+nz,New Zealand,can,Canterbury,2026,1,January,22,2,20
+nz,New Zealand,can,Canterbury,2026,2,February,20,1,19
+nz,New Zealand,can,Canterbury,2026,3,March,22,0,22
+nz,New Zealand,can,Canterbury,2026,4,April,22,3,19
+nz,New Zealand,can,Canterbury,2026,5,May,21,0,21
+nz,New Zealand,can,Canterbury,2026,6,June,22,1,21
+nz,New Zealand,can,Canterbury,2026,7,July,23,1,22
+nz,New Zealand,can,Canterbury,2026,8,August,21,0,21
+nz,New Zealand,can,Canterbury,2026,9,September,22,0,22
+nz,New Zealand,can,Canterbury,2026,10,October,22,1,21
+nz,New Zealand,can,Canterbury,2026,11,November,21,1,20
+nz,New Zealand,can,Canterbury,2026,12,December,23,2,21
+nz,New Zealand,cit,Chatham Islands,2026,1,January,22,2,20
+nz,New Zealand,cit,Chatham Islands,2026,2,February,20,1,19
+nz,New Zealand,cit,Chatham Islands,2026,3,March,22,0,22
+nz,New Zealand,cit,Chatham Islands,2026,4,April,22,3,19
+nz,New Zealand,cit,Chatham Islands,2026,5,May,21,0,21
+nz,New Zealand,cit,Chatham Islands,2026,6,June,22,1,21
+nz,New Zealand,cit,Chatham Islands,2026,7,July,23,1,22
+nz,New Zealand,cit,Chatham Islands,2026,8,August,21,0,21
+nz,New Zealand,cit,Chatham Islands,2026,9,September,22,0,22
+nz,New Zealand,cit,Chatham Islands,2026,10,October,22,1,21
+nz,New Zealand,cit,Chatham Islands,2026,11,November,21,1,20
+nz,New Zealand,cit,Chatham Islands,2026,12,December,23,2,21
+nz,New Zealand,gis,Gisborne,2026,1,January,22,3,19
+nz,New Zealand,gis,Gisborne,2026,2,February,20,1,19
+nz,New Zealand,gis,Gisborne,2026,3,March,22,0,22
+nz,New Zealand,gis,Gisborne,2026,4,April,22,3,19
+nz,New Zealand,gis,Gisborne,2026,5,May,21,0,21
+nz,New Zealand,gis,Gisborne,2026,6,June,22,1,21
+nz,New Zealand,gis,Gisborne,2026,7,July,23,1,22
+nz,New Zealand,gis,Gisborne,2026,8,August,21,0,21
+nz,New Zealand,gis,Gisborne,2026,9,September,22,0,22
+nz,New Zealand,gis,Gisborne,2026,10,October,22,1,21
+nz,New Zealand,gis,Gisborne,2026,11,November,21,0,21
+nz,New Zealand,gis,Gisborne,2026,12,December,23,2,21
+nz,New Zealand,hkb,Hawke's Bay,2026,1,January,22,2,20
+nz,New Zealand,hkb,Hawke's Bay,2026,2,February,20,1,19
+nz,New Zealand,hkb,Hawke's Bay,2026,3,March,22,0,22
+nz,New Zealand,hkb,Hawke's Bay,2026,4,April,22,3,19
+nz,New Zealand,hkb,Hawke's Bay,2026,5,May,21,0,21
+nz,New Zealand,hkb,Hawke's Bay,2026,6,June,22,1,21
+nz,New Zealand,hkb,Hawke's Bay,2026,7,July,23,1,22
+nz,New Zealand,hkb,Hawke's Bay,2026,8,August,21,0,21
+nz,New Zealand,hkb,Hawke's Bay,2026,9,September,22,0,22
+nz,New Zealand,hkb,Hawke's Bay,2026,10,October,22,2,20
+nz,New Zealand,hkb,Hawke's Bay,2026,11,November,21,0,21
+nz,New Zealand,hkb,Hawke's Bay,2026,12,December,23,2,21
+nz,New Zealand,mbh,Marlborough,2026,1,January,22,2,20
+nz,New Zealand,mbh,Marlborough,2026,2,February,20,1,19
+nz,New Zealand,mbh,Marlborough,2026,3,March,22,0,22
+nz,New Zealand,mbh,Marlborough,2026,4,April,22,3,19
+nz,New Zealand,mbh,Marlborough,2026,5,May,21,0,21
+nz,New Zealand,mbh,Marlborough,2026,6,June,22,1,21
+nz,New Zealand,mbh,Marlborough,2026,7,July,23,1,22
+nz,New Zealand,mbh,Marlborough,2026,8,August,21,0,21
+nz,New Zealand,mbh,Marlborough,2026,9,September,22,0,22
+nz,New Zealand,mbh,Marlborough,2026,10,October,22,1,21
+nz,New Zealand,mbh,Marlborough,2026,11,November,21,1,20
+nz,New Zealand,mbh,Marlborough,2026,12,December,23,2,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,1,January,22,3,19
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,2,February,20,1,19
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,3,March,22,0,22
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,4,April,22,3,19
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,5,May,21,0,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,6,June,22,1,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,7,July,23,1,22
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,8,August,21,0,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,9,September,22,0,22
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,10,October,22,1,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,11,November,21,0,21
+nz,New Zealand,mwt,Manawatu-Wanganui,2026,12,December,23,2,21
+nz,New Zealand,nsn,Nelson,2026,1,January,22,2,20
+nz,New Zealand,nsn,Nelson,2026,2,February,20,2,18
+nz,New Zealand,nsn,Nelson,2026,3,March,22,0,22
+nz,New Zealand,nsn,Nelson,2026,4,April,22,3,19
+nz,New Zealand,nsn,Nelson,2026,5,May,21,0,21
+nz,New Zealand,nsn,Nelson,2026,6,June,22,1,21
+nz,New Zealand,nsn,Nelson,2026,7,July,23,1,22
+nz,New Zealand,nsn,Nelson,2026,8,August,21,0,21
+nz,New Zealand,nsn,Nelson,2026,9,September,22,0,22
+nz,New Zealand,nsn,Nelson,2026,10,October,22,1,21
+nz,New Zealand,nsn,Nelson,2026,11,November,21,0,21
+nz,New Zealand,nsn,Nelson,2026,12,December,23,2,21
+nz,New Zealand,ntl,Northland,2026,1,January,22,3,19
+nz,New Zealand,ntl,Northland,2026,2,February,20,1,19
+nz,New Zealand,ntl,Northland,2026,3,March,22,0,22
+nz,New Zealand,ntl,Northland,2026,4,April,22,3,19
+nz,New Zealand,ntl,Northland,2026,5,May,21,0,21
+nz,New Zealand,ntl,Northland,2026,6,June,22,1,21
+nz,New Zealand,ntl,Northland,2026,7,July,23,1,22
+nz,New Zealand,ntl,Northland,2026,8,August,21,0,21
+nz,New Zealand,ntl,Northland,2026,9,September,22,0,22
+nz,New Zealand,ntl,Northland,2026,10,October,22,1,21
+nz,New Zealand,ntl,Northland,2026,11,November,21,0,21
+nz,New Zealand,ntl,Northland,2026,12,December,23,2,21
+nz,New Zealand,ota,Otago Province,2026,1,January,22,2,20
+nz,New Zealand,ota,Otago Province,2026,2,February,20,1,19
+nz,New Zealand,ota,Otago Province,2026,3,March,22,1,21
+nz,New Zealand,ota,Otago Province,2026,4,April,22,3,19
+nz,New Zealand,ota,Otago Province,2026,5,May,21,0,21
+nz,New Zealand,ota,Otago Province,2026,6,June,22,1,21
+nz,New Zealand,ota,Otago Province,2026,7,July,23,1,22
+nz,New Zealand,ota,Otago Province,2026,8,August,21,0,21
+nz,New Zealand,ota,Otago Province,2026,9,September,22,0,22
+nz,New Zealand,ota,Otago Province,2026,10,October,22,1,21
+nz,New Zealand,ota,Otago Province,2026,11,November,21,0,21
+nz,New Zealand,ota,Otago Province,2026,12,December,23,2,21
+nz,New Zealand,stl,Southland,2026,1,January,22,2,20
+nz,New Zealand,stl,Southland,2026,2,February,20,1,19
+nz,New Zealand,stl,Southland,2026,3,March,22,0,22
+nz,New Zealand,stl,Southland,2026,4,April,22,4,18
+nz,New Zealand,stl,Southland,2026,5,May,21,0,21
+nz,New Zealand,stl,Southland,2026,6,June,22,1,21
+nz,New Zealand,stl,Southland,2026,7,July,23,1,22
+nz,New Zealand,stl,Southland,2026,8,August,21,0,21
+nz,New Zealand,stl,Southland,2026,9,September,22,0,22
+nz,New Zealand,stl,Southland,2026,10,October,22,1,21
+nz,New Zealand,stl,Southland,2026,11,November,21,0,21
+nz,New Zealand,stl,Southland,2026,12,December,23,2,21
+nz,New Zealand,tas,Tasman,2026,1,January,22,2,20
+nz,New Zealand,tas,Tasman,2026,2,February,20,2,18
+nz,New Zealand,tas,Tasman,2026,3,March,22,0,22
+nz,New Zealand,tas,Tasman,2026,4,April,22,3,19
+nz,New Zealand,tas,Tasman,2026,5,May,21,0,21
+nz,New Zealand,tas,Tasman,2026,6,June,22,1,21
+nz,New Zealand,tas,Tasman,2026,7,July,23,1,22
+nz,New Zealand,tas,Tasman,2026,8,August,21,0,21
+nz,New Zealand,tas,Tasman,2026,9,September,22,0,22
+nz,New Zealand,tas,Tasman,2026,10,October,22,1,21
+nz,New Zealand,tas,Tasman,2026,11,November,21,0,21
+nz,New Zealand,tas,Tasman,2026,12,December,23,2,21
+nz,New Zealand,tki,Taranaki,2026,1,January,22,2,20
+nz,New Zealand,tki,Taranaki,2026,2,February,20,1,19
+nz,New Zealand,tki,Taranaki,2026,3,March,22,1,21
+nz,New Zealand,tki,Taranaki,2026,4,April,22,3,19
+nz,New Zealand,tki,Taranaki,2026,5,May,21,0,21
+nz,New Zealand,tki,Taranaki,2026,6,June,22,1,21
+nz,New Zealand,tki,Taranaki,2026,7,July,23,1,22
+nz,New Zealand,tki,Taranaki,2026,8,August,21,0,21
+nz,New Zealand,tki,Taranaki,2026,9,September,22,0,22
+nz,New Zealand,tki,Taranaki,2026,10,October,22,1,21
+nz,New Zealand,tki,Taranaki,2026,11,November,21,0,21
+nz,New Zealand,tki,Taranaki,2026,12,December,23,2,21
+nz,New Zealand,wko,Waikato,2026,1,January,22,3,19
+nz,New Zealand,wko,Waikato,2026,2,February,20,1,19
+nz,New Zealand,wko,Waikato,2026,3,March,22,0,22
+nz,New Zealand,wko,Waikato,2026,4,April,22,3,19
+nz,New Zealand,wko,Waikato,2026,5,May,21,0,21
+nz,New Zealand,wko,Waikato,2026,6,June,22,1,21
+nz,New Zealand,wko,Waikato,2026,7,July,23,1,22
+nz,New Zealand,wko,Waikato,2026,8,August,21,0,21
+nz,New Zealand,wko,Waikato,2026,9,September,22,0,22
+nz,New Zealand,wko,Waikato,2026,10,October,22,1,21
+nz,New Zealand,wko,Waikato,2026,11,November,21,0,21
+nz,New Zealand,wko,Waikato,2026,12,December,23,2,21
+nz,New Zealand,wgn,Wellington Province,2026,1,January,22,3,19
+nz,New Zealand,wgn,Wellington Province,2026,2,February,20,1,19
+nz,New Zealand,wgn,Wellington Province,2026,3,March,22,0,22
+nz,New Zealand,wgn,Wellington Province,2026,4,April,22,3,19
+nz,New Zealand,wgn,Wellington Province,2026,5,May,21,0,21
+nz,New Zealand,wgn,Wellington Province,2026,6,June,22,1,21
+nz,New Zealand,wgn,Wellington Province,2026,7,July,23,1,22
+nz,New Zealand,wgn,Wellington Province,2026,8,August,21,0,21
+nz,New Zealand,wgn,Wellington Province,2026,9,September,22,0,22
+nz,New Zealand,wgn,Wellington Province,2026,10,October,22,1,21
+nz,New Zealand,wgn,Wellington Province,2026,11,November,21,0,21
+nz,New Zealand,wgn,Wellington Province,2026,12,December,23,2,21
+nz,New Zealand,wtc,Westland,2026,1,January,22,2,20
+nz,New Zealand,wtc,Westland,2026,2,February,20,1,19
+nz,New Zealand,wtc,Westland,2026,3,March,22,0,22
+nz,New Zealand,wtc,Westland,2026,4,April,22,3,19
+nz,New Zealand,wtc,Westland,2026,5,May,21,0,21
+nz,New Zealand,wtc,Westland,2026,6,June,22,1,21
+nz,New Zealand,wtc,Westland,2026,7,July,23,1,22
+nz,New Zealand,wtc,Westland,2026,8,August,21,0,21
+nz,New Zealand,wtc,Westland,2026,9,September,22,0,22
+nz,New Zealand,wtc,Westland,2026,10,October,22,1,21
+nz,New Zealand,wtc,Westland,2026,11,November,21,1,20
+nz,New Zealand,wtc,Westland,2026,12,December,23,2,21
+sg,Singapore,national,National holidays,2026,1,January,22,1,21
+sg,Singapore,national,National holidays,2026,2,February,20,2,18
+sg,Singapore,national,National holidays,2026,3,March,22,0,22
+sg,Singapore,national,National holidays,2026,4,April,22,1,21
+sg,Singapore,national,National holidays,2026,5,May,21,2,19
+sg,Singapore,national,National holidays,2026,6,June,22,1,21
+sg,Singapore,national,National holidays,2026,7,July,23,0,23
+sg,Singapore,national,National holidays,2026,8,August,21,1,20
+sg,Singapore,national,National holidays,2026,9,September,22,0,22
+sg,Singapore,national,National holidays,2026,10,October,22,0,22
+sg,Singapore,national,National holidays,2026,11,November,21,1,20
+sg,Singapore,national,National holidays,2026,12,December,23,1,22
+nl,Netherlands,national,National holidays,2026,1,January,22,1,21
+nl,Netherlands,national,National holidays,2026,2,February,20,0,20
+nl,Netherlands,national,National holidays,2026,3,March,22,0,22
+nl,Netherlands,national,National holidays,2026,4,April,22,3,19
+nl,Netherlands,national,National holidays,2026,5,May,21,3,18
+nl,Netherlands,national,National holidays,2026,6,June,22,0,22
+nl,Netherlands,national,National holidays,2026,7,July,23,0,23
+nl,Netherlands,national,National holidays,2026,8,August,21,0,21
+nl,Netherlands,national,National holidays,2026,9,September,22,0,22
+nl,Netherlands,national,National holidays,2026,10,October,22,0,22
+nl,Netherlands,national,National holidays,2026,11,November,21,0,21
+nl,Netherlands,national,National holidays,2026,12,December,23,1,22

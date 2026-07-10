@@ -310,6 +310,49 @@ input:focus, select:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgb
   line-height: 1.55;
 }
 
+.source-card {
+  width: min(1040px, calc(100% - 40px));
+  margin: 34px auto 44px;
+  padding: 28px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 16px 46px rgba(31, 63, 109, 0.08);
+}
+.source-card h2 { margin: 0 0 14px; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.035em; }
+.source-card h2:not(:first-child) { margin-top: 34px; }
+.source-card p { color: var(--muted); line-height: 1.55; }
+.source-card a { color: var(--navy); font-weight: 850; }
+.source-card small { color: var(--muted); }
+.year-tables { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.data-table-wrap { overflow-x: auto; margin-top: 18px; }
+.data-table { width: 100%; border-collapse: collapse; min-width: 520px; }
+.data-table th, .data-table td { padding: 12px 14px; border-bottom: 1px solid #dce6f1; text-align: left; vertical-align: top; }
+.data-table th { color: var(--ink); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+.data-table td { color: var(--muted); }
+.source-table { min-width: 760px; }
+.source-table td:last-child { min-width: 320px; }
+.quick-date-grid, .download-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.quick-date-grid div, .download-grid a {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fbfdff;
+  text-decoration: none;
+}
+.quick-date-grid strong, .quick-date-grid span, .download-grid strong, .download-grid span { display: block; }
+.quick-date-grid span, .download-grid span { margin-top: 7px; color: var(--muted); line-height: 1.4; }
+.data-note { font-size: 14px; }
+.embed-preview { max-width: 720px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--soft); }
+.embed-preview iframe { display: block; width: 100%; height: 760px; border: 0; }
+.code-block { overflow-x: auto; padding: 18px; border-radius: 14px; background: var(--navy-dark); color: #f5f8fc; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+.copy-code { border: 0; border-radius: 999px; padding: 12px 18px; background: var(--navy); color: #fff; font-weight: 900; }
+.embed-mode { background: #f4f8fc; }
+.embed-shell { padding: 14px; }
+.embed-shell .calculator-card { width: 100%; margin: 0; box-shadow: none; }
+.embed-credit { text-align: center; margin: 14px 0 0; }
+.embed-credit a { color: var(--navy); font-weight: 850; }
+
 footer {
   width: min(1040px, calc(100% - 40px));
   margin: 44px auto 56px;
@@ -430,6 +473,11 @@ footer nav { display: flex; flex-wrap: wrap; gap: 10px; }
   .static-page { width: min(640px, calc(100% - 28px)); margin-top: 54px; }
   .static-page h1 { font-size: clamp(36px, 10vw, 50px); }
   .content-card { padding: 22px; font-size: 16px; }
+  .source-card { width: min(640px, calc(100% - 28px)); padding: 22px; }
+  .year-tables, .quick-date-grid, .download-grid { grid-template-columns: 1fr; }
+  .embed-preview iframe { height: 930px; }
+  .embed-shell { padding: 8px; }
+  .embed-shell .calculator-card { width: 100%; }
   .help-overlay {
     position: fixed;
     inset: 0;

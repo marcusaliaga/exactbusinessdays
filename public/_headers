@@ -15,6 +15,15 @@
 /business-days-between-dates/
   Cache-Control: no-cache, must-revalidate
 
+/business-days-from-today/
+  Cache-Control: no-cache, must-revalidate
+
+/business-days-vs-calendar-days/
+  Cache-Control: no-cache, must-revalidate
+
+/business-days-by-month/
+  Cache-Control: no-cache, must-revalidate
+
 /holiday-business-days/
   Cache-Control: no-cache, must-revalidate
 
@@ -39,6 +48,33 @@
 /australia/working-days/
   Cache-Control: no-cache, must-revalidate
 
+/germany/working-days/
+  Cache-Control: no-cache, must-revalidate
+
+/japan/business-days/
+  Cache-Control: no-cache, must-revalidate
+
+/france/working-days/
+  Cache-Control: no-cache, must-revalidate
+
+/ireland/working-days/
+  Cache-Control: no-cache, must-revalidate
+
+/new-zealand/working-days/
+  Cache-Control: no-cache, must-revalidate
+
+/singapore/business-days/
+  Cache-Control: no-cache, must-revalidate
+
+/netherlands/working-days/
+  Cache-Control: no-cache, must-revalidate
+
+/data/business-days-2026-2027/
+  Cache-Control: no-cache, must-revalidate
+
+/embed/
+  Cache-Control: no-cache, must-revalidate
+
 /methodology/
   Cache-Control: no-cache, must-revalidate
 
@@ -61,8 +97,14 @@
 /src/*
   Cache-Control: public, max-age=300, must-revalidate
 
+/data/*.csv
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/daa1802b4b278b1fd537f267359114dd.txt
+  Cache-Control: public, max-age=86400
+
 /sitemap.xml
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: no-cache, must-revalidate
 
 /robots.txt
   Cache-Control: public, max-age=3600, must-revalidate

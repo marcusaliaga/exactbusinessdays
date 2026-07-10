@@ -5,6 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/build.js && node scripts/serve.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "generate:calendar": "node scripts/generate-calendar-data.mjs",
+    "validate": "node scripts/validate-site.mjs",
+    "submit:indexnow": "node scripts/submit-indexnow.mjs"
+  },
+  "devDependencies": {
+    "date-holidays": "3.32.0"
   }
 }
