@@ -11,11 +11,6 @@ const pages = {
     description: 'Count business days, working days, weekdays, public holidays, and deadline dates with clear assumptions.',
     canonical: 'https://exactbusinessdays.com/'
   },
-  '/business-days-calculator': {
-    title: 'Business Days Calculator | Exact Business Days',
-    description: 'Use this free business days calculator to count workdays, skip weekends, exclude public holidays, and estimate deadline dates.',
-    canonical: 'https://exactbusinessdays.com/business-days-calculator/'
-  },
   '/working-days-calculator': {
     title: 'Working Days Calculator | Exact Business Days',
     description: 'Calculate working days between dates, add working days, subtract working days, and exclude weekends or regional public holidays.',
@@ -122,6 +117,11 @@ function escapeHtml(value) {
   return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function renderInitialContent(page) {
+  const heading = page.title.replace(/ \| Exact Business Days$/, '');
+  return `<main><section class="hero"><p class="eyebrow">Exact Business Days</p><h1>${escapeHtml(heading)}</h1><p class="lead">${escapeHtml(page.description)}</p></section></main>`;
+}
+
 function renderHtml(template, page) {
   return template
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(page.title)}</title>`)
@@ -129,7 +129,8 @@ function renderHtml(template, page) {
     .replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="${escapeHtml(page.canonical)}" />`)
     .replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${escapeHtml(page.title)}" />`)
     .replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${escapeHtml(page.description)}" />`)
-    .replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${escapeHtml(page.canonical)}" />`);
+    .replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${escapeHtml(page.canonical)}" />`)
+    .replace('<div id="app"></div>', `<div id="app">${renderInitialContent(page)}</div>`);
 }
 
 copyDir(publicDir, dist);

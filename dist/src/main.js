@@ -508,7 +508,7 @@ applyQueryParams();
 function setRoute(page) {
   state.page = page;
   applyLandingDefaults(page);
-  const path = page === 'calculator' ? '/' : `/${page}`;
+  const path = page === 'calculator' ? '/' : `/${page}/`;
   history.pushState({}, '', path);
   render();
 }
@@ -769,7 +769,7 @@ function internalLinks() {
       <h3>Popular calculators</h3>
       <p>Choose a focused calculator page for common business-day and working-day questions.</p>
       <ul class="link-list">
-        <li><a href="/business-days-calculator/">Business Days Calculator</a></li>
+        <li><a href="/">Business Days Calculator</a></li>
         <li><a href="/working-days-calculator/">Working Days Calculator</a></li>
         <li><a href="/add-business-days/">Add Business Days</a></li>
         <li><a href="/business-days-between-dates/">Business Days Between Dates</a></li>

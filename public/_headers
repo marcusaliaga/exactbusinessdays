@@ -6,40 +6,55 @@
 /*.html
   Cache-Control: no-cache, must-revalidate
 
-/business-days-calculator
+/working-days-calculator/
   Cache-Control: no-cache, must-revalidate
 
-/working-days-calculator
+/add-business-days/
   Cache-Control: no-cache, must-revalidate
 
-/add-business-days
+/business-days-between-dates/
   Cache-Control: no-cache, must-revalidate
 
-/business-days-between-dates
+/holiday-business-days/
   Cache-Control: no-cache, must-revalidate
 
-/canada/business-days
+/business-days-in-2026/
   Cache-Control: no-cache, must-revalidate
 
-/us/business-days
+/business-days-in-2027/
   Cache-Control: no-cache, must-revalidate
 
-/uk/working-days
+/canada/business-days/
   Cache-Control: no-cache, must-revalidate
 
-/australia/working-days
+/us/business-days/
   Cache-Control: no-cache, must-revalidate
 
-/about
+/us/state-business-days/
   Cache-Control: no-cache, must-revalidate
 
-/contact
+/uk/working-days/
   Cache-Control: no-cache, must-revalidate
 
-/privacy
+/australia/working-days/
   Cache-Control: no-cache, must-revalidate
 
-/terms
+/methodology/
+  Cache-Control: no-cache, must-revalidate
+
+/holiday-data/
+  Cache-Control: no-cache, must-revalidate
+
+/about/
+  Cache-Control: no-cache, must-revalidate
+
+/contact/
+  Cache-Control: no-cache, must-revalidate
+
+/privacy/
+  Cache-Control: no-cache, must-revalidate
+
+/terms/
   Cache-Control: no-cache, must-revalidate
 
 # The app uses un-hashed JS/CSS paths, so keep these cached briefly only.

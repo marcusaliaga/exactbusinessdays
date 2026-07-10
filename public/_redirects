@@ -1,1 +1,2 @@
-/* /index.html 200
+# Canonical host and path redirects are handled by functions/_middleware.js.
+# Generated route directories are served directly so unknown URLs return 404.
